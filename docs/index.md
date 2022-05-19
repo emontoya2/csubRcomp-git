@@ -12,6 +12,12 @@ url: 'http\://www.csub.edu/~emontoya2/'
 description: "A freely available document meant to help students learn R concurrently with the material of the course."
 ---
 
+
+
+
 # Preface {-}
 
-This is the very first part of the book.
+
+An R companion... 
+ 
+ 

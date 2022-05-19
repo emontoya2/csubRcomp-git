@@ -1,0 +1,10 @@
+library(openintro)
+library(knitr)
+library(mosaic)
+library(pillar)
+library(dplyr)
+library(lattice)
+library(latticeExtra)
+library(leaps)
+library(nortest)
+

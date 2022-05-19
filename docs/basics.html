@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 Some basic R tasks | An R companion</title>
+  <meta name="description" content="A freely available document meant to help students learn R concurrently with the material of the course." />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 Some basic R tasks | An R companion" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="A freely available document meant to help students learn R concurrently with the material of the course." />
+  <meta name="github-repo" content="emontoya2/csubRcomp-git" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 Some basic R tasks | An R companion" />
+  
+  <meta name="twitter:description" content="A freely available document meant to help students learn R concurrently with the material of the course." />
+  
+
+<meta name="author" content="Eduardo Montoya" />
+
+
+<meta name="date" content="2022-05-19" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="intro.html"/>
+<link rel="next" href="reg.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">An R companion for undergraduate regression and ANOVA</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction: Getting Familiar with R and RStudio</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#what-is-r-and-rstudio"><i class="fa fa-check"></i><b>1.1</b> What is R and RStudio?</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#downloading-and-installing-r"><i class="fa fa-check"></i><b>1.2</b> Downloading and installing R</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#downloading-and-installing-rstudio"><i class="fa fa-check"></i><b>1.3</b> Downloading and installing RStudio</a></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#the-layout-of-rstudio"><i class="fa fa-check"></i><b>1.4</b> The layout of RStudio</a></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#expressions-and-assignments"><i class="fa fa-check"></i><b>1.5</b> Expressions and Assignments</a></li>
+<li class="chapter" data-level="1.6" data-path="intro.html"><a href="intro.html#entering-and-running-r-code-in-rstudio"><i class="fa fa-check"></i><b>1.6</b> Entering and running R code in RStudio</a></li>
+<li class="chapter" data-level="1.7" data-path="intro.html"><a href="intro.html#a-fancy-calculator"><i class="fa fa-check"></i><b>1.7</b> A fancy calculator</a></li>
+<li class="chapter" data-level="1.8" data-path="intro.html"><a href="intro.html#working-with-vectors"><i class="fa fa-check"></i><b>1.8</b> Working with vectors</a></li>
+<li class="chapter" data-level="1.9" data-path="intro.html"><a href="intro.html#data-types-in-r"><i class="fa fa-check"></i><b>1.9</b> Data types in R</a></li>
+<li class="chapter" data-level="1.10" data-path="intro.html"><a href="intro.html#comments-in-r"><i class="fa fa-check"></i><b>1.10</b> Comments in R</a></li>
+<li class="chapter" data-level="1.11" data-path="intro.html"><a href="intro.html#using-r-functions"><i class="fa fa-check"></i><b>1.11</b> Using R functions</a></li>
+<li class="chapter" data-level="1.12" data-path="intro.html"><a href="intro.html#loading-a-package-and-installing-new-packages"><i class="fa fa-check"></i><b>1.12</b> Loading a package and installing new packages</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="basics.html"><a href="basics.html"><i class="fa fa-check"></i><b>2</b> Some basic R tasks</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="basics.html"><a href="basics.html#using-rs-built-in-datasets-and-viewing-datasets"><i class="fa fa-check"></i><b>2.1</b> Using R’s built-in datasets and “viewing” datasets</a></li>
+<li class="chapter" data-level="2.2" data-path="basics.html"><a href="basics.html#csv-files"><i class="fa fa-check"></i><b>2.2</b> .csv files</a></li>
+<li class="chapter" data-level="2.3" data-path="basics.html"><a href="basics.html#importing-a-.csv-file"><i class="fa fa-check"></i><b>2.3</b> Importing a .csv file</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="basics.html"><a href="basics.html#importing-data-via-a-url"><i class="fa fa-check"></i><b>2.3.1</b> Importing data via a url</a></li>
+<li class="chapter" data-level="2.3.2" data-path="basics.html"><a href="basics.html#importing-data-from-your-computer"><i class="fa fa-check"></i><b>2.3.2</b> Importing data from your computer</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="basics.html"><a href="basics.html#summarizing-data"><i class="fa fa-check"></i><b>2.4</b> Summarizing data</a></li>
+<li class="chapter" data-level="2.5" data-path="basics.html"><a href="basics.html#export-an-r-plot-or-r-output"><i class="fa fa-check"></i><b>2.5</b> Export an R plot or R output</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="basics.html"><a href="basics.html#exporting-graphs"><i class="fa fa-check"></i><b>2.5.1</b> Exporting graphs</a></li>
+<li class="chapter" data-level="2.5.2" data-path="basics.html"><a href="basics.html#exporting-r-output"><i class="fa fa-check"></i><b>2.5.2</b> Exporting R output</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="basics.html"><a href="basics.html#extracting-variables-from-dataframes"><i class="fa fa-check"></i><b>2.6</b> Extracting variables from dataframes</a></li>
+<li class="chapter" data-level="2.7" data-path="basics.html"><a href="basics.html#understanding-common-r-errors"><i class="fa fa-check"></i><b>2.7</b> Understanding common R errors</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="basics.html"><a href="basics.html#could-not-find-function"><i class="fa fa-check"></i><b>2.7.1</b> could not find function</a></li>
+<li class="chapter" data-level="2.7.2" data-path="basics.html"><a href="basics.html#object-not-found"><i class="fa fa-check"></i><b>2.7.2</b> object not found</a></li>
+<li class="chapter" data-level="2.7.3" data-path="basics.html"><a href="basics.html#unmatched-parenthesis"><i class="fa fa-check"></i><b>2.7.3</b> Unmatched parenthesis</a></li>
+<li class="chapter" data-level="2.7.4" data-path="basics.html"><a href="basics.html#the-some-package-package-is-not-available-for-r-version-some-version"><i class="fa fa-check"></i><b>2.7.4</b> The ‘Some package’ package is not available (for R version ‘some version’)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="basics.html"><a href="basics.html#help-files"><i class="fa fa-check"></i><b>2.8</b> Help files</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="reg.html"><a href="reg.html"><i class="fa fa-check"></i><b>3</b> R code for Regression Analysis</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="reg.html"><a href="reg.html#linear-regression-with-one-predictor-variable"><i class="fa fa-check"></i><b>3.1</b> Linear Regression with One Predictor Variable</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="reg.html"><a href="reg.html#scatterplots"><i class="fa fa-check"></i><b>3.1.1</b> Scatterplots</a></li>
+<li class="chapter" data-level="3.1.2" data-path="reg.html"><a href="reg.html#least-squares-ls-estimates"><i class="fa fa-check"></i><b>3.1.2</b> Least Squares (LS) Estimates</a></li>
+<li class="chapter" data-level="3.1.3" data-path="reg.html"><a href="reg.html#plotting-the-estimated-regression-line"><i class="fa fa-check"></i><b>3.1.3</b> Plotting the estimated regression line</a></li>
+<li class="chapter" data-level="3.1.4" data-path="reg.html"><a href="reg.html#fitted-or-predicted-values"><i class="fa fa-check"></i><b>3.1.4</b> Fitted or predicted values</a></li>
+<li class="chapter" data-level="3.1.5" data-path="reg.html"><a href="reg.html#residuals"><i class="fa fa-check"></i><b>3.1.5</b> Residuals</a></li>
+<li class="chapter" data-level="3.1.6" data-path="reg.html"><a href="reg.html#summary-lm-object-output"><i class="fa fa-check"></i><b>3.1.6</b> <code>summary(</code> <em>lm object</em> <code>)</code> output</a></li>
+<li class="chapter" data-level="3.1.7" data-path="reg.html"><a href="reg.html#estimating-of-sigma2"><i class="fa fa-check"></i><b>3.1.7</b> Estimating of <span class="math inline">\(\sigma^2\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="reg.html"><a href="reg.html#inference-in-simple-linear-regression"><i class="fa fa-check"></i><b>3.2</b> Inference in simple linear regression</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="reg.html"><a href="reg.html#inferences-for-beta_0-and-beta_1"><i class="fa fa-check"></i><b>3.2.1</b> Inferences for <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span></a></li>
+<li class="chapter" data-level="3.2.2" data-path="reg.html"><a href="reg.html#ci-for-the-mean-response-ey_h-and-a-prediction-interval-for-y_h"><i class="fa fa-check"></i><b>3.2.2</b> CI for the mean response (<span class="math inline">\(E(y_h)\)</span>) and a prediction interval for <span class="math inline">\(y_h\)</span></a></li>
+<li class="chapter" data-level="3.2.3" data-path="reg.html"><a href="reg.html#analysis-of-variance-approach-to-regression-analysis"><i class="fa fa-check"></i><b>3.2.3</b> Analysis of Variance approach to regression analysis</a></li>
+<li class="chapter" data-level="3.2.4" data-path="reg.html"><a href="reg.html#measures-of-association"><i class="fa fa-check"></i><b>3.2.4</b> Measures of association</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="reg.html"><a href="reg.html#residual-analysis-and-remedial-measures"><i class="fa fa-check"></i><b>3.3</b> Residual analysis and remedial measures</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="reg.html"><a href="reg.html#creating-residual-plots"><i class="fa fa-check"></i><b>3.3.1</b> Creating residual plots</a></li>
+<li class="chapter" data-level="3.3.2" data-path="reg.html"><a href="reg.html#testing-departures-from-normality"><i class="fa fa-check"></i><b>3.3.2</b> Testing departures from normality</a></li>
+<li class="chapter" data-level="3.3.3" data-path="reg.html"><a href="reg.html#transformations"><i class="fa fa-check"></i><b>3.3.3</b> Transformations</a></li>
+<li class="chapter" data-level="3.3.4" data-path="reg.html"><a href="reg.html#f-test-for-lack-of-fit"><i class="fa fa-check"></i><b>3.3.4</b> F Test for Lack of Fit</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="reg.html"><a href="reg.html#least-absolute-deviation-lad-regression"><i class="fa fa-check"></i><b>3.4</b> Least absolute deviation (LAD) regression</a></li>
+<li class="chapter" data-level="3.5" data-path="reg.html"><a href="reg.html#the-matrix-approach-to-simple-linear-regression"><i class="fa fa-check"></i><b>3.5</b> The matrix approach to simple linear regression</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="reg.html"><a href="reg.html#creating-a-matrix"><i class="fa fa-check"></i><b>3.5.1</b> Creating a matrix</a></li>
+<li class="chapter" data-level="3.5.2" data-path="reg.html"><a href="reg.html#some-matrix-operations"><i class="fa fa-check"></i><b>3.5.2</b> Some matrix operations</a></li>
+<li class="chapter" data-level="3.5.3" data-path="reg.html"><a href="reg.html#ls-estimation"><i class="fa fa-check"></i><b>3.5.3</b> LS estimation</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="reg.html"><a href="reg.html#multiple-linear-regression-mlr"><i class="fa fa-check"></i><b>3.6</b> Multiple linear regression (MLR)</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="reg.html"><a href="reg.html#least-squares-estimates"><i class="fa fa-check"></i><b>3.6.1</b> Least-Squares Estimates</a></li>
+<li class="chapter" data-level="3.6.2" data-path="reg.html"><a href="reg.html#fitted-values-anova-table-residuals"><i class="fa fa-check"></i><b>3.6.2</b> Fitted values, ANOVA table, residuals</a></li>
+<li class="chapter" data-level="3.6.3" data-path="reg.html"><a href="reg.html#inference-about-the-regression-parameters"><i class="fa fa-check"></i><b>3.6.3</b> Inference about the regression parameters</a></li>
+<li class="chapter" data-level="3.6.4" data-path="reg.html"><a href="reg.html#inference-about-the-mean-response-and-prediction-of-new-observation"><i class="fa fa-check"></i><b>3.6.4</b> Inference about the Mean Response and Prediction of New Observation</a></li>
+<li class="chapter" data-level="3.6.5" data-path="reg.html"><a href="reg.html#diagnostics"><i class="fa fa-check"></i><b>3.6.5</b> Diagnostics</a></li>
+<li class="chapter" data-level="3.6.6" data-path="reg.html"><a href="reg.html#anova-table-containing-decomposition-of-ssr"><i class="fa fa-check"></i><b>3.6.6</b> ANOVA table containing decomposition of SSR</a></li>
+<li class="chapter" data-level="3.6.7" data-path="reg.html"><a href="reg.html#testing-whether-beta_k-neq-0-for-some-k"><i class="fa fa-check"></i><b>3.6.7</b> Testing whether <span class="math inline">\(\beta_k \neq 0\)</span> for some <span class="math inline">\(k\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="reg.html"><a href="reg.html#interactions"><i class="fa fa-check"></i><b>3.7</b> Interactions</a></li>
+<li class="chapter" data-level="3.8" data-path="reg.html"><a href="reg.html#standardized-multiple-regression"><i class="fa fa-check"></i><b>3.8</b> Standardized multiple regression</a></li>
+<li class="chapter" data-level="3.9" data-path="reg.html"><a href="reg.html#polynomial-regression-and-regression-with-categorical-variables"><i class="fa fa-check"></i><b>3.9</b> Polynomial regression and regression with categorical variables</a></li>
+<li class="chapter" data-level="3.10" data-path="reg.html"><a href="reg.html#model-selection"><i class="fa fa-check"></i><b>3.10</b> Model selection</a>
+<ul>
+<li class="chapter" data-level="3.10.1" data-path="reg.html"><a href="reg.html#r_ap2-and-c_p"><i class="fa fa-check"></i><b>3.10.1</b> <span class="math inline">\(R_{a,p}^2\)</span> and <span class="math inline">\(C_p\)</span></a></li>
+<li class="chapter" data-level="3.10.2" data-path="reg.html"><a href="reg.html#aic_p"><i class="fa fa-check"></i><b>3.10.2</b> <span class="math inline">\(AIC_p\)</span></a></li>
+<li class="chapter" data-level="3.10.3" data-path="reg.html"><a href="reg.html#bic_p-or-sbc_p"><i class="fa fa-check"></i><b>3.10.3</b> <span class="math inline">\(BIC_p\)</span> or <span class="math inline">\(SBC_p\)</span></a></li>
+<li class="chapter" data-level="3.10.4" data-path="reg.html"><a href="reg.html#aicc_p"><i class="fa fa-check"></i><b>3.10.4</b> <span class="math inline">\(AICc_p\)</span></a></li>
+<li class="chapter" data-level="3.10.5" data-path="reg.html"><a href="reg.html#stepwise-regression"><i class="fa fa-check"></i><b>3.10.5</b> Stepwise regression</a></li>
+<li class="chapter" data-level="3.10.6" data-path="reg.html"><a href="reg.html#cvpress-and-gcv"><i class="fa fa-check"></i><b>3.10.6</b> CV/PRESS and GCV</a></li>
+</ul></li>
+<li class="chapter" data-level="3.11" data-path="reg.html"><a href="reg.html#more-diagnostics"><i class="fa fa-check"></i><b>3.11</b> More diagnostics</a>
+<ul>
+<li class="chapter" data-level="3.11.1" data-path="reg.html"><a href="reg.html#identifying-outlying-y-and-x-values"><i class="fa fa-check"></i><b>3.11.1</b> Identifying outlying y and x values</a></li>
+<li class="chapter" data-level="3.11.2" data-path="reg.html"><a href="reg.html#identifying-influential-cases"><i class="fa fa-check"></i><b>3.11.2</b> Identifying influential cases</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">An R companion</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="basics" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Chapter 2</span> Some basic R tasks<a href="basics.html#basics" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>By now you the “Look and Feel” of the <strong>RStudio</strong> environment should be familiar. In this chapter we discuss some basic task in <strong>R</strong> (importing data, loading data, summarizing data, help files, and common errors). Recall that in R one is either creating an expression or an assignment. As for assignments, (i.e., <code>H &lt;- 20</code>), the create <em>R objects</em> we assigned something to an object (i.e., <code>H &lt;- 20</code>), this object</p>
+<div id="using-rs-built-in-datasets-and-viewing-datasets" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Using R’s built-in datasets and “viewing” datasets<a href="basics.html#using-rs-built-in-datasets-and-viewing-datasets" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Take a look at the Environment tab in the top right pane. Any datasets that you import into <strong>R</strong> or any loaded datasets (that come with <strong>R</strong>) will appear in this tab. In this course, we will either import a dataset that is stored in a .csv file or using a dataset that already comes with <strong>R</strong> (by way of an <strong>R</strong> package. Here, we illustrate using a dataset that already comes with R. The dataset is the resulting measurements from an experiment on the effect of diet on early growth of chicks.</p>
+<p><strong>R</strong> refers to this dataset as <code>ChickWeight</code>. We can look at this data by first telling *<strong>R</strong> that we want to use it by using following command:</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="basics.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>( ChickWeight )  <span class="co"># this tells R that we want to use the &#39;ChickWeight` data</span></span>
+<span id="cb43-2"><a href="basics.html#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="co"># It should now appear in R&#39;s memory (see Environment tab)</span></span>
+<span id="cb43-3"><a href="basics.html#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Note: This command may open a spreadsheet of the data in</span></span>
+<span id="cb43-4"><a href="basics.html#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="co"># a new tab.  Simply close the tab and return to your R script</span></span>
+<span id="cb43-5"><a href="basics.html#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="co"># file.</span></span></code></pre></div>
+<p>We can now look at the data within the console by typing its name in the R script, highlighting it, and selecting “Run”</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="basics.html#cb44-1" aria-hidden="true" tabindex="-1"></a>ChickWeight </span></code></pre></div>
+<p>It’s going to print a lot of data (578 rows of it). To view the data in a spreadsheet, click on the name <code>ChickWeight</code> in the Environment tab (upper right pane). This will open a spreadsheet of the data in a new tab in the source pane.</p>
+<p>What you should see in the spreadsheet are four columns of numbers, each row representing a chick measured: the first entry in each row is simply the row number (an index we can use to access the data from individual chicks if we want), the second is the <code>weight</code> (body weight of the chick), the third is <code>Time</code> (number of days since birth) , the fourth <code>Chick</code> (an identifier for the chick), and the fifth is <code>Diet</code> (experimental diet the chick received: Diet 1 , 2, 3, or 4). You can use the scroll bar on the right side of the console window to examine the complete data set.</p>
+<p>Alternatively, to open the data spreadsheet, one can instead run:</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="basics.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>( ChickWeight ) </span></code></pre></div>
+<p>Note that the row numbers in the first column are not part of ChickWeight’s data. R adds them as part of its printout to help you make visual comparisons. You can think of them as the index that you see on the left side of an Excel spreadsheet. In fact, the comparison to a spreadsheet will generally be helpful. R has stored <code>ChickWeight</code> dataset in a kind of spreadsheet or table called a <strong>dataframe</strong>. Rather than looking at the spreadsheet of the data, we can instead explore the <strong>dataframe</strong> in various way to extract useful characteristics. For example, one can see how many variables (chick characteristics of interest) were measured/recorded and the number of observations on these variables by running:</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="basics.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>( mosaic ) <span class="co"># tell R we want to use the mosaic package</span></span>
+<span id="cb46-2"><a href="basics.html#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-3"><a href="basics.html#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>( ChickWeight )</span></code></pre></div>
+<p>The R function/command called <code>glimpse( )</code> is part of the <code>mosaic</code> package. This is why one has to first run <code>require( mosaic )</code></p>
+<p>In general, datasets that come with R or an R package, such as <code>ChickWeight</code> have what is called a <em>help file</em> that will provide details regarding the data set. Help files are disscuseed later in this chapter.</p>
+</div>
+<div id="csv-files" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> .csv files<a href="basics.html#csv-files" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>It is assumed you have used an excel spreadsheet. If not, please view the tutorial <a href="https://www.youtube.com/watch?v=rwbho0CgEAE">Excel Tutorial for Beginners</a> .</p>
+<p>Data sets used in this class will either be built-in datasets (that is, they come with R or from an R package) or they will be <em>.csv</em> files. A <em>.csv</em> may be viewed with Microsoft Excel. We will import .csv files into RStudio. If you have data that you want to import into RStudio, you will first store your data in a .csv file using Excel. The format in which you store it should be a <strong>data matrix</strong> or in <strong>tidy form</strong>. There are three characteristics that make a dataset a data matrix or tidy:</p>
+<ul>
+<li>Each variable must have its own column.</li>
+<li>Each observation must have its own row.</li>
+<li>Each value must have its own cell.</li>
+</ul>
+<p>To setup your spreadsheet, do the following steps:</p>
+<ul>
+<li>Step 1 – Input and organize your data in Excel.
+<ul>
+<li>Organize your data in an Excel worksheet, such that the first row (Row 1) contains the column names and each subsequent row contains all the necessary information for each data point. For example:</li>
+</ul></li>
+</ul>
+<div class="figure">
+<img src="ch2figures/excel.png" style="width:80.0%" alt="" />
+<p class="caption">Figure 2.1</p>
+</div>
+<ul>
+<li>Step 2 – Save your worksheet as a comma separated values (.csv) file type. Select the following Excel tabs <em>File&gt;Save As</em>, then select where you want to save your .csv file. A window will appear in which one can specify their desired <em>filename</em> as well as their desired <em>file type</em>. Enter a file name and click on “Save as type” and scroll down to select <strong>CSV (Comma delimited)</strong> (see figure below).</li>
+</ul>
+<div class="figure">
+<img src="ch2figures/excelSaveAs.png" style="width:80.0%" alt="" />
+<p class="caption">Figure 2.2</p>
+</div>
+<p>When you click to save the worksheet as a comma separated file (.csv), Excel may present you with a one or two warnings. One may warn you that the .csv format cannot accommodate multiple worksheets. That’s fine; just click “Yes” to save the active worksheet. The second warning tells you that “Some features in your workbook might be lost if you save it as a CSV (Comma delimited).” Again, that’s fine, just click “Yes.” When you’re done, you will see that a new file has been created in the directory where you saved your file. If you were to open this file in excel you would see your spreadsheet with the data you entered. On the surface, it looks no different than an excel spreadsheet file (.xls or .xlsx)</p>
+<p><strong>Important:</strong> Any <em>.csv</em> file that you plan to import into <strong>R</strong> must have the first row (Row 1) contain the column names and each subsequent row contains all the necessary information for each data point.</p>
+</div>
+<div id="importing-a-.csv-file" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Importing a .csv file<a href="basics.html#importing-a-.csv-file" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We will use the <strong>R</strong> function <code>read.csv()</code> to import data into <strong>RStudio</strong>. We illustrate the method using the “MLB salaries (2010)” data set and this data is stored in a .csv file. This .csv file is located at the following url: <a href="http://www.csub.edu/~emontoya2/datasets/mlb2010.csv">http://www.csub.edu/~emontoya2/datasets/mlb2010.csv</a></p>
+<p>To import the data into RStudio, we use <code>read.csv()</code> and it is a simple function to use. It just requires the location of the file. If the data location is a url, then use the url. If it is data that you’ve created or recorded and it is saved on your computer, then we use <code>file.choose()</code>. We will cover both methods here.</p>
+<div id="importing-data-via-a-url" class="section level3 hasAnchor" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> Importing data via a url<a href="basics.html#importing-data-via-a-url" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>This only works if the <em>.csv</em> has a url location. The “MLB salaries (2010)” data set is located at the following url:</p>
+<p>Link: <a href="http://www.csub.edu/~emontoya2/datasets/mlb2010.csv">http://www.csub.edu/~emontoya2/datasets/mlb2010.csv</a></p>
+<p>To import, run</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="basics.html#cb47-1" aria-hidden="true" tabindex="-1"></a>mlbDataImport <span class="ot">=</span> <span class="fu">read.csv</span>( <span class="st">&quot;http://www.csub.edu/~emontoya2/datasets/mlb2010.csv&quot;</span> )</span></code></pre></div>
+<p>The <code>mlbDataImport</code> dataframe should now appear under the “Environment tab.”</p>
+<p><em>Important</em>: The url must be in quotations and NO spaces at the start after the quotation or right before the end of the quotation. For example, you will get an error if you use the following urls:</p>
+<ul>
+<li><code>" http://www.csub.edu/~emontoya2/datasets/mlb2010.csv"</code></li>
+<li><code>"http://www.csub.edu/~emontoya2/datasets/mlb2010.csv "</code></li>
+<li><code>" http://www.csub.edu/~emontoya2/datasets/mlb2010.csv "</code></li>
+<li>They look similar to what we used but it has spaces within the quotation marks!</li>
+</ul>
+</div>
+<div id="importing-data-from-your-computer" class="section level3 hasAnchor" number="2.3.2">
+<h3><span class="header-section-number">2.3.2</span> Importing data from your computer<a href="basics.html#importing-data-from-your-computer" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Download the <em>.csv</em> file below onto your computer. Make sure to note where your file is saved. Depending on your browser settings, after clicking on the link below, the file will either open in your browser and it will be downloaded.</p>
+<p><a href="http://www.csub.edu/~emontoya2/datasets/sampledata.csv">http://www.csub.edu/~emontoya2/datasets/sampledata.csv</a></p>
+<p>After saving this <em>.csv</em> file, run the following</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="basics.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="do">### by putting in &quot;file.choose()&quot;, this tells R that you want </span></span>
+<span id="cb48-2"><a href="basics.html#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="do">### to browse for and select the csv file</span></span>
+<span id="cb48-3"><a href="basics.html#cb48-3" aria-hidden="true" tabindex="-1"></a>ImportFromDrive <span class="ot">=</span> <span class="fu">read.csv</span>( <span class="fu">file.choose</span>() )</span></code></pre></div>
+<p>This automatically opens a window that allows you to browse for your <em>.csv</em> file. Select your file and click on <em>Open</em>. You should see the following in the console</p>
+<div class="figure">
+<img src="ch2figures/filechoose.png" style="width:80.0%" alt="" />
+<p class="caption">Figure 2.3</p>
+</div>
+<p>The data set <code>ImportFromDrive</code> should appear in the <em>Environment</em> tab in the upper right panel where it displays the number of observations and variables.</p>
+<p><strong>Note</strong>: Data that you import will not have help files. Only datasets that come with R (or from R packages) have help files.</p>
+</div>
+</div>
+<div id="summarizing-data" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Summarizing data<a href="basics.html#summarizing-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>There are many ways to summarize data in <strong>R</strong>. We will be using functions from the <code>mosaic</code> package. From hereafter, always load the <code>mosaic</code> package. That is, always have the following in your R script before writing any commands to conduct any analysis:</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="basics.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>( mosaic )</span>
+<span id="cb49-2"><a href="basics.html#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(pillar)</span></code></pre></div>
+<p>When wanting to summarize a single variable, the formula to create graphical and numerical summaries follows the general form <code>goal( ~ x , data)</code> where <code>x</code> is the variable you want to graph or compute a statistic of. Depending on the summary, we may have to specify some additional things. If the variable <code>x</code> is a variable in the dataframe/dataset, then data would be set equal to the name of the data frame. The names used for <code>x</code> and the name of the dataframe must be the names that R has given the data set and variable. <code>goal</code> would be replaced with the name of the function.</p>
+<p>Recall that we imported the MLB dataset and we stored it in a dataframe called <code>mlbDataImport</code>. Let’s take a glimpse at the data</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="basics.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>( mlbDataImport )  <span class="co"># this function is from the mosaic package</span></span>
+<span id="cb50-2"><a href="basics.html#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Rows: 828</span></span>
+<span id="cb50-3"><a href="basics.html#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Columns: 4</span></span>
+<span id="cb50-4"><a href="basics.html#cb50-4" aria-hidden="true" tabindex="-1"></a><span class="do">## $ player   &lt;chr&gt; &quot;Brandon Webb&quot;, &quot;Danny Haren&quot;, &quot;Chris Snyder&quot;, &quot;Edwin Jackson~</span></span>
+<span id="cb50-5"><a href="basics.html#cb50-5" aria-hidden="true" tabindex="-1"></a><span class="do">## $ team     &lt;chr&gt; &quot;Arizona Diamondbacks&quot;, &quot;Arizona Diamondbacks&quot;, &quot;Arizona Diam~</span></span>
+<span id="cb50-6"><a href="basics.html#cb50-6" aria-hidden="true" tabindex="-1"></a><span class="do">## $ position &lt;chr&gt; &quot;Pitcher&quot;, &quot;Pitcher&quot;, &quot;Catcher&quot;, &quot;Pitcher&quot;, &quot;First Baseman&quot;, ~</span></span>
+<span id="cb50-7"><a href="basics.html#cb50-7" aria-hidden="true" tabindex="-1"></a><span class="do">## $ salary   &lt;dbl&gt; 8500.000, 8250.000, 5250.000, 4600.000, 4500.000, 4185.000, 3~</span></span></code></pre></div>
+<p>Let’s start with a simple graphical summary. R has three plotting systems: <em>base</em>, <em>lattice</em>, and <em>ggplot2</em>. We will be using the lattice system, which comes from the <code>lattice</code> package. This package is automatically installed when you installed the <code>mosaic</code> package, and this package is automatically loaded when you loaded the mosaic package (<code>require( mosaic )</code>).</p>
+<p>To start, a histogram of <code>salary</code> will created. <code>salary</code> represents the salary (in $1000s) of a given baseball player in 2010. Again, the basic formula is <code>goal( ~ x , data)</code> where <code>goal</code> would be replaced with the name of the function to create the desired graph. <strong>R</strong> refers to histograms as <code>histogram()</code>:</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="basics.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">histogram</span>( <span class="sc">~</span> salary  , <span class="at">data=</span>  mlbDataImport ) </span></code></pre></div>
+<p><img src="02-basics_files/figure-html/gr2-1.png" width="528" /></p>
+<p>Let’s compute the mean salary of these baseball players. Again, <code>salary</code> represents the salary of a given baseball player in 2010. As with the graph, the basic formula is <code>goal( ~ x , data)</code> where <code>goal</code> would be replaced with the name of the function to compute the desired sample statistic. To compute the mean, <strong>R</strong> calls its function <code>mean</code>:</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="basics.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>( <span class="sc">~</span> salary  , <span class="at">data=</span>  mlbDataImport )</span>
+<span id="cb52-2"><a href="basics.html#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 3281.828</span></span></code></pre></div>
+<p>Suppose you wanted to compute the average salary for each position. To so, we can tell RStudio to compute the mean by levels/groups of a grouping variable. A grouping variable groups data into categories or groups. Grouping variables are categorical variables. When summaries are desired based on the levels or groups of the grouping variables, they are called side-by-side or comparative summaries.</p>
+<p>For any side-by-side or comparative data summary, the general formula changes a bit. The formula is <code>goal( ~ x | gfactor , data)</code>, where <code>gfactor</code> represent the grouping variable. In our example, the grouping variable is <code>position</code>:</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="basics.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>( <span class="sc">~</span> salary <span class="sc">|</span> position , <span class="at">data=</span>  mlbDataImport )</span>
+<span id="cb53-2"><a href="basics.html#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="do">##           Catcher Designated Hitter     First Baseman         Infielder </span></span>
+<span id="cb53-3"><a href="basics.html#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="do">##          1937.220          5235.714          5826.521           770.575 </span></span>
+<span id="cb53-4"><a href="basics.html#cb53-4" aria-hidden="true" tabindex="-1"></a><span class="do">##        Outfielder           Pitcher    Second Baseman         Shortstop </span></span>
+<span id="cb53-5"><a href="basics.html#cb53-5" aria-hidden="true" tabindex="-1"></a><span class="do">##          3753.926          2999.197          3022.723          2844.146 </span></span>
+<span id="cb53-6"><a href="basics.html#cb53-6" aria-hidden="true" tabindex="-1"></a><span class="do">##     Third Baseman </span></span>
+<span id="cb53-7"><a href="basics.html#cb53-7" aria-hidden="true" tabindex="-1"></a><span class="do">##          4641.286</span></span></code></pre></div>
+<p>One may also create a side-by-side or comparative graphical summary. To create a boxplot of <code>salary</code> for each position, run the following:</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="basics.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bwplot</span>( <span class="sc">~</span> salary <span class="sc">|</span> position , <span class="at">data=</span>  mlbDataImport )</span></code></pre></div>
+<p><img src="02-basics_files/figure-html/gr4-1.png" width="528" /></p>
+</div>
+<div id="export-an-r-plot-or-r-output" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> Export an R plot or R output<a href="basics.html#export-an-r-plot-or-r-output" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="exporting-graphs" class="section level3 hasAnchor" number="2.5.1">
+<h3><span class="header-section-number">2.5.1</span> Exporting graphs<a href="basics.html#exporting-graphs" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>One may need to create a graph or one may have to submit <em>RStudio</em> output for certain assignment or exam problems. To export a plot, go to the <em>Plots</em> tab in the bottom right panel, click on <em>Export&gt;…</em>.</p>
+<div class="figure">
+<img src="ch2figures/exportGraph.png" style="width:80.0%" alt="" />
+<p class="caption">Figure 2.4</p>
+</div>
+<p>You have three export format options:</p>
+<ul>
+<li>“Save as Image…”</li>
+<li>“Save as PDF…”</li>
+<li>“Copy to Clipboard…”</li>
+</ul>
+<p>Select your preferred option. A small window should then appear of the plot. In the pop up window you may adjust the size of the plot and provide a name for the new file (see below for an example when one selects “Copy to Clipboard…”).</p>
+<div class="figure">
+<img src="ch2figures/exportGraph2.png" style="width:80.0%" alt="" />
+<p class="caption">Figure 2.5</p>
+</div>
+</div>
+<div id="exporting-r-output" class="section level3 hasAnchor" number="2.5.2">
+<h3><span class="header-section-number">2.5.2</span> Exporting R output<a href="basics.html#exporting-r-output" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>If <strong>R</strong> output is requested, then highlight and copy the output from the <strong>R</strong> console. It may then be pasted in your Word or Google Doc document. Alternatively, you take a screen shot of the desired output.</p>
+</div>
+</div>
+<div id="extracting-variables-from-dataframes" class="section level2 hasAnchor" number="2.6">
+<h2><span class="header-section-number">2.6</span> Extracting variables from dataframes<a href="basics.html#extracting-variables-from-dataframes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>To extract a given variable from a dataframe, we place a <code>$</code> at the end of the dataframe name, followed by the variable name. To illustrate, we use R’s built-in dataset called <code>trees</code>, which contains the diameter, height and volume for 31 cherry trees:</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="basics.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>( trees )</span>
+<span id="cb55-2"><a href="basics.html#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Rows: 31</span></span>
+<span id="cb55-3"><a href="basics.html#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Columns: 3</span></span>
+<span id="cb55-4"><a href="basics.html#cb55-4" aria-hidden="true" tabindex="-1"></a><span class="do">## $ Girth  &lt;dbl&gt; 8.3, 8.6, 8.8, 10.5, 10.7, 10.8, 11.0, 11.0, 11.1, 11.2, 11.3, ~</span></span>
+<span id="cb55-5"><a href="basics.html#cb55-5" aria-hidden="true" tabindex="-1"></a><span class="do">## $ Height &lt;dbl&gt; 70, 65, 63, 72, 81, 83, 66, 75, 80, 75, 79, 76, 76, 69, 75, 74,~</span></span>
+<span id="cb55-6"><a href="basics.html#cb55-6" aria-hidden="true" tabindex="-1"></a><span class="do">## $ Volume &lt;dbl&gt; 10.3, 10.3, 10.2, 16.4, 18.8, 19.7, 15.6, 18.2, 22.6, 19.9, 24.~</span></span></code></pre></div>
+<p>To extract the variable <code>Volume</code>, do the following:</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="basics.html#cb56-1" aria-hidden="true" tabindex="-1"></a>trees<span class="sc">$</span>Volume </span>
+<span id="cb56-2"><a href="basics.html#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] 10.3 10.3 10.2 16.4 18.8 19.7 15.6 18.2 22.6 19.9 24.2 21.0 21.4 21.3 19.1</span></span>
+<span id="cb56-3"><a href="basics.html#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [16] 22.2 33.8 27.4 25.7 24.9 34.5 31.7 36.3 38.3 42.6 55.4 55.7 58.3 51.5 51.0</span></span>
+<span id="cb56-4"><a href="basics.html#cb56-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [31] 77.0</span></span>
+<span id="cb56-5"><a href="basics.html#cb56-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-6"><a href="basics.html#cb56-6" aria-hidden="true" tabindex="-1"></a><span class="do">### Lets store the volume measurements</span></span>
+<span id="cb56-7"><a href="basics.html#cb56-7" aria-hidden="true" tabindex="-1"></a><span class="do">### into an R objects called &#39;treeVol&#39;.</span></span>
+<span id="cb56-8"><a href="basics.html#cb56-8" aria-hidden="true" tabindex="-1"></a><span class="do">### We can then call &#39;treeVol&#39; whenever</span></span>
+<span id="cb56-9"><a href="basics.html#cb56-9" aria-hidden="true" tabindex="-1"></a><span class="do">### we need to use these measurements.</span></span>
+<span id="cb56-10"><a href="basics.html#cb56-10" aria-hidden="true" tabindex="-1"></a>treeVol <span class="ot">&lt;-</span> trees<span class="sc">$</span>Volume <span class="co"># assign vol. meas. to &#39;treeVol&#39;</span></span></code></pre></div>
+</div>
+<div id="understanding-common-r-errors" class="section level2 hasAnchor" number="2.7">
+<h2><span class="header-section-number">2.7</span> Understanding common R errors<a href="basics.html#understanding-common-r-errors" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Everyone gets errors in <strong>R</strong>. It’s part of the process of learning any new software. Here are some of the most common error you may encounter and what they mean</p>
+<div id="could-not-find-function" class="section level3 hasAnchor" number="2.7.1">
+<h3><span class="header-section-number">2.7.1</span> could not find function<a href="basics.html#could-not-find-function" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Example:</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="basics.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">whatIsThis</span>( <span class="dv">4</span> ) <span class="co"># no such function/command exist</span></span>
+<span id="cb57-2"><a href="basics.html#cb57-2" aria-hidden="true" tabindex="-1"></a>Error <span class="cf">in</span> <span class="fu">whatIsThis</span>(<span class="dv">4</span>) <span class="sc">:</span> could not find <span class="cf">function</span> <span class="st">&quot;whatIsThis&quot;</span></span></code></pre></div>
+<p>This error usually occurs when</p>
+<ul>
+<li>you are using an <strong>R</strong> formula or function that does not exist.</li>
+<li>It exist, but you haven’t loaded the <em>R</em> package that has this function/formula. Remember to always run <code>require( mosaic )</code> when you start <strong>RStudio</strong>.</li>
+<li>You misspelled the name of the function. For example, the first command works, but the second does not (R is case sensitive!)</li>
+</ul>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="basics.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>( <span class="sc">~</span> salary  , <span class="at">data=</span>  mlbDataImport )</span>
+<span id="cb58-2"><a href="basics.html#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 3281.828</span></span></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="basics.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">Mean</span>( <span class="sc">~</span> salary  , <span class="at">data=</span>  mlbDataImport )</span>
+<span id="cb59-2"><a href="basics.html#cb59-2" aria-hidden="true" tabindex="-1"></a>Error <span class="cf">in</span> <span class="fu">Mean</span>(<span class="sc">~</span>salary, <span class="at">data =</span> mlbDataImport) <span class="sc">:</span> </span>
+<span id="cb59-3"><a href="basics.html#cb59-3" aria-hidden="true" tabindex="-1"></a>  could not find <span class="cf">function</span> <span class="st">&quot;Mean&quot;</span></span></code></pre></div>
+</div>
+<div id="object-not-found" class="section level3 hasAnchor" number="2.7.2">
+<h3><span class="header-section-number">2.7.2</span> object not found<a href="basics.html#object-not-found" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Example:</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="basics.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> MlbDataImport</span>
+<span id="cb60-2"><a href="basics.html#cb60-2" aria-hidden="true" tabindex="-1"></a>Error<span class="sc">:</span> object <span class="st">&#39;MlbDataImport&#39;</span> not found</span></code></pre></div>
+<p>This error usually occurs because the object has not been defined. You will also frequently see this when you’ve mistyped the name of the object you think you are referencing. Remember <strong>R</strong> is case sensitive! The name of the data set is <code>mlbDataImport</code> not <code>MlbDataImport</code>.</p>
+</div>
+<div id="unmatched-parenthesis" class="section level3 hasAnchor" number="2.7.3">
+<h3><span class="header-section-number">2.7.3</span> Unmatched parenthesis<a href="basics.html#unmatched-parenthesis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Another common error is forgetting or neglecting to finish a call to a function/formula with a closing <code>)</code> or adding too many parenthesis. An example of this follows:</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="basics.html#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">histogram</span>( <span class="sc">~</span> salary  , <span class="at">data=</span>  mlbDataImport ) <span class="er">)</span> <span class="er">)</span> </span>
+<span id="cb61-2"><a href="basics.html#cb61-2" aria-hidden="true" tabindex="-1"></a>Error<span class="sc">:</span> unexpected <span class="st">&#39;)&#39;</span> <span class="cf">in</span> <span class="st">&quot;histogram( ~ salary  , data=  mlbDataImport ) )</span></span></code></pre></div>
+<p>If you forget a parenthesis, R will just keeping prompting you by returning <code>+</code>:</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="basics.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">histogram</span>( <span class="sc">~</span> salary  , <span class="at">data=</span>  mlbDataImport </span>
+<span id="cb62-2"><a href="basics.html#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> </span>
+<span id="cb62-3"><a href="basics.html#cb62-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> </span>
+<span id="cb62-4"><a href="basics.html#cb62-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> </span>
+<span id="cb62-5"><a href="basics.html#cb62-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span> </span>
+<span id="cb62-6"><a href="basics.html#cb62-6" aria-hidden="true" tabindex="-1"></a><span class="do">### Hit the &#39;Esc&#39; key a few times to have</span></span>
+<span id="cb62-7"><a href="basics.html#cb62-7" aria-hidden="true" tabindex="-1"></a><span class="do">### R stop prompting.  </span></span></code></pre></div>
+</div>
+<div id="the-some-package-package-is-not-available-for-r-version-some-version" class="section level3 hasAnchor" number="2.7.4">
+<h3><span class="header-section-number">2.7.4</span> The ‘Some package’ package is not available (for R version ‘some version’)<a href="basics.html#the-some-package-package-is-not-available-for-r-version-some-version" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>This generally means that:</p>
+<ul>
+<li>A package named ‘Some package’ exists but it’s not available for your version of R (not a common error for this type of class)</li>
+<li>No package exisit with the name ‘Some package’ (a more common error)</li>
+</ul>
+<p>It is likely that you misspelled the name, were not careful with case-sensitivity, or inserted spaces at the start/end of the package name.</p>
+<p>Please keep in mind that everyone commits errors them when learning a new software. Oftentimes, you will find that you are able to understand what they mean by carefully reading over them. When you can’t, carefully look over your R file and consider posting your question on the “Student-led RStudio Q&amp;A” discussion board or scheduling a student hour appointment.</p>
+</div>
+</div>
+<div id="help-files" class="section level2 hasAnchor" number="2.8">
+<h2><span class="header-section-number">2.8</span> Help files<a href="basics.html#help-files" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>All built in functions, as well as data sets, in <strong>R</strong> have help files. To access the help files for a function or data set one uses the function <code>help( )</code>. In general, the help file will contain the following sections:</p>
+<ul>
+<li>Description: Gives brief description of the function.</li>
+<li>Usage: Displays a functions arguments, along with the default values of certain arguments.</li>
+<li>Arguments: Gives details of each of the functions arguments.</li>
+<li>Value: Describes what is returned by the function.</li>
+<li>See Also: Lists links to help files of similar functions.</li>
+<li>Example: Gives example code that uses the function(s).</li>
+</ul>
+<p>For example, the following commands bring up the help file on
+the <code>log( )</code> function,</p>
+<pre><code>&gt; help(log)
+Help for &#39;log&#39; is shown in the browser
+&gt; ?log  # This is equivalent to help(log)
+Help for &#39;log&#39; is shown in the browser
+&gt;</code></pre>
+<p>Either of these commands should open the following (abbreviated)
+help file</p>
+<pre><code>log {base}                                 R Documentation
+
+Logarithms and Exponentials Description
+
+log computes natural logarithms, log10 computes common (i.e., base 10)
+logarithms, and log2 computes binary (i.e., base 2) logarithms.
+The general form logb(x, base) computes logarithms with base base.
+
+Usage:
+  
+log(x, base = exp(1))
+logb(x, base = exp(1))
+log10(x)
+log2(x)
+
+Arguments:
+  
+  x       a numeric or complex vector.
+base    positive number. The base with respect to which logarithms
+are computed. Defaults to e=exp(1).
+
+Value:
+  
+  A vector of the same length as x containing the transformed
+values. log(0) gives -Inf (when available).
+
+...
+
+Examples:
+  
+  log(exp(3))
+log10(1e7)# = 7</code></pre>
+<p>The function <code>log()</code> has two arguments. The first
+is a numeric vector and the second corresponds to the
+base. By default the function <code>log()</code> will
+evaluate with an exponential base unless you specify otherwise
+as illustrated below.</p>
+<pre><code>&gt; log(10)
+[1] 2.302585
+&gt; log(10, base = exp(1))
+[1] 2.302585
+&gt; log(10, base = 2)
+[1] 3.321928
+&gt;</code></pre>
+<p>If you seek an example of using a given function, it is a good idea to look at the examples given at the end of the help file. Now suppose you had no idea that a logarithm function existed, but you would like
+to know if such a function might exist in <strong>R</strong>. To explore this question you can issue
+<code>help.search( "logarithm" )</code> which will search the help files for documentation matching the
+character string <code>logarithm</code>. You may also run <code>RSiteSearch( "logarithm" )</code> which will search
+for the character string “logarithm” in the R-help mailing list archives. Lastly, you can do a web search for your error as it is almost certain someone has had the same or similar error.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="reg.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
