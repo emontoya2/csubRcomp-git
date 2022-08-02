@@ -6,5 +6,4 @@ The first two chapters introduce one to the **R** environment and **RStudio** an
 
  
 
-All of the content of this repository is licensed 
-[CC0](https://creativecommons.org/publicdomain/zero/1.0/).
+All of the content of this repository is licensed [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
