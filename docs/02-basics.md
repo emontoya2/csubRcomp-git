@@ -130,6 +130,12 @@ The data set `ImportFromDrive` should appear in the *Environment* tab in the upp
 **Note**: Data that you import will not have help files. Only datasets that come with R (or from R packages) have help files.
 
 
+## Using RStudio's data import feature
+
+
+Alternatively, one can take a “point and click” approach to importing data. Like most software, RStudio has a toolbar where you can access many commands. To import data using the toolbar menu, select *File>Import Dataset> From Text (base)*. Then select your *.csv* file. If you data is stored in an excel spreadsheet (.xlsx), then select “From Excel”.
+
+
 ##  Summarizing data
 
 There are many ways to summarize data in **R**.  We will be using functions from the `mosaic` package.  From hereafter, always load the `mosaic` package.  That is, always have the following in your R script before writing any commands to conduct any analysis:
@@ -147,10 +153,10 @@ Recall that we imported the MLB dataset and we stored it in a dataframe called `
 glimpse( mlbDataImport )  # this function is from the mosaic package
 ## Rows: 828
 ## Columns: 4
-## $ player   <chr> "Brandon Webb", "Danny Haren", "Chris Snyder", "Edwin Jackson~
-## $ team     <chr> "Arizona Diamondbacks", "Arizona Diamondbacks", "Arizona Diam~
-## $ position <chr> "Pitcher", "Pitcher", "Catcher", "Pitcher", "First Baseman", ~
-## $ salary   <dbl> 8500.000, 8250.000, 5250.000, 4600.000, 4500.000, 4185.000, 3~
+## $ player   <chr> "Brandon Webb", "Danny Haren", "Chris Snyder", "Edwin Jackson…
+## $ team     <chr> "Arizona Diamondbacks", "Arizona Diamondbacks", "Arizona Diam…
+## $ position <chr> "Pitcher", "Pitcher", "Catcher", "Pitcher", "First Baseman", …
+## $ salary   <dbl> 8500.000, 8250.000, 5250.000, 4600.000, 4500.000, 4185.000, 3…
 ```
 
 Let's start with a simple graphical summary.  R has three plotting systems: *base*, *lattice*, and *ggplot2*.  We will be using the lattice system, which comes from the `lattice` package.  This package is automatically installed when you installed the `mosaic` package, and this package is automatically loaded when you loaded the mosaic package (`require( mosaic )`). 
@@ -226,9 +232,9 @@ To extract a given variable from a dataframe, we place a `$` at the end of the d
 glimpse( trees )
 ## Rows: 31
 ## Columns: 3
-## $ Girth  <dbl> 8.3, 8.6, 8.8, 10.5, 10.7, 10.8, 11.0, 11.0, 11.1, 11.2, 11.3, ~
-## $ Height <dbl> 70, 65, 63, 72, 81, 83, 66, 75, 80, 75, 79, 76, 76, 69, 75, 74,~
-## $ Volume <dbl> 10.3, 10.3, 10.2, 16.4, 18.8, 19.7, 15.6, 18.2, 22.6, 19.9, 24.~
+## $ Girth  <dbl> 8.3, 8.6, 8.8, 10.5, 10.7, 10.8, 11.0, 11.0, 11.1, 11.2, 11.3, …
+## $ Height <dbl> 70, 65, 63, 72, 81, 83, 66, 75, 80, 75, 79, 76, 76, 69, 75, 74,…
+## $ Volume <dbl> 10.3, 10.3, 10.2, 16.4, 18.8, 19.7, 15.6, 18.2, 22.6, 19.9, 24.…
 ```
 
 To extract the variable `Volume`, do the following:

@@ -75,3 +75,5 @@ cvpress-and-gcv
 more-diagnostics
 identifying-outlying-y-and-x-values
 identifying-influential-cases
+using-rstudios-data-import-feature
+residual-plots-from-the-tactile-package

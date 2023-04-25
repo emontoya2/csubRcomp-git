@@ -126,6 +126,12 @@ The data set `ImportFromDrive` should appear in the *Environment* tab in the upp
 **Note**: Data that you import will not have help files. Only datasets that come with R (or from R packages) have help files.
 
 
+## Using RStudio's data import feature
+
+
+Alternatively, one can take a “point and click” approach to importing data. Like most software, RStudio has a toolbar where you can access many commands. To import data using the toolbar menu, select *File>Import Dataset> From Text (base)*. Then select your *.csv* file. If you data is stored in an excel spreadsheet (.xlsx), then select “From Excel”.
+
+
 ##  Summarizing data
 
 There are many ways to summarize data in **R**.  We will be using functions from the `mosaic` package.  From hereafter, always load the `mosaic` package.  That is, always have the following in your R script before writing any commands to conduct any analysis:
