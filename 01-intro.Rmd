@@ -1,150 +1,93 @@
 # Introduction: Getting Familiar with R and RStudio {#intro}
 
- 
-
 
 ## What is R and RStudio?
 
-**R** is a GNU project and may be thought of as an implementation of the **S** language (developed at Bell Laboratories by Rick Becker, John Chambers and Allan Wilks).  It is a language and environment for statistical computing and graphics.   **R** contains a large number of built in function for classical and modern statistical analysis.  One of the main advantages  of using this program, particularly for undergraduate students, is that it is free! A core team of statisticians and countless other contributors consistently  maintain, update, and improve **R** and make versions that run well under the most operating systems.  The web page for the **R** Project for statistical computing is located at <http://www.r-project.org">.
+**R** is a language and environment for statistical computing, based on the **S** language developed at Bell Labs. It supports both classical and modern statistical analysis and is free to use. A core team and contributors maintain **R** across major operating systems. Visit <http://www.r-project.org> for more information.
 
-We will never use **R** directly, rather we will use **RStudio**. **RStudio** is an integrated development environment (IDE) that allows you to interact with **R** more readily. **RStudio** is also free to use. For our purpose, we will be using  **RStudio** as a graphical user interface for **R**.   Think of **R** as the engine for a care, whereas **RStudio** is the dashboard, wheel, etc. that allows one to control the engine (although it does so much more such as create slides, books, web applications, and other things).  
+We won’t use **R** directly. Instead, we’ll use **RStudio**, a free integrated development environment (IDE) that makes interacting with **R** easier. Think of **R** as the engine and **RStudio** as the dashboard—it helps control and extend R's capabilities, like creating documents, apps, and more.
 
+## Downloading and Installing R
 
-## Downloading and installing R
+You can use **R** and **RStudio** via the CSUB virtual lab. To install them on your own computer:
 
-The CSUB virtual computer lab will have R and RStudio installed.  If you prefer to install these  on your personal computer computer, follow these steps:
-
-1. Visit the site <https://cran.r-project.org/>.
-
-2. Click the link that corresponds to your appropriate operating system. (see Figure 1.1).  The directions given are for Windows but the process is fairly  similar for Mac or Linux. Chromebook users will have to use the virtual computer lab to access R and RStudio unless you are proficient in using linux.
-
-3. Select *base* and download the latest release (the link will state "Download R '*some version*' for Windows")
-
-4. Once the program has downloaded, install **R** with the default settings.  
-  
-5. That's it!  
-
-  
+1. Go to <https://cran.r-project.org/>.
+2. Select your operating system (see Figure 1.1).
+3. Click *base*, then download the latest version.
+4. Run the installer using default settings.
+5. Done!
 
 ![Figure 1.1: R download page](ch1figures/Rcran.png){ width=80% }
 
+## Downloading and Installing RStudio
 
-
-## Downloading and installing RStudio
-
-
-Follow the steps:
-
-1. Visit the site <http://www.rstudio.com/products/rstudio/download/>. Scroll down the page until you see the column header "RStudio Desktop" (see Figure 1.2).
-
-2. Click  "DOWNLOAD".  Then select the appropriate version depending on your operating system (Figure 1.3).
-
-3. Once the program has downloaded, install **RStudio** with the default settings.  
-  
-4. That's it!  You can now run **Rstudio** from your home computer.   
-
-</br>
+1. Visit <http://www.rstudio.com/products/rstudio/download/> and scroll to "RStudio Desktop" (Figure 1.2).
+2. Click "DOWNLOAD" and select your OS version (Figure 1.3).
+3. Run the installer using default settings.
+4. Done! Launch **RStudio** from your computer.
 
 ![Figure 1.2: RStudio download page](ch1figures/RStudioDownload.png){ width=80% }
 
-</br>
-
 ![Figure 1.3: RStudio Desktop download page](ch1figures/RStudioDownloadVersion.png){ width=80% }
- 
- 
-## The layout of RStudio
 
-Open **RStudio**.  The first time you open **RStudio**, you will see three panes (Figure 1.4). A forth pane is hidden by default, but can be opened by clicking the File drop-down menu, then New File, and then R Script (*File>New File>R Script*).  **RStudio**  should look something like what you see below but perhaps with a different color scheme. Please see me during students hours or before/after lecture if you wish to change the color scheme. 
+## Layout of RStudio
 
-
-</br>
+Open **RStudio**. You’ll see three panes by default (Figure 1.4). A fourth opens when you go to *File > New File > R Script*.
 
 ![Figure 1.4: RStudio layout. ](ch1figures/RStudioopen.png){ width=90% }
 
-</br>
+Panes overview:
 
-A brief description of each pane:
-
-- The upper left pane: The **R Script text editor** or **source**.  This is where commands are typed that will be executed in the script editor. Writing and saving a series of **R** commands  in the script file makes it easy to reuse or modify code at a later time.
-
-- Lower left pane: the  **console**  pane. Every time you launch **RStudio**, it will have the same text at the top of the  console telling you the version of **R** that you're running.  Below that information is the **R** <span style="color:red">*prompt*</span>  (the symbol `>`).  As its name suggests, this prompt is really a request, a request for a command.  It is here where **RStudio** will tell **R** what to do.  This is the most important pane because this is where **R** actually does stuff and provides output. That is, it is where commands are entered and executed with output printed.
-
-- Upper right pane	contains your **environment/history** pane.
-  + In the <span style="color:red">*environment *</span>  tab you can see which data and values **R** has in its memory. **R**'s memory is called an **environment**. 
-  + The <span style="color:red">*history*</span>  tab shows what has been typed before. 
-  + Don't worry about the rest of the tabs.
-
-- Bottom right pane is the **files/plots/packages/help** pane.   
-    + In the <span style="color:red">*Files*</span>  tab you can browse and select files to open.
-    + The <span style="color:red">*Plots*</span>  tab will show any plots that you create.
-    + The <span style="color:red">*Packages*</span>  tab shows a list of installed R packages (more on R packages later).
-    + The <span style="color:red">*Help*</span>  tab is the output location of any help files called (more on help files later).
-    
+- **Top-left**: Script editor (source) for writing reusable R code.
+- **Bottom-left**: Console where commands run and output appears.
+- **Top-right**: Environment (data in memory) and History (past commands).
+- **Bottom-right**: Tabs for Files, Plots, Packages, and Help.
 
 ## Expressions and Assignments
 
-Commands in R are expression or assignments. At the command prompt `>` in the console pane, do the following:
+Try the following in the console:
 
--  Type `25-5` and hit enter. (this an example of an <u>expression</u>).
-- Type `h=25-5` and hit enter (this is an example of an <u>assignment</u>).
-This can be read as the difference between 25 and 5 is assigned to the object h".
-Next type `h` and hit enter.
-- Type `H<-20` and hit enter.  Next type `H` and hit
-enter.
+- `25 - 5` (expression)
+- `h = 25 - 5` (assignment)
+- `h`
+- `H <- 20`; then `H`
 
-The result should be as follows
-
-```{r ch1a, echo=T,   eval=T , message=FALSE,    collapse = T,  warning=F , comment = '>'}
+```{r ch1a, echo=T, eval=T, message=FALSE, collapse=T, warning=F, comment = '>'}
 25 - 5
 H = 25 - 5
 H
 h <- 20
-h  # The pound sign is used for comments
+h
 ```
- 
-</br>
 
-Notice the following from the commands that were executed above:
+Key points:
 
-- `h` and `H` are not the same thing (they are clearly distinct), so **R** is case sensitive.
-- You can also see these new objects  (`H` and `h`) are in your environment tab on the upper right pane. These objects are generally called *R objects*.
-- You will get into the habit of saving things in *R objects* so that we can access them at later time.  As long as your *RStudio session* remains open, **RStudio** keeps any *R objects* that you defined in it's memory.
-- Once you end your session, **RStudio** loses what was in its memory. Next time you start an **RStudio** session, no *R objects* will be in its  memory.  Is this a problem? Later you will see that this is not a problem!
-- The assignment operator is `=` or `<-`.  Either one is acceptable, although I have a preference for `<-` so most of my handout/notes will reflect this.
-- All R object names must start with a letter (uppercase or lowercase). But the rest can be made up of letters, numbers or periods (with no spaces in between).
-- The `#` character is used to indicate a comment. Anything to the right of a `#` is ignored by **R**.
+- **R** is case sensitive: `h` $\neq$ `H`.
+- Created objects appear in the Environment tab.
+- Objects persist only during a session unless saved.
+- Use `=` or `<-` for assignment. People tend to  prefer `<-`.
+- Object names must start with a letter and can include letters, numbers, or periods (no spaces).
+- `#` marks a comment (ignored by R).
 
-</br>
- 
-Back to the *R objects* `H` and `h`.  The objects were created and are now stored in **R**'s memory  So if you type `H` and hit enter again, then 20 will come up.  **RStudio** can be closed by  selecting the $File>Quit Session$ or you can just enter the command `q()` in the console enter.  When exiting **RStudio** you will be asked "Save workspace image to ...". If you select "Don't Save", then will you lose everything that is in your memory.   For example, if you were to close without saving and then open **RStudio** again and type `H` you will get an error as follows.  Saving the workspace is not required nor needed.
+To quit, use *File > Quit Session* or type `q()`.
 
+## Running R Code in RStudio
 
-## Entering and running R code in RStudio
+To enter code efficiently:
 
-The easiest way to enter code or commands into **RStudio** is to type a command in the console pane and press enter. But this method is only efficient for short and simple analysis. The recommended way is to use **RStudio**'s text  editor.  Use the built in text editor as follows:
-
-- Open an R script file (*File>New file>R script*). 
-
-- Type in your **R** code or commands into this editor.  For example, type `h <- 20`.
-
-- Save the R script  file as an *.R* file.  For example, save your file as *FirstRsession.R*.
-
-- You may then execute the command `h <- 20` directly from the text
-editor without copying and pasting the command. This is done by
-highlighting the command, and then selecting the 
-"Run" button (figure 5). You should then see the command executed in the
-console pane.
+1. Open a new script (*File > New File > R Script*).
+2. Type code (e.g., `h <- 20`).
+3. Save it as an `.R` file (e.g., *FirstRsession.R*).
+4. Highlight a line and click "Run" to execute it.
 
 ![  ](ch1figures/RStudioExe.png){ width=80% }
 
+**Tip**: Save your script regularly.
 
-</br>
+## A Fancy Calculator
 
-**Important**: Always save your R script file periodically so that you may re-run the analysis when necessary (this applies to any assignments or exams).
+R handles basic math:
 
-## A fancy calculator
-
-At its most basic level, **R** can be viewed as a fancy calculator.  While we won't be using **RStudio** to do algebra problems, it is a good way to get familiar with **RStudio**.   The basic operations are `+` (add), `-` (subtract), `*` (multiply), `/` (divide), and powers with the `^` operator. R follows the [order of operations](https://www.khanacademy.org/math/pre-algebra/pre-algebra-arith-prop/pre-algebra-order-of-operations/v/introduction-to-order-of-operations). Type the following on the new line in the editor and select "Run":
 ```{r, echo=T, eval=F}
 727/163
 ```
@@ -152,224 +95,142 @@ At its most basic level, **R** can be viewed as a fancy calculator.  While we wo
 ```{r, echo=F, eval=T}
 aa = 727/163
 ```
-and you should get the output `[1] ` `r aa`.
 
+Output:
 
-Upon selecting "Run", the result of the above appears in the console pane, preceded by the command you executed, and prefixed by the number 1 in square brackets `[1]`.  The `[1]` indicates that this is the first (and in this case only) result from the command. Many commands will return multiple values. Try the following one by one, where each is typed on a new line and then selecting "Run" after typing the command in the editor:
+```[1] `r aa` ```
+
+Other examples:
+
 ```{r, echo=T, eval=F}
-25*10
-	
-5/2
-
+25 * 10
+5 / 2
 2 + 2
 ```
 
-After running these commands, you should note the following about the R prompt, `>`:
+Notes:
 
-- The `>` prompt means that **R** is content and ready for a new command or input.
-- Please note that spacing is not an issue with **R**. For example, `5 / 2` is the same as `5/2`. However, using spaces makes the code <span style="color:red">**easier**</span> to read and catch mistakes.
- 
+- `>` means **R** is ready.
+- Spacing doesn’t matter (`5/2` $=$ `5 / 2`), but improves readability.
 
 ``` 
-> H
-Error: object 'H' not found
-```
 
-Don't worry about saving your workspace as we generally will not need to do this in the course. 
+## Working with Vectors
 
+Combine values into a vector using `c()`:
 
-## Working with vectors
-
-The function `c( )` function combines or concatenates terms together into a vector. Suppose we wish to store the values 1, 0, 2, 0, and 3 in a vector and store this result in an object called `X`. To do so, run the following:
-```{r fig.width=7, fig.height=3,fig.align='center',cache=FALSE,  echo=T, message = FALSE,fig.asp=0.3500}
-x <- c( 1 , 0 , 2 , 0 , 3 )
+```{r fig.width=7, fig.height=3, fig.align='center', cache=FALSE, echo=T, message=FALSE, fig.asp=0.3500}
+x <- c(1, 0, 2, 0, 3)
 x
 ```
 
+Calculate mean:
 
-What is the mean of the data stored in `x`?  We can do this by summing up the values and dividing by 5:
-```{r fig.width=7, fig.height=3,fig.align='center',cache=FALSE,  echo=T, message = FALSE,fig.asp=0.3500}
-SumOfx <- 1 + 0 + 2 + 0 + 3 
-SumOfx/5
+```{r fig.width=7, fig.height=3, fig.align='center', cache=FALSE, echo=T, message=FALSE, fig.asp=0.3500}
+SumOfx <- 1 + 0 + 2 + 0 + 3
+SumOfx / 5
 ```
-We could also use the `sum( )` function which will add all the elements in a numerical vector:
-```{r fig.width=7, fig.height=3,fig.align='center',cache=FALSE,  echo=T, message = FALSE,fig.asp=0.3500}
+
+Or use built-in functions:
+
+```{r fig.width=7, fig.height=3, fig.align='center', cache=FALSE, echo=T, message=FALSE, fig.asp=0.3500}
 sum(x)
-
-sum(x)/5
-
+sum(x) / 5
 ```
 
-Note the above in summation notation is 
-$$
-\frac{\sum_{i=1}^5 x_i}{5}
-$$
+To compute sum of squares:
 
-Suppose we wanted to compute the sum below:
-$$
-\sum_{i=1}^5 x_i^2
-$$
-We can do this in steps before we use the `sum( )` function:
-```{r fig.width=7, fig.height=3,fig.align='center',cache=FALSE,  echo=T, message = FALSE,fig.asp=0.3500}
+```{r fig.width=7, fig.height=3, fig.align='center', cache=FALSE, echo=T, message=FALSE, fig.asp=0.3500}
 x^2
-
-xsq <- x^2 # assign the squared elements to 'xsq'
-
-sum( xsq )
+xsq <- x^2
+sum(xsq)
 ```
 
-What if we wanted to compute the sum below?
-$$
-\frac{\sum_{i=1}^5 (x_i - \bar{x})^2}{4}
-$$
-Like before, we do this in steps:
-```{r fig.width=7, fig.height=3,fig.align='center',cache=FALSE,  echo=T, message = FALSE,fig.asp=0.3500}
-diffofxANDxbar <- x - sum(x)/5
+To compute variance-like quantity:
+
+```{r fig.width=7, fig.height=3, fig.align='center', cache=FALSE, echo=T, message=FALSE, fig.asp=0.3500}
+diffofxANDxbar <- x - sum(x) / 5
 diffofxANDxbar
-
 sqdiffofxANDxbar <- diffofxANDxbar^2
-sqdiffofxANDxbar
-
-sum( sqdiffofxANDxbar ) / 4
- 
+sum(sqdiffofxANDxbar) / 4
 ```
 
+## Data Types in R
 
-## Data types in R 
-
-There are six basic data types in **R**:
+Key types:
 
 - Numeric
-- Integer
-- Complex
-- Character/string
+- Character (strings)
+- Logical (TRUE/FALSE)
 - Factor
-- Logical
 
-We will only deal with numeric, character, factor and logical data types.  Numeric data consists of decimal values. For example,
-```{r fig.width=7, fig.height=3,fig.align='center',cache=FALSE,  echo=T, message = FALSE,fig.asp=0.3500}
+Examples:
+
+```{r fig.width=7, fig.height=3, fig.align='center', cache=FALSE, echo=T, message=FALSE, fig.asp=0.3500}
 j <- 10.355
 j
-```
 
- In **R**, numeric is the default type for numbers. It stores all numbers as floating-point numbers (numbers with decimals). Character data are character strings (a string of one or more characters). Character data are created by putting the string in quotations.  For example,
-```{r fig.width=7, fig.height=3,fig.align='center',cache=FALSE,  echo=T, message = FALSE,fig.asp=0.3500}
-k <- c( "hi", "hello" )
+k <- c("hi", "hello")
 k
 
-L <- "3.4403" # a string since we put it in quotations!
-L # this is not numeric
-```
+L <- "3.4403"
+L
 
-Logical data can have one of two values: `TRUE` or `FALSE`. Logical are generally created when there is a comparison between variables. 
-```{r fig.width=7, fig.height=3,fig.align='center',cache=FALSE,  echo=T, message = FALSE,fig.asp=0.3500}
-p <- c( TRUE, TRUE, FALSE ) # no quotation marks!
-p # this is not character data but rather  logical values
-```
+p <- c(TRUE, TRUE, FALSE)
+p
 
-Factor data contains a set of numeric codes with character-valued levels. A simply way to create a factor variable is to first define it as character variable and then covert it to a factor variable by applying `as.factor( )` to the vector:
-```{r fig.width=7, fig.height=3,fig.align='center',cache=FALSE,  echo=T, message = FALSE,fig.asp=0.3500}
-MaritalStatus <- c( "married", "married", "divorced", "single", "single", "widowed", "married" )
+MaritalStatus <- c("married", "married", "divorced", "single", "single", "widowed", "married")
 MaritalStatus
-
-### convert character variable to factor variable:
-MaritalStatus <- as.factor( MaritalStatus )
+MaritalStatus <- as.factor(MaritalStatus)
 MaritalStatus
 ```
 
-Note that data within a vector can only be one kind of data type (i.e., you can't mix numeric values with character or logical values).  Further, you are not expected to be able to create factor variables (or other data types), but rather you are expected to only recognize and distinguish between these data types.  
-
-
-
+Vectors can only contain one type. Recognizing data types is more important than creating them.
 
 ## Comments in R
 
-Everything that you type after a `#` sign is assumed to be a comment and is ignored by **R**. Adding comments to your R script is useful because it will help you recall what your commands or lines of code will do. In the editor,  type the following and select "Run":
-```{r comme4, echo=T,   eval=T , message=FALSE,    collapse = T,  warning=F , comment = '>'}
+Use `#` for comments:
+
+```{r comme4, echo=T, eval=T, message=FALSE, collapse=T, warning=F, comment = '>'}
 ### Comments are ignored by R!
-y = 1 + 3    # this command tells R to compute 1 plus 3 and assign it an R object called  y
+y = 1 + 3  # Assigns 4 to y
 ```
 
-Note that `y` is now in **RStudio**'s memory, and we can access its value by typing `y` on a new line and selecting "Run". Now, type the following in your editor on a new line and then select "Run":
-```{r comms2, echo=T,   eval=T , message=FALSE,    collapse = T,  warning=F , comment = '>'}
-# z = 3 - 7  # this code  is ignored because of # `
+```{r comms2, echo=T, eval=T, message=FALSE, collapse=T, warning=F, comment = '>'}
+# z = 3 - 7  # Ignored
 ```
 
-Note that this command is ignored because of `#`.  Get into the habit of using comments!
+Use comments to clarify code.
 
+## Using R Functions
 
-## Using R functions
+Use `c()` to create a vector:
 
-**R** has many built-in function. For example, the `c( )`
-function combines, or concatenates terms together 
-into a vector.
-
-Suppose we wish to assign the values 
-
-```
-1  0  2  0  3  1  0  1  2  0
-```
-
-to a vector denoted by `X.  In your R script, run the code
-given below:
-```
+```{r comm4, echo=T, eval=T, message=FALSE, collapse=T, warning=F}
 X <- c(1, 0, 2, 0, 3, 1, 0, 1, 2, 0)
-
 X
 ```
 
-You should have obtained output as follows:
-```{r comm4, echo=T,   eval=T , message=FALSE,    collapse = T,  warning=F  }
-X <- c(1, 0, 2, 0, 3, 1, 0, 1, 2, 0)
+Use arrow keys to recall past commands. Built-in functions like `sum()` are common:
 
-X
-```
-
-Note that this is executed code since we see the command prompt `>`
-before the code (Note: the `#` show before `>` would not appear in your R console.  This is placed in these notes to better distinguish between R code and output.   If you wish to bring up `X` once more you do not have to retype `X`. Instead, use the level keys $\uparrow$ and $\downarrow$ to scroll up and
-down past commands issued in your current **R** work session.
-Another example of an **R** built-in function is the `sum( )`. This function computes the sumn of all the numbers in a vector.  The syntax consist of the function name followed by parentheses to contain the argument(s). The `sum( )` function only requires one argument, the data vector. We will make use of R's many built in functions along the way. Examples of other functions are shown below:
- 
-```{r mean, echo=T,   eval=T , message=FALSE,    collapse = T,  warning=F , comment = '>'}
-### computing the mean of the numbers stored in X
-sum(X)  # sample mean
-
-### compute the length of the vector
+```{r mean, echo=T, eval=T, message=FALSE, collapse=T, warning=F, comment = '>'}
+sum(X)
 length(X)
-
-# more on functions later.
 ```
 
-## Loading a package and installing new packages
+## Loading and Installing Packages
 
-All functions in **R** come from libraries/packages.  There are many *packages*   that can be installed to expand the ability of R.  By default, R comes with several packages installed (some loaded automatically when you open **RStudio** to be used and some not). For example, a function called `mean()`  is available from the `base` package, but this packages is automatically loaded when **RStudio** is opened so we will always have access to this function without loading an packages. 
+**R** comes with base packages. Some, like `mean()`, are loaded by default. Others, like `boxcox()` from `MASS`, must be loaded manually:
 
-As for those packages that aren't loaded automatically, we first have to load the packages to use its "tools".  For example,the `MASS` library come with **R** but is not automatically loaded. This package provides a function called `boxcox()` (for box-cox transformations).  To use `boxcox()`, we first have to load this package by running the command `require(MASS)` or `library(MASS)`.  
-
-Remember to think as *packages* as toolboxes.  We will install additional *packages*   called `openintro` and  `mosaic` that will provide useful data sets and functions ("tools"). These packages are specifically designed to make **R** more accessible.
-
-
-To install these packages, in the **R** console type the following command:
 ```{r, echo=T, eval=F}
-install.packages( "openintro" )  # no spaces within quotation marks!
+library(MASS)
 ```
 
-Hit enter, and you will see activity occurring in the **R console**. This may take a few minutes to complete. Note the following during the installation process:
+Install additional packages once using:
 
-+ If R asks you to choose a CRAN mirror for downloading, select any *USA* mirror.
-+ If R asks to use your personal library, answer yes.
-+ If R prompts you to update any packages, please agree to the updates.
-
-When it is done installing, it should say something like "The downloaded binary packages are in..." right above the **R** prompt `>`.  This means the packages installed correctly. 
- 
-Now install the `mosaic` package. In the **R** console type and run the following command:
 ```{r, echo=T, eval=F}
-install.packages( "mosaic" )     # no spaces within quotation marks!
+install.packages("openintro")
+install.packages("mosaic")
 ```
 
-Again, this may take a few minutes to complete.  Note that these packages only have to be installed once on your computer. However, every time a new RStudio session is started, the package will have to be loaded before datasets and/or functions from the package can be used. If a different computer is being used, these packages will have to bed installed again. For now, only these additional packages are required.
- 
-
-
-
-
+Follow prompts (choose USA mirror, allow personal library, update if asked). After installation, load packages in each session using `library(openintro)` or `require(openintro)`.

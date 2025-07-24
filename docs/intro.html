@@ -4,34 +4,32 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 1 Introduction: Getting Familiar with R and RStudio | An R companion</title>
-  <meta name="description" content="A freely available document meant to help students learn R concurrently with the material of the course." />
-  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+  <title>Chapter 1 Introduction: Getting Familiar with R and RStudio | 01-intro.knit</title>
+  <meta name="description" content="" />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 1 Introduction: Getting Familiar with R and RStudio | An R companion" />
+  <meta property="og:title" content="Chapter 1 Introduction: Getting Familiar with R and RStudio | 01-intro.knit" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:description" content="A freely available document meant to help students learn R concurrently with the material of the course." />
-  <meta name="github-repo" content="emontoya2/csubRcomp-git" />
+  
+  
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 1 Introduction: Getting Familiar with R and RStudio | An R companion" />
+  <meta name="twitter:title" content="Chapter 1 Introduction: Getting Familiar with R and RStudio | 01-intro.knit" />
   
-  <meta name="twitter:description" content="A freely available document meant to help students learn R concurrently with the material of the course." />
+  
   
 
-<meta name="author" content="Eduardo Montoya" />
 
 
-<meta name="date" content="2022-05-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
-<link rel="next" href="basics.html"/>
+
+
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -55,6 +53,7 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -92,7 +91,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -105,7 +104,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -119,6 +118,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -136,107 +139,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">An R companion for undergraduate regression and ANOVA</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
-<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction: Getting Familiar with R and RStudio</a>
+<li class="chapter" data-level="1" data-path=""><a href="#intro"><i class="fa fa-check"></i><b>1</b> Introduction: Getting Familiar with R and RStudio</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#what-is-r-and-rstudio"><i class="fa fa-check"></i><b>1.1</b> What is R and RStudio?</a></li>
-<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#downloading-and-installing-r"><i class="fa fa-check"></i><b>1.2</b> Downloading and installing R</a></li>
-<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#downloading-and-installing-rstudio"><i class="fa fa-check"></i><b>1.3</b> Downloading and installing RStudio</a></li>
-<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#the-layout-of-rstudio"><i class="fa fa-check"></i><b>1.4</b> The layout of RStudio</a></li>
-<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#expressions-and-assignments"><i class="fa fa-check"></i><b>1.5</b> Expressions and Assignments</a></li>
-<li class="chapter" data-level="1.6" data-path="intro.html"><a href="intro.html#entering-and-running-r-code-in-rstudio"><i class="fa fa-check"></i><b>1.6</b> Entering and running R code in RStudio</a></li>
-<li class="chapter" data-level="1.7" data-path="intro.html"><a href="intro.html#a-fancy-calculator"><i class="fa fa-check"></i><b>1.7</b> A fancy calculator</a></li>
-<li class="chapter" data-level="1.8" data-path="intro.html"><a href="intro.html#working-with-vectors"><i class="fa fa-check"></i><b>1.8</b> Working with vectors</a></li>
-<li class="chapter" data-level="1.9" data-path="intro.html"><a href="intro.html#data-types-in-r"><i class="fa fa-check"></i><b>1.9</b> Data types in R</a></li>
-<li class="chapter" data-level="1.10" data-path="intro.html"><a href="intro.html#comments-in-r"><i class="fa fa-check"></i><b>1.10</b> Comments in R</a></li>
-<li class="chapter" data-level="1.11" data-path="intro.html"><a href="intro.html#using-r-functions"><i class="fa fa-check"></i><b>1.11</b> Using R functions</a></li>
-<li class="chapter" data-level="1.12" data-path="intro.html"><a href="intro.html#loading-a-package-and-installing-new-packages"><i class="fa fa-check"></i><b>1.12</b> Loading a package and installing new packages</a></li>
-</ul></li>
-<li class="chapter" data-level="2" data-path="basics.html"><a href="basics.html"><i class="fa fa-check"></i><b>2</b> Some basic R tasks</a>
-<ul>
-<li class="chapter" data-level="2.1" data-path="basics.html"><a href="basics.html#using-rs-built-in-datasets-and-viewing-datasets"><i class="fa fa-check"></i><b>2.1</b> Using R’s built-in datasets and “viewing” datasets</a></li>
-<li class="chapter" data-level="2.2" data-path="basics.html"><a href="basics.html#csv-files"><i class="fa fa-check"></i><b>2.2</b> .csv files</a></li>
-<li class="chapter" data-level="2.3" data-path="basics.html"><a href="basics.html#importing-a-.csv-file"><i class="fa fa-check"></i><b>2.3</b> Importing a .csv file</a>
-<ul>
-<li class="chapter" data-level="2.3.1" data-path="basics.html"><a href="basics.html#importing-data-via-a-url"><i class="fa fa-check"></i><b>2.3.1</b> Importing data via a url</a></li>
-<li class="chapter" data-level="2.3.2" data-path="basics.html"><a href="basics.html#importing-data-from-your-computer"><i class="fa fa-check"></i><b>2.3.2</b> Importing data from your computer</a></li>
-</ul></li>
-<li class="chapter" data-level="2.4" data-path="basics.html"><a href="basics.html#summarizing-data"><i class="fa fa-check"></i><b>2.4</b> Summarizing data</a></li>
-<li class="chapter" data-level="2.5" data-path="basics.html"><a href="basics.html#export-an-r-plot-or-r-output"><i class="fa fa-check"></i><b>2.5</b> Export an R plot or R output</a>
-<ul>
-<li class="chapter" data-level="2.5.1" data-path="basics.html"><a href="basics.html#exporting-graphs"><i class="fa fa-check"></i><b>2.5.1</b> Exporting graphs</a></li>
-<li class="chapter" data-level="2.5.2" data-path="basics.html"><a href="basics.html#exporting-r-output"><i class="fa fa-check"></i><b>2.5.2</b> Exporting R output</a></li>
-</ul></li>
-<li class="chapter" data-level="2.6" data-path="basics.html"><a href="basics.html#extracting-variables-from-dataframes"><i class="fa fa-check"></i><b>2.6</b> Extracting variables from dataframes</a></li>
-<li class="chapter" data-level="2.7" data-path="basics.html"><a href="basics.html#understanding-common-r-errors"><i class="fa fa-check"></i><b>2.7</b> Understanding common R errors</a>
-<ul>
-<li class="chapter" data-level="2.7.1" data-path="basics.html"><a href="basics.html#could-not-find-function"><i class="fa fa-check"></i><b>2.7.1</b> could not find function</a></li>
-<li class="chapter" data-level="2.7.2" data-path="basics.html"><a href="basics.html#object-not-found"><i class="fa fa-check"></i><b>2.7.2</b> object not found</a></li>
-<li class="chapter" data-level="2.7.3" data-path="basics.html"><a href="basics.html#unmatched-parenthesis"><i class="fa fa-check"></i><b>2.7.3</b> Unmatched parenthesis</a></li>
-<li class="chapter" data-level="2.7.4" data-path="basics.html"><a href="basics.html#the-some-package-package-is-not-available-for-r-version-some-version"><i class="fa fa-check"></i><b>2.7.4</b> The ‘Some package’ package is not available (for R version ‘some version’)</a></li>
-</ul></li>
-<li class="chapter" data-level="2.8" data-path="basics.html"><a href="basics.html#help-files"><i class="fa fa-check"></i><b>2.8</b> Help files</a></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="reg.html"><a href="reg.html"><i class="fa fa-check"></i><b>3</b> R code for Regression Analysis</a>
-<ul>
-<li class="chapter" data-level="3.1" data-path="reg.html"><a href="reg.html#linear-regression-with-one-predictor-variable"><i class="fa fa-check"></i><b>3.1</b> Linear Regression with One Predictor Variable</a>
-<ul>
-<li class="chapter" data-level="3.1.1" data-path="reg.html"><a href="reg.html#scatterplots"><i class="fa fa-check"></i><b>3.1.1</b> Scatterplots</a></li>
-<li class="chapter" data-level="3.1.2" data-path="reg.html"><a href="reg.html#least-squares-ls-estimates"><i class="fa fa-check"></i><b>3.1.2</b> Least Squares (LS) Estimates</a></li>
-<li class="chapter" data-level="3.1.3" data-path="reg.html"><a href="reg.html#plotting-the-estimated-regression-line"><i class="fa fa-check"></i><b>3.1.3</b> Plotting the estimated regression line</a></li>
-<li class="chapter" data-level="3.1.4" data-path="reg.html"><a href="reg.html#fitted-or-predicted-values"><i class="fa fa-check"></i><b>3.1.4</b> Fitted or predicted values</a></li>
-<li class="chapter" data-level="3.1.5" data-path="reg.html"><a href="reg.html#residuals"><i class="fa fa-check"></i><b>3.1.5</b> Residuals</a></li>
-<li class="chapter" data-level="3.1.6" data-path="reg.html"><a href="reg.html#summary-lm-object-output"><i class="fa fa-check"></i><b>3.1.6</b> <code>summary(</code> <em>lm object</em> <code>)</code> output</a></li>
-<li class="chapter" data-level="3.1.7" data-path="reg.html"><a href="reg.html#estimating-of-sigma2"><i class="fa fa-check"></i><b>3.1.7</b> Estimating of <span class="math inline">\(\sigma^2\)</span></a></li>
-</ul></li>
-<li class="chapter" data-level="3.2" data-path="reg.html"><a href="reg.html#inference-in-simple-linear-regression"><i class="fa fa-check"></i><b>3.2</b> Inference in simple linear regression</a>
-<ul>
-<li class="chapter" data-level="3.2.1" data-path="reg.html"><a href="reg.html#inferences-for-beta_0-and-beta_1"><i class="fa fa-check"></i><b>3.2.1</b> Inferences for <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span></a></li>
-<li class="chapter" data-level="3.2.2" data-path="reg.html"><a href="reg.html#ci-for-the-mean-response-ey_h-and-a-prediction-interval-for-y_h"><i class="fa fa-check"></i><b>3.2.2</b> CI for the mean response (<span class="math inline">\(E(y_h)\)</span>) and a prediction interval for <span class="math inline">\(y_h\)</span></a></li>
-<li class="chapter" data-level="3.2.3" data-path="reg.html"><a href="reg.html#analysis-of-variance-approach-to-regression-analysis"><i class="fa fa-check"></i><b>3.2.3</b> Analysis of Variance approach to regression analysis</a></li>
-<li class="chapter" data-level="3.2.4" data-path="reg.html"><a href="reg.html#measures-of-association"><i class="fa fa-check"></i><b>3.2.4</b> Measures of association</a></li>
-</ul></li>
-<li class="chapter" data-level="3.3" data-path="reg.html"><a href="reg.html#residual-analysis-and-remedial-measures"><i class="fa fa-check"></i><b>3.3</b> Residual analysis and remedial measures</a>
-<ul>
-<li class="chapter" data-level="3.3.1" data-path="reg.html"><a href="reg.html#creating-residual-plots"><i class="fa fa-check"></i><b>3.3.1</b> Creating residual plots</a></li>
-<li class="chapter" data-level="3.3.2" data-path="reg.html"><a href="reg.html#testing-departures-from-normality"><i class="fa fa-check"></i><b>3.3.2</b> Testing departures from normality</a></li>
-<li class="chapter" data-level="3.3.3" data-path="reg.html"><a href="reg.html#transformations"><i class="fa fa-check"></i><b>3.3.3</b> Transformations</a></li>
-<li class="chapter" data-level="3.3.4" data-path="reg.html"><a href="reg.html#f-test-for-lack-of-fit"><i class="fa fa-check"></i><b>3.3.4</b> F Test for Lack of Fit</a></li>
-</ul></li>
-<li class="chapter" data-level="3.4" data-path="reg.html"><a href="reg.html#least-absolute-deviation-lad-regression"><i class="fa fa-check"></i><b>3.4</b> Least absolute deviation (LAD) regression</a></li>
-<li class="chapter" data-level="3.5" data-path="reg.html"><a href="reg.html#the-matrix-approach-to-simple-linear-regression"><i class="fa fa-check"></i><b>3.5</b> The matrix approach to simple linear regression</a>
-<ul>
-<li class="chapter" data-level="3.5.1" data-path="reg.html"><a href="reg.html#creating-a-matrix"><i class="fa fa-check"></i><b>3.5.1</b> Creating a matrix</a></li>
-<li class="chapter" data-level="3.5.2" data-path="reg.html"><a href="reg.html#some-matrix-operations"><i class="fa fa-check"></i><b>3.5.2</b> Some matrix operations</a></li>
-<li class="chapter" data-level="3.5.3" data-path="reg.html"><a href="reg.html#ls-estimation"><i class="fa fa-check"></i><b>3.5.3</b> LS estimation</a></li>
-</ul></li>
-<li class="chapter" data-level="3.6" data-path="reg.html"><a href="reg.html#multiple-linear-regression-mlr"><i class="fa fa-check"></i><b>3.6</b> Multiple linear regression (MLR)</a>
-<ul>
-<li class="chapter" data-level="3.6.1" data-path="reg.html"><a href="reg.html#least-squares-estimates"><i class="fa fa-check"></i><b>3.6.1</b> Least-Squares Estimates</a></li>
-<li class="chapter" data-level="3.6.2" data-path="reg.html"><a href="reg.html#fitted-values-anova-table-residuals"><i class="fa fa-check"></i><b>3.6.2</b> Fitted values, ANOVA table, residuals</a></li>
-<li class="chapter" data-level="3.6.3" data-path="reg.html"><a href="reg.html#inference-about-the-regression-parameters"><i class="fa fa-check"></i><b>3.6.3</b> Inference about the regression parameters</a></li>
-<li class="chapter" data-level="3.6.4" data-path="reg.html"><a href="reg.html#inference-about-the-mean-response-and-prediction-of-new-observation"><i class="fa fa-check"></i><b>3.6.4</b> Inference about the Mean Response and Prediction of New Observation</a></li>
-<li class="chapter" data-level="3.6.5" data-path="reg.html"><a href="reg.html#diagnostics"><i class="fa fa-check"></i><b>3.6.5</b> Diagnostics</a></li>
-<li class="chapter" data-level="3.6.6" data-path="reg.html"><a href="reg.html#anova-table-containing-decomposition-of-ssr"><i class="fa fa-check"></i><b>3.6.6</b> ANOVA table containing decomposition of SSR</a></li>
-<li class="chapter" data-level="3.6.7" data-path="reg.html"><a href="reg.html#testing-whether-beta_k-neq-0-for-some-k"><i class="fa fa-check"></i><b>3.6.7</b> Testing whether <span class="math inline">\(\beta_k \neq 0\)</span> for some <span class="math inline">\(k\)</span></a></li>
-</ul></li>
-<li class="chapter" data-level="3.7" data-path="reg.html"><a href="reg.html#interactions"><i class="fa fa-check"></i><b>3.7</b> Interactions</a></li>
-<li class="chapter" data-level="3.8" data-path="reg.html"><a href="reg.html#standardized-multiple-regression"><i class="fa fa-check"></i><b>3.8</b> Standardized multiple regression</a></li>
-<li class="chapter" data-level="3.9" data-path="reg.html"><a href="reg.html#polynomial-regression-and-regression-with-categorical-variables"><i class="fa fa-check"></i><b>3.9</b> Polynomial regression and regression with categorical variables</a></li>
-<li class="chapter" data-level="3.10" data-path="reg.html"><a href="reg.html#model-selection"><i class="fa fa-check"></i><b>3.10</b> Model selection</a>
-<ul>
-<li class="chapter" data-level="3.10.1" data-path="reg.html"><a href="reg.html#r_ap2-and-c_p"><i class="fa fa-check"></i><b>3.10.1</b> <span class="math inline">\(R_{a,p}^2\)</span> and <span class="math inline">\(C_p\)</span></a></li>
-<li class="chapter" data-level="3.10.2" data-path="reg.html"><a href="reg.html#aic_p"><i class="fa fa-check"></i><b>3.10.2</b> <span class="math inline">\(AIC_p\)</span></a></li>
-<li class="chapter" data-level="3.10.3" data-path="reg.html"><a href="reg.html#bic_p-or-sbc_p"><i class="fa fa-check"></i><b>3.10.3</b> <span class="math inline">\(BIC_p\)</span> or <span class="math inline">\(SBC_p\)</span></a></li>
-<li class="chapter" data-level="3.10.4" data-path="reg.html"><a href="reg.html#aicc_p"><i class="fa fa-check"></i><b>3.10.4</b> <span class="math inline">\(AICc_p\)</span></a></li>
-<li class="chapter" data-level="3.10.5" data-path="reg.html"><a href="reg.html#stepwise-regression"><i class="fa fa-check"></i><b>3.10.5</b> Stepwise regression</a></li>
-<li class="chapter" data-level="3.10.6" data-path="reg.html"><a href="reg.html#cvpress-and-gcv"><i class="fa fa-check"></i><b>3.10.6</b> CV/PRESS and GCV</a></li>
-</ul></li>
-<li class="chapter" data-level="3.11" data-path="reg.html"><a href="reg.html#more-diagnostics"><i class="fa fa-check"></i><b>3.11</b> More diagnostics</a>
-<ul>
-<li class="chapter" data-level="3.11.1" data-path="reg.html"><a href="reg.html#identifying-outlying-y-and-x-values"><i class="fa fa-check"></i><b>3.11.1</b> Identifying outlying y and x values</a></li>
-<li class="chapter" data-level="3.11.2" data-path="reg.html"><a href="reg.html#identifying-influential-cases"><i class="fa fa-check"></i><b>3.11.2</b> Identifying influential cases</a></li>
-</ul></li>
+<li class="chapter" data-level="1.1" data-path=""><a href="#what-is-r-and-rstudio"><i class="fa fa-check"></i><b>1.1</b> What is R and RStudio?</a></li>
+<li class="chapter" data-level="1.2" data-path=""><a href="#downloading-and-installing-r"><i class="fa fa-check"></i><b>1.2</b> Downloading and Installing R</a></li>
+<li class="chapter" data-level="1.3" data-path=""><a href="#downloading-and-installing-rstudio"><i class="fa fa-check"></i><b>1.3</b> Downloading and Installing RStudio</a></li>
+<li class="chapter" data-level="1.4" data-path=""><a href="#layout-of-rstudio"><i class="fa fa-check"></i><b>1.4</b> Layout of RStudio</a></li>
+<li class="chapter" data-level="1.5" data-path=""><a href="#expressions-and-assignments"><i class="fa fa-check"></i><b>1.5</b> Expressions and Assignments</a></li>
+<li class="chapter" data-level="1.6" data-path=""><a href="#running-r-code-in-rstudio"><i class="fa fa-check"></i><b>1.6</b> Running R Code in RStudio</a></li>
+<li class="chapter" data-level="1.7" data-path=""><a href="#a-fancy-calculator"><i class="fa fa-check"></i><b>1.7</b> A Fancy Calculator</a></li>
+<li class="chapter" data-level="1.8" data-path=""><a href="#data-types-in-r"><i class="fa fa-check"></i><b>1.8</b> Data Types in R</a></li>
+<li class="chapter" data-level="1.9" data-path=""><a href="#comments-in-r"><i class="fa fa-check"></i><b>1.9</b> Comments in R</a></li>
+<li class="chapter" data-level="1.10" data-path=""><a href="#using-r-functions"><i class="fa fa-check"></i><b>1.10</b> Using R Functions</a></li>
+<li class="chapter" data-level="1.11" data-path=""><a href="#loading-and-installing-packages"><i class="fa fa-check"></i><b>1.11</b> Loading and Installing Packages</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -250,7 +165,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">An R companion</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
           </h1>
         </div>
 
@@ -258,286 +173,211 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
+<!--bookdown:title:end-->
+<!--bookdown:title:start-->
 <div id="intro" class="section level1 hasAnchor" number="1">
-<h1><span class="header-section-number">Chapter 1</span> Introduction: Getting Familiar with R and RStudio<a href="intro.html#intro" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<h1><span class="header-section-number">Chapter 1</span> Introduction: Getting Familiar with R and RStudio<a href="#intro" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="what-is-r-and-rstudio" class="section level2 hasAnchor" number="1.1">
-<h2><span class="header-section-number">1.1</span> What is R and RStudio?<a href="intro.html#what-is-r-and-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p><strong>R</strong> is a GNU project and may be thought of as an implementation of the <strong>S</strong> language (developed at Bell Laboratories by Rick Becker, John Chambers and Allan Wilks). It is a language and environment for statistical computing and graphics. <strong>R</strong> contains a large number of built in function for classical and modern statistical analysis. One of the main advantages of using this program, particularly for undergraduate students, is that it is free! A core team of statisticians and countless other contributors consistently maintain, update, and improve <strong>R</strong> and make versions that run well under the most operating systems. The web page for the <strong>R</strong> Project for statistical computing is located at <a href="http://www.r-project.org%22" class="uri">http://www.r-project.org"</a>.</p>
-<p>We will never use <strong>R</strong> directly, rather we will use <strong>RStudio</strong>. <strong>RStudio</strong> is an integrated development environment (IDE) that allows you to interact with <strong>R</strong> more readily. <strong>RStudio</strong> is also free to use. For our purpose, we will be using <strong>RStudio</strong> as a graphical user interface for <strong>R</strong>. Think of <strong>R</strong> as the engine for a care, whereas <strong>RStudio</strong> is the dashboard, wheel, etc. that allows one to control the engine (although it does so much more such as create slides, books, web applications, and other things).</p>
+<h2><span class="header-section-number">1.1</span> What is R and RStudio?<a href="#what-is-r-and-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>R</strong> is a language and environment for statistical computing, based on the <strong>S</strong> language developed at Bell Labs. It supports both classical and modern statistical analysis and is free to use. A core team and contributors maintain <strong>R</strong> across major operating systems. Visit <a href="http://www.r-project.org" class="uri">http://www.r-project.org</a> for more information.</p>
+<p>We won’t use <strong>R</strong> directly. Instead, we’ll use <strong>RStudio</strong>, a free integrated development environment (IDE) that makes interacting with <strong>R</strong> easier. Think of <strong>R</strong> as the engine and <strong>RStudio</strong> as the dashboard—it helps control and extend R’s capabilities, like creating documents, apps, and more.</p>
 </div>
 <div id="downloading-and-installing-r" class="section level2 hasAnchor" number="1.2">
-<h2><span class="header-section-number">1.2</span> Downloading and installing R<a href="intro.html#downloading-and-installing-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The CSUB virtual computer lab will have R and RStudio installed. If you prefer to install these on your personal computer computer, follow these steps:</p>
+<h2><span class="header-section-number">1.2</span> Downloading and Installing R<a href="#downloading-and-installing-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>You can use <strong>R</strong> and <strong>RStudio</strong> via the CSUB virtual lab. To install them on your own computer:</p>
 <ol style="list-style-type: decimal">
-<li><p>Visit the site <a href="https://cran.r-project.org/" class="uri">https://cran.r-project.org/</a>.</p></li>
-<li><p>Click the link that corresponds to your appropriate operating system. (see Figure 1.1). The directions given are for Windows but the process is fairly similar for Mac or Linux. Chromebook users will have to use the virtual computer lab to access R and RStudio unless you are proficient in using linux.</p></li>
-<li><p>Select <em>base</em> and download the latest release (the link will state “Download R ‘<em>some version</em>’ for Windows”)</p></li>
-<li><p>Once the program has downloaded, install <strong>R</strong> with the default settings.</p></li>
-<li><p>That’s it!</p></li>
+<li>Go to <a href="https://cran.r-project.org/" class="uri">https://cran.r-project.org/</a>.</li>
+<li>Select your operating system (see Figure 1.1).</li>
+<li>Click <em>base</em>, then download the latest version.</li>
+<li>Run the installer using default settings.</li>
+<li>Done!</li>
 </ol>
-<div class="figure">
-<img src="ch1figures/Rcran.png" style="width:80.0%" alt="" />
-<p class="caption">Figure 1.1: R download page</p>
+<div class="float">
+<img src="ch1figures/Rcran.png" style="width:80.0%" alt="Figure 1.1: R download page" />
+<div class="figcaption">Figure 1.1: R download page</div>
 </div>
 </div>
 <div id="downloading-and-installing-rstudio" class="section level2 hasAnchor" number="1.3">
-<h2><span class="header-section-number">1.3</span> Downloading and installing RStudio<a href="intro.html#downloading-and-installing-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Follow the steps:</p>
+<h2><span class="header-section-number">1.3</span> Downloading and Installing RStudio<a href="#downloading-and-installing-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
-<li><p>Visit the site <a href="http://www.rstudio.com/products/rstudio/download/" class="uri">http://www.rstudio.com/products/rstudio/download/</a>. Scroll down the page until you see the column header “RStudio Desktop” (see Figure 1.2).</p></li>
-<li><p>Click “DOWNLOAD.” Then select the appropriate version depending on your operating system (Figure 1.3).</p></li>
-<li><p>Once the program has downloaded, install <strong>RStudio</strong> with the default settings.</p></li>
-<li><p>That’s it! You can now run <strong>Rstudio</strong> from your home computer.</p></li>
+<li>Visit <a href="http://www.rstudio.com/products/rstudio/download/" class="uri">http://www.rstudio.com/products/rstudio/download/</a> and scroll to “RStudio Desktop” (Figure 1.2).</li>
+<li>Click “DOWNLOAD” and select your OS version (Figure 1.3).</li>
+<li>Run the installer using default settings.</li>
+<li>Done! Launch <strong>RStudio</strong> from your computer.</li>
 </ol>
-<p></br></p>
-<div class="figure">
-<img src="ch1figures/RStudioDownload.png" style="width:80.0%" alt="" />
-<p class="caption">Figure 1.2: RStudio download page</p>
+<div class="float">
+<img src="ch1figures/RStudioDownload.png" style="width:80.0%" alt="Figure 1.2: RStudio download page" />
+<div class="figcaption">Figure 1.2: RStudio download page</div>
 </div>
-<p></br></p>
-<div class="figure">
-<img src="ch1figures/RStudioDownloadVersion.png" style="width:80.0%" alt="" />
-<p class="caption">Figure 1.3: RStudio Desktop download page</p>
+<div class="float">
+<img src="ch1figures/RStudioDownloadVersion.png" style="width:80.0%" alt="Figure 1.3: RStudio Desktop download page" />
+<div class="figcaption">Figure 1.3: RStudio Desktop download page</div>
 </div>
 </div>
-<div id="the-layout-of-rstudio" class="section level2 hasAnchor" number="1.4">
-<h2><span class="header-section-number">1.4</span> The layout of RStudio<a href="intro.html#the-layout-of-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Open <strong>RStudio</strong>. The first time you open <strong>RStudio</strong>, you will see three panes (Figure 1.4). A forth pane is hidden by default, but can be opened by clicking the File drop-down menu, then New File, and then R Script (<em>File&gt;New File&gt;R Script</em>). <strong>RStudio</strong> should look something like what you see below but perhaps with a different color scheme. Please see me during students hours or before/after lecture if you wish to change the color scheme.</p>
-<p></br></p>
-<div class="figure">
-<img src="ch1figures/RStudioopen.png" style="width:90.0%" alt="" />
-<p class="caption">Figure 1.4: RStudio layout.</p>
+<div id="layout-of-rstudio" class="section level2 hasAnchor" number="1.4">
+<h2><span class="header-section-number">1.4</span> Layout of RStudio<a href="#layout-of-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Open <strong>RStudio</strong>. You’ll see three panes by default (Figure 1.4). A fourth opens when you go to <em>File &gt; New File &gt; R Script</em>.</p>
+<div class="float">
+<img src="ch1figures/RStudioopen.png" style="width:90.0%" alt="Figure 1.4: RStudio layout." />
+<div class="figcaption">Figure 1.4: RStudio layout.</div>
 </div>
-<p></br></p>
-<p>A brief description of each pane:</p>
+<p>Panes overview:</p>
 <ul>
-<li><p>The upper left pane: The <strong>R Script text editor</strong> or <strong>source</strong>. This is where commands are typed that will be executed in the script editor. Writing and saving a series of <strong>R</strong> commands in the script file makes it easy to reuse or modify code at a later time.</p></li>
-<li><p>Lower left pane: the <strong>console</strong> pane. Every time you launch <strong>RStudio</strong>, it will have the same text at the top of the console telling you the version of <strong>R</strong> that you’re running. Below that information is the <strong>R</strong> <span style="color:red"><em>prompt</em></span> (the symbol <code>&gt;</code>). As its name suggests, this prompt is really a request, a request for a command. It is here where <strong>RStudio</strong> will tell <strong>R</strong> what to do. This is the most important pane because this is where <strong>R</strong> actually does stuff and provides output. That is, it is where commands are entered and executed with output printed.</p></li>
-<li><p>Upper right pane contains your <strong>environment/history</strong> pane.</p>
-<ul>
-<li>In the <span style="color:red"><em>environment </em></span> tab you can see which data and values <strong>R</strong> has in its memory. <strong>R</strong>’s memory is called an <strong>environment</strong>.</li>
-<li>The <span style="color:red"><em>history</em></span> tab shows what has been typed before.</li>
-<li>Don’t worry about the rest of the tabs.</li>
-</ul></li>
-<li><p>Bottom right pane is the <strong>files/plots/packages/help</strong> pane.</p>
-<ul>
-<li>In the <span style="color:red"><em>Files</em></span> tab you can browse and select files to open.</li>
-<li>The <span style="color:red"><em>Plots</em></span> tab will show any plots that you create.</li>
-<li>The <span style="color:red"><em>Packages</em></span> tab shows a list of installed R packages (more on R packages later).</li>
-<li>The <span style="color:red"><em>Help</em></span> tab is the output location of any help files called (more on help files later).</li>
-</ul></li>
+<li><strong>Top-left</strong>: Script editor (source) for writing reusable R code.</li>
+<li><strong>Bottom-left</strong>: Console where commands run and output appears.</li>
+<li><strong>Top-right</strong>: Environment (data in memory) and History (past commands).</li>
+<li><strong>Bottom-right</strong>: Tabs for Files, Plots, Packages, and Help.</li>
 </ul>
 </div>
 <div id="expressions-and-assignments" class="section level2 hasAnchor" number="1.5">
-<h2><span class="header-section-number">1.5</span> Expressions and Assignments<a href="intro.html#expressions-and-assignments" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Commands in R are expression or assignments. At the command prompt <code>&gt;</code> in the console pane, do the following:</p>
+<h2><span class="header-section-number">1.5</span> Expressions and Assignments<a href="#expressions-and-assignments" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Try the following in the console:</p>
 <ul>
-<li>Type <code>25-5</code> and hit enter. (this an example of an <u>expression</u>).</li>
-<li>Type <code>h=25-5</code> and hit enter (this is an example of an <u>assignment</u>).
-This can be read as the difference between 25 and 5 is assigned to the object h”.
-Next type <code>h</code> and hit enter.</li>
-<li>Type <code>H&lt;-20</code> and hit enter. Next type <code>H</code> and hit
-enter.</li>
+<li><code>25 - 5</code> (expression)</li>
+<li><code>h = 25 - 5</code> (assignment)</li>
+<li><code>h</code></li>
+<li><code>H &lt;- 20</code>; then <code>H</code></li>
 </ul>
-<p>The result should be as follows</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="intro.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">25</span> <span class="sc">-</span> <span class="dv">5</span></span>
-<span id="cb1-2"><a href="intro.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">20</span></span>
-<span id="cb1-3"><a href="intro.html#cb1-3" aria-hidden="true" tabindex="-1"></a>H <span class="ot">=</span> <span class="dv">25</span> <span class="sc">-</span> <span class="dv">5</span></span>
-<span id="cb1-4"><a href="intro.html#cb1-4" aria-hidden="true" tabindex="-1"></a>H</span>
-<span id="cb1-5"><a href="intro.html#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">20</span></span>
-<span id="cb1-6"><a href="intro.html#cb1-6" aria-hidden="true" tabindex="-1"></a>h <span class="ot">&lt;-</span> <span class="dv">20</span></span>
-<span id="cb1-7"><a href="intro.html#cb1-7" aria-hidden="true" tabindex="-1"></a>h  <span class="co"># The pound sign is used for comments</span></span>
-<span id="cb1-8"><a href="intro.html#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">20</span></span></code></pre></div>
-<p></br></p>
-<p>Notice the following from the commands that were executed above:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="dv">25</span> <span class="sc">-</span> <span class="dv">5</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">20</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>H <span class="ot">=</span> <span class="dv">25</span> <span class="sc">-</span> <span class="dv">5</span></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>H</span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">20</span></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>h <span class="ot">&lt;-</span> <span class="dv">20</span></span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>h</span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">20</span></span></code></pre></div>
+<p>Key points:</p>
 <ul>
-<li><code>h</code> and <code>H</code> are not the same thing (they are clearly distinct), so <strong>R</strong> is case sensitive.</li>
-<li>You can also see these new objects (<code>H</code> and <code>h</code>) are in your environment tab on the upper right pane. These objects are generally called <em>R objects</em>.</li>
-<li>You will get into the habit of saving things in <em>R objects</em> so that we can access them at later time. As long as your <em>RStudio session</em> remains open, <strong>RStudio</strong> keeps any <em>R objects</em> that you defined in it’s memory.</li>
-<li>Once you end your session, <strong>RStudio</strong> loses what was in its memory. Next time you start an <strong>RStudio</strong> session, no <em>R objects</em> will be in its memory. Is this a problem? Later you will see that this is not a problem!</li>
-<li>The assignment operator is <code>=</code> or <code>&lt;-</code>. Either one is acceptable, although I have a preference for <code>&lt;-</code> so most of my handout/notes will reflect this.</li>
-<li>All R object names must start with a letter (uppercase or lowercase). But the rest can be made up of letters, numbers or periods (with no spaces in between).</li>
-<li>The <code>#</code> character is used to indicate a comment. Anything to the right of a <code>#</code> is ignored by <strong>R</strong>.</li>
+<li><strong>R</strong> is case sensitive: <code>h</code> <span class="math inline">\(\neq\)</span> <code>H</code>.</li>
+<li>Created objects appear in the Environment tab.</li>
+<li>Objects persist only during a session unless saved.</li>
+<li>Use <code>=</code> or <code>&lt;-</code> for assignment. People tend to prefer <code>&lt;-</code>.</li>
+<li>Object names must start with a letter and can include letters, numbers, or periods (no spaces).</li>
+<li><code>#</code> marks a comment (ignored by R).</li>
 </ul>
-<p></br></p>
-<p>Back to the <em>R objects</em> <code>H</code> and <code>h</code>. The objects were created and are now stored in <strong>R</strong>’s memory So if you type <code>H</code> and hit enter again, then 20 will come up. <strong>RStudio</strong> can be closed by selecting the <span class="math inline">\(File&gt;Quit Session\)</span> or you can just enter the command <code>q()</code> in the console enter. When exiting <strong>RStudio</strong> you will be asked “Save workspace image to ….” If you select “Don’t Save,” then will you lose everything that is in your memory. For example, if you were to close without saving and then open <strong>RStudio</strong> again and type <code>H</code> you will get an error as follows. Saving the workspace is not required nor needed.</p>
+<p>To quit, use <em>File &gt; Quit Session</em> or type <code>q()</code>.</p>
 </div>
-<div id="entering-and-running-r-code-in-rstudio" class="section level2 hasAnchor" number="1.6">
-<h2><span class="header-section-number">1.6</span> Entering and running R code in RStudio<a href="intro.html#entering-and-running-r-code-in-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The easiest way to enter code or commands into <strong>RStudio</strong> is to type a command in the console pane and press enter. But this method is only efficient for short and simple analysis. The recommended way is to use <strong>RStudio</strong>’s text editor. Use the built in text editor as follows:</p>
-<ul>
-<li><p>Open an R script file (<em>File&gt;New file&gt;R script</em>).</p></li>
-<li><p>Type in your <strong>R</strong> code or commands into this editor. For example, type <code>h &lt;- 20</code>.</p></li>
-<li><p>Save the R script file as an <em>.R</em> file. For example, save your file as <em>FirstRsession.R</em>.</p></li>
-<li><p>You may then execute the command <code>h &lt;- 20</code> directly from the text
-editor without copying and pasting the command. This is done by
-highlighting the command, and then selecting the
-“Run” button (figure 5). You should then see the command executed in the
-console pane.</p></li>
-</ul>
+<div id="running-r-code-in-rstudio" class="section level2 hasAnchor" number="1.6">
+<h2><span class="header-section-number">1.6</span> Running R Code in RStudio<a href="#running-r-code-in-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>To enter code efficiently:</p>
+<ol style="list-style-type: decimal">
+<li>Open a new script (<em>File &gt; New File &gt; R Script</em>).</li>
+<li>Type code (e.g., <code>h &lt;- 20</code>).</li>
+<li>Save it as an <code>.R</code> file (e.g., <em>FirstRsession.R</em>).</li>
+<li>Highlight a line and click “Run” to execute it.</li>
+</ol>
 <p><img src="ch1figures/RStudioExe.png" style="width:80.0%" /></p>
-<p></br></p>
-<p><strong>Important</strong>: Always save your R script file periodically so that you may re-run the analysis when necessary (this applies to any assignments or exams).</p>
+<p><strong>Tip</strong>: Save your script regularly.</p>
 </div>
 <div id="a-fancy-calculator" class="section level2 hasAnchor" number="1.7">
-<h2><span class="header-section-number">1.7</span> A fancy calculator<a href="intro.html#a-fancy-calculator" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>At its most basic level, <strong>R</strong> can be viewed as a fancy calculator. While we won’t be using <strong>RStudio</strong> to do algebra problems, it is a good way to get familiar with <strong>RStudio</strong>. The basic operations are <code>+</code> (add), <code>-</code> (subtract), <code>*</code> (multiply), <code>/</code> (divide), and powers with the <code>^</code> operator. R follows the <a href="https://www.khanacademy.org/math/pre-algebra/pre-algebra-arith-prop/pre-algebra-order-of-operations/v/introduction-to-order-of-operations">order of operations</a>. Type the following on the new line in the editor and select “Run”:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="intro.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dv">727</span><span class="sc">/</span><span class="dv">163</span></span></code></pre></div>
-<p>and you should get the output <code>[1]</code> 4.4601227.</p>
-<p>Upon selecting “Run,” the result of the above appears in the console pane, preceded by the command you executed, and prefixed by the number 1 in square brackets <code>[1]</code>. The <code>[1]</code> indicates that this is the first (and in this case only) result from the command. Many commands will return multiple values. Try the following one by one, where each is typed on a new line and then selecting “Run” after typing the command in the editor:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="intro.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dv">25</span><span class="sc">*</span><span class="dv">10</span></span>
-<span id="cb3-2"><a href="intro.html#cb3-2" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb3-3"><a href="intro.html#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span><span class="sc">/</span><span class="dv">2</span></span>
-<span id="cb3-4"><a href="intro.html#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="intro.html#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span></span></code></pre></div>
-<p>After running these commands, you should note the following about the R prompt, <code>&gt;</code>:</p>
+<h2><span class="header-section-number">1.7</span> A Fancy Calculator<a href="#a-fancy-calculator" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>R handles basic math:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="dv">727</span><span class="sc">/</span><span class="dv">163</span></span></code></pre></div>
+<p>Output:</p>
+<p><code>[1] 4.4601227</code></p>
+<p>Other examples:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="dv">25</span> <span class="sc">*</span> <span class="dv">10</span></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="dv">5</span> <span class="sc">/</span> <span class="dv">2</span></span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span></span></code></pre></div>
+<p>Notes:</p>
 <ul>
-<li>The <code>&gt;</code> prompt means that <strong>R</strong> is content and ready for a new command or input.</li>
-<li>Please note that spacing is not an issue with <strong>R</strong>. For example, <code>5 / 2</code> is the same as <code>5/2</code>. However, using spaces makes the code <span style="color:red"><strong>easier</strong></span> to read and catch mistakes.</li>
+<li><code>&gt;</code> means <strong>R</strong> is ready.</li>
+<li>Spacing doesn’t matter (<code>5/2</code> <span class="math inline">\(=\)</span> <code>5 / 2</code>), but improves readability.</li>
 </ul>
-<pre><code>&gt; H
-Error: object &#39;H&#39; not found</code></pre>
-<p>Don’t worry about saving your workspace as we generally will not need to do this in the course.</p>
-</div>
-<div id="working-with-vectors" class="section level2 hasAnchor" number="1.8">
-<h2><span class="header-section-number">1.8</span> Working with vectors<a href="intro.html#working-with-vectors" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The function <code>c( )</code> function combines or concatenates terms together into a vector. Suppose we wish to store the values 1, 0, 2, 0, and 3 in a vector and store this result in an object called <code>X</code>. To do so, run the following:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="intro.html#cb5-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>( <span class="dv">1</span> , <span class="dv">0</span> , <span class="dv">2</span> , <span class="dv">0</span> , <span class="dv">3</span> )</span>
-<span id="cb5-2"><a href="intro.html#cb5-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>
+## Working with Vectors
+
+Combine values into a vector using `c()`:
+
+
+``` r
+x &lt;- c(1, 0, 2, 0, 3)
+x</code></pre>
 <pre><code>## [1] 1 0 2 0 3</code></pre>
-<p>What is the mean of the data stored in <code>x</code>? We can do this by summing up the values and dividing by 5:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="intro.html#cb7-1" aria-hidden="true" tabindex="-1"></a>SumOfx <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">0</span> <span class="sc">+</span> <span class="dv">2</span> <span class="sc">+</span> <span class="dv">0</span> <span class="sc">+</span> <span class="dv">3</span> </span>
-<span id="cb7-2"><a href="intro.html#cb7-2" aria-hidden="true" tabindex="-1"></a>SumOfx<span class="sc">/</span><span class="dv">5</span></span></code></pre></div>
+<p>Calculate mean:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>SumOfx <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">0</span> <span class="sc">+</span> <span class="dv">2</span> <span class="sc">+</span> <span class="dv">0</span> <span class="sc">+</span> <span class="dv">3</span></span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>SumOfx <span class="sc">/</span> <span class="dv">5</span></span></code></pre></div>
 <pre><code>## [1] 1.2</code></pre>
-<p>We could also use the <code>sum( )</code> function which will add all the elements in a numerical vector:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="intro.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(x)</span></code></pre></div>
+<p>Or use built-in functions:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">sum</span>(x)</span></code></pre></div>
 <pre><code>## [1] 6</code></pre>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="intro.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(x)<span class="sc">/</span><span class="dv">5</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="fu">sum</span>(x) <span class="sc">/</span> <span class="dv">5</span></span></code></pre></div>
 <pre><code>## [1] 1.2</code></pre>
-<p>Note the above in summation notation is
-<span class="math display">\[
-\frac{\sum_{i=1}^5 x_i}{5}
-\]</span></p>
-<p>Suppose we wanted to compute the sum below:
-<span class="math display">\[
-\sum_{i=1}^5 x_i^2
-\]</span>
-We can do this in steps before we use the <code>sum( )</code> function:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="intro.html#cb13-1" aria-hidden="true" tabindex="-1"></a>x<span class="sc">^</span><span class="dv">2</span></span></code></pre></div>
+<p>To compute sum of squares:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a>x<span class="sc">^</span><span class="dv">2</span></span></code></pre></div>
 <pre><code>## [1] 1 0 4 0 9</code></pre>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="intro.html#cb15-1" aria-hidden="true" tabindex="-1"></a>xsq <span class="ot">&lt;-</span> x<span class="sc">^</span><span class="dv">2</span> <span class="co"># assign the squared elements to &#39;xsq&#39;</span></span>
-<span id="cb15-2"><a href="intro.html#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-3"><a href="intro.html#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>( xsq )</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a>xsq <span class="ot">&lt;-</span> x<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a><span class="fu">sum</span>(xsq)</span></code></pre></div>
 <pre><code>## [1] 14</code></pre>
-<p>What if we wanted to compute the sum below?
-<span class="math display">\[
-\frac{\sum_{i=1}^5 (x_i - \bar{x})^2}{4}
-\]</span>
-Like before, we do this in steps:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="intro.html#cb17-1" aria-hidden="true" tabindex="-1"></a>diffofxANDxbar <span class="ot">&lt;-</span> x <span class="sc">-</span> <span class="fu">sum</span>(x)<span class="sc">/</span><span class="dv">5</span></span>
-<span id="cb17-2"><a href="intro.html#cb17-2" aria-hidden="true" tabindex="-1"></a>diffofxANDxbar</span></code></pre></div>
+<p>To compute variance-like quantity:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a>diffofxANDxbar <span class="ot">&lt;-</span> x <span class="sc">-</span> <span class="fu">sum</span>(x) <span class="sc">/</span> <span class="dv">5</span></span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a>diffofxANDxbar</span></code></pre></div>
 <pre><code>## [1] -0.2 -1.2  0.8 -1.2  1.8</code></pre>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="intro.html#cb19-1" aria-hidden="true" tabindex="-1"></a>sqdiffofxANDxbar <span class="ot">&lt;-</span> diffofxANDxbar<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb19-2"><a href="intro.html#cb19-2" aria-hidden="true" tabindex="-1"></a>sqdiffofxANDxbar</span></code></pre></div>
-<pre><code>## [1] 0.04 1.44 0.64 1.44 3.24</code></pre>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="intro.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>( sqdiffofxANDxbar ) <span class="sc">/</span> <span class="dv">4</span></span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a>sqdiffofxANDxbar <span class="ot">&lt;-</span> diffofxANDxbar<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a><span class="fu">sum</span>(sqdiffofxANDxbar) <span class="sc">/</span> <span class="dv">4</span></span></code></pre></div>
 <pre><code>## [1] 1.7</code></pre>
 </div>
-<div id="data-types-in-r" class="section level2 hasAnchor" number="1.9">
-<h2><span class="header-section-number">1.9</span> Data types in R<a href="intro.html#data-types-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>There are six basic data types in <strong>R</strong>:</p>
+<div id="data-types-in-r" class="section level2 hasAnchor" number="1.8">
+<h2><span class="header-section-number">1.8</span> Data Types in R<a href="#data-types-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Key types:</p>
 <ul>
 <li>Numeric</li>
-<li>Integer</li>
-<li>Complex</li>
-<li>Character/string</li>
+<li>Character (strings)</li>
+<li>Logical (TRUE/FALSE)</li>
 <li>Factor</li>
-<li>Logical</li>
 </ul>
-<p>We will only deal with numeric, character, factor and logical data types. Numeric data consists of decimal values. For example,</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="intro.html#cb23-1" aria-hidden="true" tabindex="-1"></a>j <span class="ot">&lt;-</span> <span class="fl">10.355</span></span>
-<span id="cb23-2"><a href="intro.html#cb23-2" aria-hidden="true" tabindex="-1"></a>j</span></code></pre></div>
+<p>Examples:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a>j <span class="ot">&lt;-</span> <span class="fl">10.355</span></span>
+<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a>j</span></code></pre></div>
 <pre><code>## [1] 10.355</code></pre>
-<p>In <strong>R</strong>, numeric is the default type for numbers. It stores all numbers as floating-point numbers (numbers with decimals). Character data are character strings (a string of one or more characters). Character data are created by putting the string in quotations. For example,</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="intro.html#cb25-1" aria-hidden="true" tabindex="-1"></a>k <span class="ot">&lt;-</span> <span class="fu">c</span>( <span class="st">&quot;hi&quot;</span>, <span class="st">&quot;hello&quot;</span> )</span>
-<span id="cb25-2"><a href="intro.html#cb25-2" aria-hidden="true" tabindex="-1"></a>k</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a>k <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;hi&quot;</span>, <span class="st">&quot;hello&quot;</span>)</span>
+<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a>k</span></code></pre></div>
 <pre><code>## [1] &quot;hi&quot;    &quot;hello&quot;</code></pre>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="intro.html#cb27-1" aria-hidden="true" tabindex="-1"></a>L <span class="ot">&lt;-</span> <span class="st">&quot;3.4403&quot;</span> <span class="co"># a string since we put it in quotations!</span></span>
-<span id="cb27-2"><a href="intro.html#cb27-2" aria-hidden="true" tabindex="-1"></a>L <span class="co"># this is not numeric</span></span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a>L <span class="ot">&lt;-</span> <span class="st">&quot;3.4403&quot;</span></span>
+<span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a>L</span></code></pre></div>
 <pre><code>## [1] &quot;3.4403&quot;</code></pre>
-<p>Logical data can have one of two values: <code>TRUE</code> or <code>FALSE</code>. Logical are generally created when there is a comparison between variables.</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="intro.html#cb29-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">c</span>( <span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span> ) <span class="co"># no quotation marks!</span></span>
-<span id="cb29-2"><a href="intro.html#cb29-2" aria-hidden="true" tabindex="-1"></a>p <span class="co"># this is not character data but rather  logical values</span></span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>)</span>
+<span id="cb26-2"><a href="#cb26-2" tabindex="-1"></a>p</span></code></pre></div>
 <pre><code>## [1]  TRUE  TRUE FALSE</code></pre>
-<p>Factor data contains a set of numeric codes with character-valued levels. A simply way to create a factor variable is to first define it as character variable and then covert it to a factor variable by applying <code>as.factor( )</code> to the vector:</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="intro.html#cb31-1" aria-hidden="true" tabindex="-1"></a>MaritalStatus <span class="ot">&lt;-</span> <span class="fu">c</span>( <span class="st">&quot;married&quot;</span>, <span class="st">&quot;married&quot;</span>, <span class="st">&quot;divorced&quot;</span>, <span class="st">&quot;single&quot;</span>, <span class="st">&quot;single&quot;</span>, <span class="st">&quot;widowed&quot;</span>, <span class="st">&quot;married&quot;</span> )</span>
-<span id="cb31-2"><a href="intro.html#cb31-2" aria-hidden="true" tabindex="-1"></a>MaritalStatus</span></code></pre></div>
-<pre><code>## [1] &quot;married&quot;  &quot;married&quot;  &quot;divorced&quot; &quot;single&quot;   &quot;single&quot;   &quot;widowed&quot;  &quot;married&quot;</code></pre>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="intro.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="do">### convert character variable to factor variable:</span></span>
-<span id="cb33-2"><a href="intro.html#cb33-2" aria-hidden="true" tabindex="-1"></a>MaritalStatus <span class="ot">&lt;-</span> <span class="fu">as.factor</span>( MaritalStatus )</span>
-<span id="cb33-3"><a href="intro.html#cb33-3" aria-hidden="true" tabindex="-1"></a>MaritalStatus</span></code></pre></div>
-<pre><code>## [1] married  married  divorced single   single   widowed  married 
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a>MaritalStatus <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;married&quot;</span>, <span class="st">&quot;married&quot;</span>, <span class="st">&quot;divorced&quot;</span>, <span class="st">&quot;single&quot;</span>, <span class="st">&quot;single&quot;</span>, <span class="st">&quot;widowed&quot;</span>, <span class="st">&quot;married&quot;</span>)</span>
+<span id="cb28-2"><a href="#cb28-2" tabindex="-1"></a>MaritalStatus</span></code></pre></div>
+<pre><code>## [1] &quot;married&quot;  &quot;married&quot;  &quot;divorced&quot; &quot;single&quot;  
+## [5] &quot;single&quot;   &quot;widowed&quot;  &quot;married&quot;</code></pre>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" tabindex="-1"></a>MaritalStatus <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(MaritalStatus)</span>
+<span id="cb30-2"><a href="#cb30-2" tabindex="-1"></a>MaritalStatus</span></code></pre></div>
+<pre><code>## [1] married  married  divorced single   single  
+## [6] widowed  married 
 ## Levels: divorced married single widowed</code></pre>
-<p>Note that data within a vector can only be one kind of data type (i.e., you can’t mix numeric values with character or logical values). Further, you are not expected to be able to create factor variables (or other data types), but rather you are expected to only recognize and distinguish between these data types.</p>
+<p>Vectors can only contain one type. Recognizing data types is more important than creating them.</p>
 </div>
-<div id="comments-in-r" class="section level2 hasAnchor" number="1.10">
-<h2><span class="header-section-number">1.10</span> Comments in R<a href="intro.html#comments-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Everything that you type after a <code>#</code> sign is assumed to be a comment and is ignored by <strong>R</strong>. Adding comments to your R script is useful because it will help you recall what your commands or lines of code will do. In the editor, type the following and select “Run”:</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="intro.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="do">### Comments are ignored by R!</span></span>
-<span id="cb35-2"><a href="intro.html#cb35-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">3</span>    <span class="co"># this command tells R to compute 1 plus 3 and assign it an R object called  y</span></span></code></pre></div>
-<p>Note that <code>y</code> is now in <strong>RStudio</strong>’s memory, and we can access its value by typing <code>y</code> on a new line and selecting “Run.” Now, type the following in your editor on a new line and then select “Run”:</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="intro.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># z = 3 - 7  # this code  is ignored because of # `</span></span></code></pre></div>
-<p>Note that this command is ignored because of <code>#</code>. Get into the habit of using comments!</p>
+<div id="comments-in-r" class="section level2 hasAnchor" number="1.9">
+<h2><span class="header-section-number">1.9</span> Comments in R<a href="#comments-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Use <code>#</code> for comments:</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" tabindex="-1"></a><span class="do">### Comments are ignored by R!</span></span>
+<span id="cb32-2"><a href="#cb32-2" tabindex="-1"></a>y <span class="ot">=</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">3</span>  <span class="co"># Assigns 4 to y</span></span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" tabindex="-1"></a><span class="co"># z = 3 - 7  # Ignored</span></span></code></pre></div>
+<p>Use comments to clarify code.</p>
 </div>
-<div id="using-r-functions" class="section level2 hasAnchor" number="1.11">
-<h2><span class="header-section-number">1.11</span> Using R functions<a href="intro.html#using-r-functions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p><strong>R</strong> has many built-in function. For example, the <code>c( )</code>
-function combines, or concatenates terms together
-into a vector.</p>
-<p>Suppose we wish to assign the values</p>
-<pre><code>1  0  2  0  3  1  0  1  2  0</code></pre>
-<p>to a vector denoted by `X. In your R script, run the code
-given below:</p>
-<pre><code>X &lt;- c(1, 0, 2, 0, 3, 1, 0, 1, 2, 0)
-
-X</code></pre>
-<p>You should have obtained output as follows:</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="intro.html#cb39-1" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">0</span>)</span>
-<span id="cb39-2"><a href="intro.html#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-3"><a href="intro.html#cb39-3" aria-hidden="true" tabindex="-1"></a>X</span>
-<span id="cb39-4"><a href="intro.html#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] 1 0 2 0 3 1 0 1 2 0</span></span></code></pre></div>
-<p>Note that this is executed code since we see the command prompt <code>&gt;</code>
-before the code (Note: the <code>#</code> show before <code>&gt;</code> would not appear in your R console. This is placed in these notes to better distinguish between R code and output. If you wish to bring up <code>X</code> once more you do not have to retype <code>X</code>. Instead, use the level keys <span class="math inline">\(\uparrow\)</span> and <span class="math inline">\(\downarrow\)</span> to scroll up and
-down past commands issued in your current <strong>R</strong> work session.
-Another example of an <strong>R</strong> built-in function is the <code>sum( )</code>. This function computes the sumn of all the numbers in a vector. The syntax consist of the function name followed by parentheses to contain the argument(s). The <code>sum( )</code> function only requires one argument, the data vector. We will make use of R’s many built in functions along the way. Examples of other functions are shown below:</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="intro.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="do">### computing the mean of the numbers stored in X</span></span>
-<span id="cb40-2"><a href="intro.html#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(X)  <span class="co"># sample mean</span></span>
-<span id="cb40-3"><a href="intro.html#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">10</span></span>
-<span id="cb40-4"><a href="intro.html#cb40-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-5"><a href="intro.html#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="do">### compute the length of the vector</span></span>
-<span id="cb40-6"><a href="intro.html#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(X)</span>
-<span id="cb40-7"><a href="intro.html#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">10</span></span>
-<span id="cb40-8"><a href="intro.html#cb40-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-9"><a href="intro.html#cb40-9" aria-hidden="true" tabindex="-1"></a><span class="co"># more on functions later.</span></span></code></pre></div>
+<div id="using-r-functions" class="section level2 hasAnchor" number="1.10">
+<h2><span class="header-section-number">1.10</span> Using R Functions<a href="#using-r-functions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Use <code>c()</code> to create a vector:</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">0</span>)</span>
+<span id="cb34-2"><a href="#cb34-2" tabindex="-1"></a>X</span>
+<span id="cb34-3"><a href="#cb34-3" tabindex="-1"></a><span class="do">##  [1] 1 0 2 0 3 1 0 1 2 0</span></span></code></pre></div>
+<p>Use arrow keys to recall past commands. Built-in functions like <code>sum()</code> are common:</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" tabindex="-1"></a><span class="fu">sum</span>(X)</span>
+<span id="cb35-2"><a href="#cb35-2" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">10</span></span>
+<span id="cb35-3"><a href="#cb35-3" tabindex="-1"></a><span class="fu">length</span>(X)</span>
+<span id="cb35-4"><a href="#cb35-4" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">10</span></span></code></pre></div>
 </div>
-<div id="loading-a-package-and-installing-new-packages" class="section level2 hasAnchor" number="1.12">
-<h2><span class="header-section-number">1.12</span> Loading a package and installing new packages<a href="intro.html#loading-a-package-and-installing-new-packages" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>All functions in <strong>R</strong> come from libraries/packages. There are many <em>packages</em> that can be installed to expand the ability of R. By default, R comes with several packages installed (some loaded automatically when you open <strong>RStudio</strong> to be used and some not). For example, a function called <code>mean()</code> is available from the <code>base</code> package, but this packages is automatically loaded when <strong>RStudio</strong> is opened so we will always have access to this function without loading an packages.</p>
-<p>As for those packages that aren’t loaded automatically, we first have to load the packages to use its “tools.” For example,the <code>MASS</code> library come with <strong>R</strong> but is not automatically loaded. This package provides a function called <code>boxcox()</code> (for box-cox transformations). To use <code>boxcox()</code>, we first have to load this package by running the command <code>require(MASS)</code> or <code>library(MASS)</code>.</p>
-<p>Remember to think as <em>packages</em> as toolboxes. We will install additional <em>packages</em> called <code>openintro</code> and <code>mosaic</code> that will provide useful data sets and functions (“tools”). These packages are specifically designed to make <strong>R</strong> more accessible.</p>
-<p>To install these packages, in the <strong>R</strong> console type the following command:</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="intro.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>( <span class="st">&quot;openintro&quot;</span> )  <span class="co"># no spaces within quotation marks!</span></span></code></pre></div>
-<p>Hit enter, and you will see activity occurring in the <strong>R console</strong>. This may take a few minutes to complete. Note the following during the installation process:</p>
-<ul>
-<li>If R asks you to choose a CRAN mirror for downloading, select any <em>USA</em> mirror.</li>
-<li>If R asks to use your personal library, answer yes.</li>
-<li>If R prompts you to update any packages, please agree to the updates.</li>
-</ul>
-<p>When it is done installing, it should say something like “The downloaded binary packages are in…” right above the <strong>R</strong> prompt <code>&gt;</code>. This means the packages installed correctly.</p>
-<p>Now install the <code>mosaic</code> package. In the <strong>R</strong> console type and run the following command:</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="intro.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>( <span class="st">&quot;mosaic&quot;</span> )     <span class="co"># no spaces within quotation marks!</span></span></code></pre></div>
-<p>Again, this may take a few minutes to complete. Note that these packages only have to be installed once on your computer. However, every time a new RStudio session is started, the package will have to be loaded before datasets and/or functions from the package can be used. If a different computer is being used, these packages will have to bed installed again. For now, only these additional packages are required.</p>
-
+<div id="loading-and-installing-packages" class="section level2 hasAnchor" number="1.11">
+<h2><span class="header-section-number">1.11</span> Loading and Installing Packages<a href="#loading-and-installing-packages" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>R</strong> comes with base packages. Some, like <code>mean()</code>, are loaded by default. Others, like <code>boxcox()</code> from <code>MASS</code>, must be loaded manually:</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" tabindex="-1"></a><span class="fu">library</span>(MASS)</span></code></pre></div>
+<p>Install additional packages once using:</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;openintro&quot;</span>)</span>
+<span id="cb37-2"><a href="#cb37-2" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;mosaic&quot;</span>)</span></code></pre></div>
+<p>Follow prompts (choose USA mirror, allow personal library, update if asked). After installation, load packages in each session using <code>library(openintro)</code> or <code>require(openintro)</code>.</p>
 </div>
 </div>
             </section>
@@ -545,8 +385,8 @@ Another example of an <strong>R</strong> built-in function is the <code>sum( )</
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="basics.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -589,10 +429,7 @@ gitbook.start({
 "text": null
 },
 "download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
+"search": false,
 "toc": {
 "collapse": "subsection"
 }
@@ -606,7 +443,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');
