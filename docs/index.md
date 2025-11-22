@@ -1,7 +1,7 @@
 --- 
 title: "An R companion"
 author: "Eduardo Montoya"
-date: "2025-07-24"
+date: "2023-04-25"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib]
@@ -19,10 +19,10 @@ description: "A freely available document meant to help students learn R concurr
 # Preface {-}
 
 
-This document is freely available and a work in progress. It may contain grammatical errors, so please report any so they can be corrected.
+This document is freely available. There are grammatical errors in the document. If you do encounter a mistake or an error please inform me so that it can be corrected. If you would like to add material or have suggestions for material changes, then please contact me to include them in any future updates, and any contributions will be acknowledged. Keep in mind that this document is a work in progress, and the eventual goal is to make this document independent of any class textbook.
 
-If you'd like to suggest content additions or edits, feel free to contact me; contributions will be acknowledged in future updates. The goal is to eventually make this resource independent of any specific textbook.
+The first two chapters introduce one to the \textbf{R} environment and \textbf{RStudio} and some basic \textbf{R} functions so that one gets an idea of the ````''Look and Feel'' of \textbf{R} and \textbf{RStudio}. The last chapter discuss how to use \textbf{R} to carry out the analyses and techniques for some common areas covered in undergraduate regression analysis.
 
-The first two chapters introduce the basics of the **R** environment and RStudio, giving you a feel for their interface and core functionality. The final chapter demonstrates how to use **R** for common techniques in undergraduate regression analysis.
-
-This guide is best used with a learn-by-doing approach: run the example code yourself to see how it works. It's not a comprehensive manual, but a course companion. And since there are often multiple ways to do the same task in **R**, I've aimed to present the most accessible methods.
+The best way to use this document is to apply a learn-by-doing approach. That is, don't just read through the \textbf{R} code given, but try the sample code given so that you understand what works and what does not. Finally, this document is not intended to be a know all guide but only a companion to your course. It is also worth noting that there are several ways to do the same thing in \textbf{R} and my hope is that I presented the easiest way(s).
+ 
+ 
