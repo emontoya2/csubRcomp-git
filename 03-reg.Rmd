@@ -1,7 +1,7 @@
 # R code for Regression Analysis {#reg}
 
 The goal of this chapter is to have you learn to  use **R** to carry out the analyses and techniques generally covered in a regression analysis course.  Currently, we carry out some of the 
-examples found in 
+examples found in
 
 Kutner M.H, Nachtsheim C.J, and Neter, J., *Applied* *Linear* *Regression* *Models*. McGraw-Hill/Irwin.
 
@@ -66,7 +66,7 @@ The function `xyplot( )` has other arguments that allow you to change axis label
 # main: title for plot  (optional) 
 # ylab: label for y-axis (optional) 
 # xlab: label for x-axis (optional) 
-# pch:  point symbol. Common numeric plotting symbols are 0-25 (optional) 
+# pch:  point symbol. Common numeric plotting symbols are 0-25 (optional)
 ``` 
 
 
@@ -268,7 +268,7 @@ t.star
 
 Under $H_0: \beta_1 = 0$, and assuming independent normal errors with constant variance, the statistic has a $t$ distribution with $n-2$ degrees of freedom (notation: $t_{n-2}$). Recall that the  p-value is the probability that the test statistic would take a value as extreme (or more extreme) as the observed test statistic in the direction of the alternative if $H_0$ were true.
 
-If $H_a: \beta_1 >0$, the p-value = $P( t_{n-2} > 10.290 )$.  To obtain this probability we use the function `xpt( q, df, lower.tail )`.  The value `q` will be the value of interest (10.290 in this example), `df` corresponds to the degrees of freedom (n-2), and `lower.tail` will either be set equal to `TRUE` (computes the area to the left of `q`) or `FALSE` (computes the area to the right of `q`). To compute $P( t_{n-2} > 10.290 )$, set `lower.tail=FALSE`: 
+If $H_a: \beta_1 >0$, the p-value = $P( t_{n-2} > 10.290 )$.  To obtain this probability we use the function `xpt( q, df, lower.tail )`.  The value `q` will be the value of interest (10.290 in this example), `df` corresponds to the degrees of freedom (n-2), and `lower.tail` will either be set equal to `TRUE` (computes the area to the left of `q`) or `FALSE` (computes the area to the right of `q`). To compute $P( t_{n-2} > 10.290 )$, set `lower.tail=FALSE`:
 ```{r, echo=T,   eval=T ,message=FALSE,    collapse = T,   fig.width=5.5, warning=F,  fig.height=3.5}
 xpt( q= 10.290, df= 25 - 2, lower.tail =FALSE)
 ```	
@@ -279,11 +279,11 @@ If instead $H_a: \beta_1 <0$, then set `lower.tail=TRUE`:
 ```{r, echo=T,   eval=T ,message=FALSE,    collapse = T,   fig.width=5.5, warning=F,  fig.height=3.5}
 xpt( q= 10.290, df= 25 - 2, lower.tail =TRUE)
 ```
-The output shows that $P( t_{n-2} < 10.290 ) \approx 1$.  Lastly, if $H_a: \beta_1 \neq 0$, then  we care about both possible extremes: 
+The output shows that $P( t_{n-2} < 10.290 ) \approx 1$.  Lastly, if $H_a: \beta_1 \neq 0$, then  we care about both possible extremes:
 $$P( t_{n-2} < -10.290 ) + P( t_{n-2} > 10.290 ) = 2 \times  P( t_{n-2} > |10.290| )=.0000000004$$
 
 
-For a confidence interval (CI) for $\beta_1$, recall that  the limits of a $1-\alpha$ confidence interval for $\beta_1$ are 
+For a confidence interval (CI) for $\beta_1$, recall that  the limits of a $1-\alpha$ confidence interval for $\beta_1$ are
   $$b_1 \pm t_{1-\alpha/2, n-2} s\{b_1\}$$
 To derive the CI, we can either use the `summary( )` output along with the critical values provided by `xqt( )`, or you can use `confint( )`. Let's first derive the CI using `xqt( p, df, lower.tail )`.  This function provides the quantile for a specified probability.  For the Toluca Company example suppose a 95% confidence interval is to be computed.  Then, $t_{1-.05/2,25-2}=$ `xqt( 1-.05/2, df= 25-2)`= 2.069. 
 ```{r, echo=T,   eval=T ,message=FALSE,    collapse = T,   fig.width=5.5, warning=F,  fig.height=3.5}
@@ -308,7 +308,7 @@ confint( toluca.fit, level = .95)
 ### CI for the mean response ($E(y_h)$) and a prediction interval for $y_h$
 
 
-Following the Toluca Company example from ALRM, we obtain a CI for the mean response $E(Y_h)$ at $x_h=100$ units by using the function `predict( )`. However, the function has two additional arguments, `interval` and `level`. We set `interval = "confidence"` and level to the desired confidence level: 
+Following the Toluca Company example from ALRM, we obtain a CI for the mean response $E(Y_h)$ at $x_h=100$ units by using the function `predict( )`. However, the function has two additional arguments, `interval` and `level`. We set `interval = "confidence"` and level to the desired confidence level:
 ```{r fig.width=7, fig.height=3,fig.align='center',cache=FALSE,  echo=T, message = FALSE,fig.asp=0.3500}
 X.new<- data.frame(xvar = c( 100 ) )  # xvar refers to the name of the variable
 
@@ -432,7 +432,7 @@ These plots suggest potential problems; they do not prove that the assumptions h
 
 ### Testing departures from normality
 
-**R** code is provided to carry out the Shapiro-Wilk and Lilliefors (Kolmogorov-Smirnov) test for normality.  Both tests may be used to detect if the residuals do not follow a normal distribution. The null hypothesis is that the residuals are normally distributed.  The alternative is that they are not normally distributed.  Thus, we are not testing if the residuals are normally distributed but rather if they depart from the normal distribution. 
+**R** code is provided to carry out the Shapiro-Wilk and Lilliefors (Kolmogorov-Smirnov) test for normality.  Both tests may be used to detect if the residuals do not follow a normal distribution. The null hypothesis is that the residuals are normally distributed.  The alternative is that they are not normally distributed.  Thus, we are not testing if the residuals are normally distributed but rather if they depart from the normal distribution.
 ```{r fig.width=7, fig.height=3,fig.align='center',cache=FALSE,  echo=T, message = FALSE,fig.asp=0.3500}
 
 ### Shapiro-Wilk Normality Test
@@ -444,12 +444,12 @@ require( "nortest" )
 lillie.test( tolresids )
 ```
 
-For both tests, the p-value exceeds a conventional $\alpha$ level, so we do not reject normality. This does not prove normality. Because fitted residuals are correlated, these tests on residuals are exploratory checks rather than exact tests of independent normal errors; also inspect the Q-Q plot. 
+For both tests, the p-value exceeds a conventional $\alpha$ level, so we do not reject normality. This does not prove normality. Because fitted residuals are correlated, these tests on residuals are exploratory checks rather than exact tests of independent normal errors; also inspect the Q-Q plot.
  
  
 ### Transformations
 
-A possible remedial measure when the simple linear regression model is not appropriate is to transform the response and/or predictor variable.  To transform a variable, we use the `dplyr::mutate( )` which comes from the `dplyr` package. The `dplyr` package is installed as a dependency of `mosaic`. We call `dplyr::mutate()` explicitly below.  The `dplyr::mutate( )` function requires the name of the dataframe and the name of a new variable/object that will hold your transformed variable: 
+A possible remedial measure when the simple linear regression model is not appropriate is to transform the response and/or predictor variable.  To transform a variable, we use the `dplyr::mutate( )` which comes from the `dplyr` package. The `dplyr` package is installed as a dependency of `mosaic`. We call `dplyr::mutate()` explicitly below.  The `dplyr::mutate( )` function requires the name of the dataframe and the name of a new variable/object that will hold your transformed variable:
 
 `dplyr::mutate( ` 'dataframe name',  'new variable'= 'transformed variable'` )`
 
@@ -468,7 +468,7 @@ dplyr::mutate( toluca.data,  sqrty= sqrt( yvar ) ) # the square-root variable wi
 
 We want to be able to use the transformed variable, so we store the resulting new dataframe to a new object:
 ```{r fig.width=7, fig.height=3,fig.align='center',cache=FALSE,  echo=T, message = FALSE,fig.asp=0.3500}
-toluca.dataVer1 <- dplyr::mutate( toluca.data,  sqrty= sqrt( yvar ) )  
+toluca.dataVer1 <- dplyr::mutate( toluca.data,  sqrty= sqrt( yvar ) )
 pillar::glimpse( toluca.dataVer1 )
 ```
 
@@ -477,7 +477,7 @@ Now apply the natural log transformation to the explanatory variable:
 ### Apply natural log trans. to x.
 ### Note that we are using toluca.dataVer1
 ### dataframe since it already includes 'sqrty'.
-toluca.dataVer2 <- dplyr::mutate( toluca.dataVer1,  lnx = log( xvar ) )  
+toluca.dataVer2 <- dplyr::mutate( toluca.dataVer1,  lnx = log( xvar ) )
 pillar::glimpse( toluca.dataVer2 )
 
 ### One could also apply as many trans. as one would
@@ -947,13 +947,13 @@ To standardize a given variable, we use a function called `scale( )` within muta
 require( mosaic )
 ### Standardize each explanatory variable using dplyr::mutate()
 ### with scale().  
-dwaine.dataStdz <- dplyr::mutate( dwaine.data , y.stdz  = as.numeric(scale( y )) , 
-                           x1.stdz = as.numeric(scale( x1 )) , 
+dwaine.dataStdz <- dplyr::mutate( dwaine.data , y.stdz  = as.numeric(scale( y )) ,
+                           x1.stdz = as.numeric(scale( x1 )) ,
                            x2.stdz = as.numeric(scale( x2 )) )
 
 # The head( ) function allows one to view the 
 # first few observations of a given dataset.
-# Note that we now have each standardized 
+# Note that we now have each standardized
 #  variable. 
 head( dwaine.dataStdz )
 ```
@@ -964,13 +964,13 @@ dwaine.fitStdz <- lm( y.stdz ~ x1.stdz + x2.stdz, data= dwaine.dataStdz)
 summary(dwaine.fitStdz)
 ``` 
 
-Standardization changes the coefficient scales and residual standard error, but preserves fitted relationships, $R^2$, and the slope tests. Retaining the intercept preserves the usual centered $R^2$ definition; the fitted intercept is approximately zero. 
+Standardization changes the coefficient scales and residual standard error, but preserves fitted relationships, $R^2$, and the slope tests. Retaining the intercept preserves the usual centered $R^2$ definition; the fitted intercept is approximately zero.
 
 ## Polynomial regression
 
 In this section, we start by using R to fit the second-order polynomial regression model with one predictor variable:
 $$
-y_i=\beta_0 + \beta_1 x_{i}^* + \beta_2 x_i^{*2} + \varepsilon_i  
+y_i=\beta_0 + \beta_1 x_{i}^* + \beta_2 x_i^{*2} + \varepsilon_i
 $$
 where $x_{i}^* = x_i - \bar{x}$.  
 
@@ -1032,7 +1032,7 @@ require( leaps )
 
 First, we have to define a matrix whose columns consist of the variables under consideration (this is not the design/model matrix). `leaps()` expects numeric predictor columns, not factor objects. Keep the numeric codes for the binary variables $x6$, $x7$, and $x8$ rather than using their factored versions. A categorical predictor with more than two levels would need multiple indicator columns.
 ```{r fig.width=7, fig.height=3,fig.align='center',cache=FALSE,  echo=T, message = FALSE,fig.asp=0.3500}
-Xleaps <- as.matrix(dplyr::select(surgunit.data, x1, x2, x3, x4, x5, x6, x7, x8))  
+Xleaps <- as.matrix(dplyr::select(surgunit.data, x1, x2, x3, x4, x5, x6, x7, x8))
 ```
 
 The `leaps()` function requires this matrix, the response variable and the model selection criterion (`"Cp"` or `"adjr2"`):
@@ -1051,7 +1051,7 @@ colnames(R2adj.info)=c("x1","x2","x3","x4","x5", "x6", "x7", "x8", "p","adjr2")
 R2adj.info
 ```
 
-Note that models with higher $R_{a,p}^2$ are the models that include $x1$, $x2$, $x3$, and $x8$  and include $x1$, $x2$, $x3$, $x6$, and $x8$. 
+Note that models with higher $R_{a,p}^2$ are the models that include $x1$, $x2$, $x3$, and $x8$  and include $x1$, $x2$, $x3$, $x6$, and $x8$.
 
 Mallows' $C_p$ criterion may also be obtained in the same manner using `leaps` but we replace `"adjr2"` with `"Cp"`:
 ```{r fig.width=7, fig.height=3,fig.align='center',cache=FALSE,  echo=T, message = FALSE,fig.asp=0.3500}
@@ -1331,7 +1331,7 @@ p.coef <- fit1$rank # includes the intercept
 leverage.cutoff <- 3 * p.coef / n.cases
 leverage.cutoff
 
-xyplot( hatvalues( fit1 ) ~ seq_len(n.cases) , 
+xyplot( hatvalues( fit1 ) ~ seq_len(n.cases) ,
         panel = function(x, y) {
          panel.xyplot(x, y)
          panel.abline(a=leverage.cutoff, b=0, col="red")
@@ -1361,7 +1361,7 @@ dffits.cutoff
        }, 
        xlab = "cases", 
        ylab = "DFFITS",
-       ylim=range(c(dffits.values, -dffits.cutoff, dffits.cutoff)) )
+       ylim=extendrange(c(dffits.values, -dffits.cutoff, dffits.cutoff)) )
 ```       
        
  

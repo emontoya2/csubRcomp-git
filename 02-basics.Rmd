@@ -44,7 +44,7 @@ In general, datasets that come with R or an R package, such as `ChickWeight` hav
 ## .csv files
 
 
-It is assumed you have used an Excel spreadsheet.  If not, please view the tutorial  [Excel Tutorial for Beginners](https://www.youtube.com/watch?v=rwbho0CgEAE) . 
+It is assumed you have used an Excel spreadsheet.  If not, please view the tutorial  [Excel Tutorial for Beginners](https://www.youtube.com/watch?v=rwbho0CgEAE) .
 
 Data sets used in this class will either be built-in datasets (that is, they come with R or from an R package) or  they will be *.csv* files. A *.csv* may be viewed with Microsoft Excel. We will import .csv files into RStudio. If you have data that you want to import into RStudio, you will first store your data in a .csv file using Excel. The format in which you store it should be a **data matrix** or in **tidy form**. There are three characteristics that make a dataset a data matrix or tidy:
 
@@ -53,7 +53,7 @@ Data sets used in this class will either be built-in datasets (that is, they com
 - Each value must have its own cell.
 
 
-To set up your spreadsheet, do the following steps: 
+To set up your spreadsheet, do the following steps:
 
 + Step 1 -- Input and organize your data in Excel.
   + Organize your data in an Excel worksheet, such that the first row (Row 1) contains the column names and each subsequent row contains all the necessary information for each data point. For example:
@@ -66,7 +66,7 @@ To set up your spreadsheet, do the following steps:
 
 When you click to save the worksheet as a comma separated file (.csv), Excel may present you with one or two warnings. One may warn you that the .csv format cannot accommodate multiple worksheets. That's fine; just click "Yes" to save the active worksheet. The second warning tells you that "Some features in your workbook might be lost if you save it as a CSV (Comma delimited)."  Again, that's fine, just click "Yes". When you're done, you will see that a new file has been created in the directory where you saved your file. If you were to open this file in Excel you would see your spreadsheet with the data you entered.  On the surface, it looks no different than an Excel spreadsheet file (.xls or .xlsx)
 
-**Important:** The examples in this chapter assume that the first row of the CSV contains column names and each subsequent row contains one observation. R can also read files without column names by using `header = FALSE`. 
+**Important:** The examples in this chapter assume that the first row of the CSV contains column names and each subsequent row contains one observation. R can also read files without column names by using `header = FALSE`.
 
 
 
@@ -101,7 +101,7 @@ The `mlbDataImport` dataframe should now appear under the "Environment tab".
 
 ### Importing data from your computer
 
-Download the *.csv* file below onto your computer.  Make sure to  note where your file is saved. Depending on your browser settings, after clicking on the link below, the file will either open in your browser or be downloaded.  
+Download the *.csv* file below onto your computer.  Make sure to  note where your file is saved. Depending on your browser settings, after clicking on the link below, the file will either open in your browser or be downloaded.
  
 [http://www.csub.edu/~emontoya2/datasets/sampledata.csv](http://www.csub.edu/~emontoya2/datasets/sampledata.csv)
 
@@ -144,7 +144,7 @@ Recall that we imported the MLB dataset and we stored it in a dataframe called `
 pillar::glimpse( mlbDataImport )  # pillar::glimpse() is provided by pillar
 ```
 
-Let's start with a simple graphical summary.  Three widely used R plotting systems are *base*, *lattice*, and *ggplot2*.  We will be using the lattice system, which comes from the `lattice` package.  The `lattice` package comes with R. Load it explicitly with `library(lattice)` to use functions such as `histogram()` and `bwplot()`. 
+Let's start with a simple graphical summary.  Three widely used R plotting systems are *base*, *lattice*, and *ggplot2*.  We will be using the lattice system, which comes from the `lattice` package.  The `lattice` package comes with R. Load it explicitly with `library(lattice)` to use functions such as `histogram()` and `bwplot()`.
 
 To start, we will create a histogram of `salary`.  `salary` represents the salary (in $1000s) of a given baseball player in 2010.  Again, the basic formula is `goal( ~ x , data = dataframe)` where `goal` would be replaced with the name of the function to create the desired graph.  **R** refers to histograms as `histogram()`:
 ```{r gr2, echo=T,   eval=T ,message=FALSE,    collapse = T,   fig.width=5.5, warning=F,  fig.height=2.5}
@@ -157,7 +157,7 @@ mean( ~ salary  , data=  mlbDataImport )
 ```	
 
 
-Suppose you wanted to compute the average salary for each position. To do so, we can tell RStudio to compute the mean by levels/groups of a grouping variable. A grouping variable identifies categories or groups. Grouping variables are categorical variables.  When summaries are desired based on the levels or groups of the grouping variables, they are called side-by-side or comparative summaries. 
+Suppose you wanted to compute the average salary for each position. To do so, we can tell RStudio to compute the mean by levels/groups of a grouping variable. A grouping variable identifies categories or groups. Grouping variables are categorical variables.  When summaries are desired based on the levels or groups of the grouping variables, they are called side-by-side or comparative summaries.
 
 For any  side-by-side or comparative data summary, the general formula changes a bit. The formula is `goal( ~ x | gfactor , data = dataframe)`, where `gfactor` represents the grouping variable. In our example, the grouping variable is `position`:
 ```{r gr4dd, echo=T,   eval=T ,message=FALSE,    collapse = T,   fig.width=5.5, warning=F,  fig.height=2.5}
@@ -191,7 +191,7 @@ Select your preferred option. A small window should then appear of the plot. In 
 
 ### Exporting R output
 
-If **R** output is requested, then highlight and copy the output from the **R** console.  It may then be pasted in your Word or Google Doc document. Alternatively, take a screenshot of the desired output. 
+If **R** output is requested, then highlight and copy the output from the **R** console.  It may then be pasted in your Word or Google Doc document. Alternatively, take a screenshot of the desired output.
  
  
 ## Extracting variables from dataframes
@@ -283,7 +283,7 @@ This generally means that:
 It is likely that you misspelled the name, were not careful with case-sensitivity, or inserted spaces at the start/end of the package name.   
  
 
-Please keep in mind that everyone makes errors when learning new software.  Oftentimes, you will find that you are able to understand what they mean by carefully reading over them. When you can't, carefully look over your R file and consider posting your question on the "Student-led RStudio Q&A" discussion board or scheduling a student hour appointment.  
+Please keep in mind that everyone makes errors when learning new software.  Oftentimes, you will find that you are able to understand what they mean by carefully reading over them. When you can't, carefully look over your R file and consider posting your question on the "Student-led RStudio Q&A" discussion board or scheduling a student hour appointment.
 
 
 

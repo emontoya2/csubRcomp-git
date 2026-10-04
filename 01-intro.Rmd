@@ -7,7 +7,7 @@
 
 **R** is a GNU project and may be thought of as an implementation of the **S** language (developed at Bell Laboratories by Rick Becker, John Chambers and Allan Wilks).  It is a language and environment for statistical computing and graphics.   **R** contains a large number of built-in functions for classical and modern statistical analysis.  One of the main advantages  of using this program, particularly for undergraduate students, is that it is free! A core team of statisticians and countless other contributors consistently  maintain, update, and improve **R** and make versions that run well on most operating systems.  The web page for the **R** Project for statistical computing is located at <https://www.r-project.org/>.
 
-In this course, we will run **R** through **RStudio**. **RStudio** is an integrated development environment (IDE) that allows you to interact with **R** more readily. **RStudio** is also free to use. For our purpose, we will be using  **RStudio** as a graphical user interface for **R**.   Think of **R** as the engine for a car, whereas **RStudio** is the dashboard, wheel, etc. that allows one to control the engine (although it does so much more such as create slides, books, web applications, and other things).  
+In this course, we will run **R** through **RStudio**. **RStudio** is an integrated development environment (IDE) that allows you to interact with **R** more readily. **RStudio** is also free to use. For our purpose, we will be using  **RStudio** as a graphical user interface for **R**.   Think of **R** as the engine for a car, whereas **RStudio** is the dashboard, wheel, etc. that allows one to control the engine (although it does so much more such as create slides, books, web applications, and other things).
 
 
 ## Downloading and installing R
@@ -41,7 +41,7 @@ Follow the steps:
 
 3. Once the program has downloaded, install **RStudio** with the default settings.  
   
-4. That's it!  You can now run **RStudio** from your home computer.   
+4. That's it!  You can now run **RStudio** from your home computer.
 
 </br>
 
@@ -54,7 +54,7 @@ Follow the steps:
  
 ## The layout of RStudio
 
-Open **RStudio**.  The first time you open **RStudio**, you will see three panes (Figure 1.4). A fourth pane is hidden by default, but can be opened by clicking the File drop-down menu, then New File, and then R Script (*File>New File>R Script*).  **RStudio**  should look something like what you see below but perhaps with a different color scheme. Please see me during student hours or before/after lecture if you wish to change the color scheme. 
+Open **RStudio**.  The first time you open **RStudio**, you will see three panes (Figure 1.4). A fourth pane is hidden by default, but can be opened by clicking the File drop-down menu, then New File, and then R Script (*File>New File>R Script*).  **RStudio**  should look something like what you see below but perhaps with a different color scheme. Please see me during student hours or before/after lecture if you wish to change the color scheme.
 
 
 </br>
@@ -249,7 +249,7 @@ L <- "3.4403" # a string since we put it in quotations!
 L # this is not numeric
 ```
 
-Logical values are `TRUE` or `FALSE`; missing logical values are represented by `NA`. Logical values are generally created when there is a comparison between variables. 
+Logical values are `TRUE` or `FALSE`; missing logical values are represented by `NA`. Logical values are generally created when there is a comparison between variables.
 ```{r fig.width=7, fig.height=3,fig.align='center',cache=FALSE,  echo=T, message = FALSE,fig.asp=0.3500}
 p <- c( TRUE, TRUE, FALSE ) # no quotation marks!
 p # this is not character data but rather  logical values
@@ -265,7 +265,7 @@ MaritalStatus <- as.factor( MaritalStatus )
 MaritalStatus
 ```
 
-An atomic vector has one underlying type. If you combine values of different types with `c()`, R generally converts them to a common type. For example, `c(1, "two")` produces the character vector `c("1", "two")`.  Further, you are not expected to be able to create factor variables (or other data types), but rather you are expected to only recognize and distinguish between these data types.  
+An atomic vector has one underlying type. If you combine values of different types with `c()`, R generally converts them to a common type. For example, `c(1, "two")` produces the character vector `c("1", "two")`.  Further, you are not expected to be able to create factor variables (or other data types), but rather you are expected to only recognize and distinguish between these data types.
 
 
 
@@ -329,9 +329,9 @@ length(X)
 
 ## Loading a package and installing new packages
 
-R's built-in functions are supplied by packages; you can also define your own functions.  There are many *packages*   that can be installed to expand the ability of R.  By default, R comes with several packages installed (some loaded automatically when R starts and some not). For example, a function called `mean()`  is available from the `base` package, and this package is loaded automatically when R starts, so we can use this function without loading an additional package. 
+R's built-in functions are supplied by packages; you can also define your own functions.  There are many *packages*   that can be installed to expand the ability of R.  By default, R comes with several packages installed (some loaded automatically when R starts and some not). For example, a function called `mean()`  is available from the `base` package, and this package is loaded automatically when R starts, so we can use this function without loading an additional package.
 
-As for those packages that aren't loaded automatically, we first have to load a package to use its "tools".  For example,the `MASS` package comes with **R** but is not automatically loaded. This package provides a function called `boxcox()` (for Box-Cox transformations).  To use `boxcox()`, we first have to load this package by running the command `require(MASS)` or `library(MASS)`.  
+As for those packages that aren't loaded automatically, we first have to load a package to use its "tools".  For example,the `MASS` package comes with **R** but is not automatically loaded. This package provides a function called `boxcox()` (for Box-Cox transformations).  To use `boxcox()`, we first have to load this package by running the command `require(MASS)` or `library(MASS)`.
 
 Remember to think of *packages* as toolboxes.  We will install additional *packages*   called `openintro` and  `mosaic` that will provide useful data sets and functions ("tools"). These packages are specifically designed to make **R** more accessible.
 
@@ -347,7 +347,7 @@ Hit enter, and you will see activity occurring in the **R console**. This may ta
 + If R asks to use your personal library, answer yes.
 + If R prompts you to update any packages, please agree to the updates.
 
-When it is done installing, check that the console reports no installation error. A message about downloaded packages alone does not confirm that every package installed successfully. 
+When it is done installing, check that the console reports no installation error. A message about downloaded packages alone does not confirm that every package installed successfully.
  
 Now install the `mosaic` package. In the **R** console type and run the following command:
 ```{r, echo=T, eval=F}
