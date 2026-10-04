@@ -1,7 +1,7 @@
 # R code for Regression Analysis {#reg}
 
 The goal of this chapter is to have you learn to  use **R** to carry out the analyses and techniques generally covered in a regression analysis course.  Currently, we carry out some of the 
-examples using **R** found in 
+examples found in
 
 Kutner M.H, Nachtsheim C.J, and Neter, J., *Applied* *Linear* *Regression* *Models*. McGraw-Hill/Irwin.
 
@@ -13,11 +13,11 @@ The abbreviation ALRM is used for  this textbook. Datasets for this textbook may
   
 ## Linear Regression with One Predictor Variable 
 
-In this section, we use R to fit the simple linear regression (SLM) model
+In this section, we use R to fit the simple linear regression (SLR) model
 $$
 y_i=\beta_0+\beta_1 x_i + \varepsilon_i  
 $$
-where $y_i$ is the dependent/response variable, $x_i$ is the independent/predictor variable, and the random error terms have mean 0, constant variance $\sigma^2$ and are uncorrelated.  We follow the Toluca Company example given in ALRM to illustrate how to use **R** to obtain scatter plots, the least square estimates, fitted values, residuals, and a point estimator of $\sigma^2$.
+where $y_i$ is the dependent/response variable, $x_i$ is the independent/predictor variable, and the random error terms have mean 0, constant variance $\sigma^2$ and are uncorrelated.  We follow the Toluca Company example given in ALRM to illustrate how to use **R** to obtain scatter plots, the least-squares estimates, fitted values, residuals, and a point estimator of $\sigma^2$.
 
 
 ### Scatterplots
@@ -26,7 +26,7 @@ Scatterplots can be used to explore the relationship between two variables. Reca
 
 We begin by importing the data:
 
-```r
+``` r
 require( mosaic ) # always load the mosaic package first.
 ### The datasets from the book are available to download or
 ### read from a url, but we have to make some changes 
@@ -45,10 +45,10 @@ toluca.data <- read.csv( url , header = FALSE , col.names = c("xvar", "yvar") , 
 ```
 
 
-We can take a quick look at the data by using `glimpse( )`:
+We can take a quick look at the data by using `pillar::glimpse( )`:
 
-```r
-glimpse( toluca.data )
+``` r
+pillar::glimpse( toluca.data )
 ```
 
 ```
@@ -60,23 +60,23 @@ glimpse( toluca.data )
 
 Note that we named the response variable and explanatory variable $yvar$ and $xvar$, respectively. So these names must be used in `xyplot( )` or any other function that uses `toluca.data`:
 
-```r
+``` r
 xyplot( yvar ~ xvar , data= toluca.data)
 ```
 
-<img src="03-reg_files/figure-html/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" />
+<img src="03-reg_files/figure-html/unnamed-chunk-3-1.png" alt="" width="672" style="display: block; margin: auto;" />
 
-The function `xyplot( )` has other arguments that allows you to change label axis,  add a title, etc.:
+The function `xyplot( )` has other arguments that allow you to change axis labels,  add a title, etc.:
 ```
 ### xyplot( y  ~  x  | gfactor, data, main, xlab, ylab, col, pch)
-# y: respnose variable
+# y: response variable
 # x: explanatory variable
-# gfactor: a factor variable (optional) so that a plot is returned for each level of f1 (optional)
+# gfactor: a factor variable (optional) so that a plot is returned for each level of gfactor (optional)
 # data: the name of the dataframe where the observed data is found
 # main: title for plot  (optional) 
 # ylab: label for y-axis (optional) 
 # xlab: label for x-axis (optional) 
-# pch:  point symbol. Must be a number between 1-25 (optional) 
+# pch:  point symbol. Common numeric plotting symbols are 0-25 (optional)
 ``` 
 
 
@@ -91,7 +91,7 @@ b_1=\frac{\sum (x_i-\bar{x})(y_i-\bar{y}) }{\sum (x_i-\bar{x})^2}, \quad ~~~~b_0
 $$
 To apply these formulas, we use the function `mean( )`.  This function follows the general form `goal( ~ x , data)` but `goal` becomes `mean` :
 
-```r
+``` r
 ### extract 'xvar' and assign the values to `myx':
 myx <- toluca.data$xvar
 ### same for yvar:
@@ -106,7 +106,7 @@ YminusYbar <- myy - mean( ~ myy )
 
 XminusXbarSq <- XminusXbar^2 # squared differences
 
-### Apply for LS formulas for LS estimates
+### Apply the LS formulas for LS estimates
 b.1=sum(  ( myx - mean( ~ myx) )*( myy - mean( ~ myy ) ) )/sum( ( myx-mean( ~ myx ) )^2 )
 b.1
 ```
@@ -115,7 +115,7 @@ b.1
 ## [1] 3.570202
 ```
 
-```r
+``` r
 b.0=mean( ~ myy ) - b.1*mean( ~ myx )
 b.0
 ```
@@ -127,7 +127,7 @@ Thus, $b_1=3.570$ and $b_0=62.366$.
 
 The `lm( )` function follows the formula `goal( y ~ x , data )`.  This function requires the name of the dataframe and the variables used in the dataframe.  Recall that the variables in `toluca.data` are called `yvar` and `xvar`:
 
-```r
+``` r
 ### fit the model
 lm( yvar ~ xvar , data= toluca.data )
 ```
@@ -144,15 +144,15 @@ lm( yvar ~ xvar , data= toluca.data )
 
 Although the `lm( )` function only prints the LS estimates, it actually computes  a lot of information that is only retrievable if we store the `lm( )` result in an *R object*.  Such objects are generally called *lm objects*. So, we store the result of `lm( )` to an R object (I called it `toluca.fit` below) so that we can extract certain information as needed:
 
-```r
+``` r
 ### fit the model and store the model fit
 toluca.fit <- lm( yvar ~ xvar , data= toluca.data)
 ```
 
 To view the LS estimates, we summarize the *lm object*, `toluca.fit`, using the `summary( )` function:
 
-```r
-### summarize the fit <-- returns alot of info
+``` r
+### summarize the fit <-- returns a lot of information
 summary( toluca.fit )
 ```
 
@@ -179,11 +179,11 @@ summary( toluca.fit )
 
 From the `summary( )` output, we see that $b_0=62.366$ and $b_1=3.570$. More on the output provided by `summary( )` later.
 
-Alternateivly, we can  extract the LS estimates by applying the function `coef()` to the *lm object*:
+Alternatively, we can  extract the LS estimates by applying the function `coef()` to the *lm object*:
 
-```r
+``` r
 ### The only info required is the name 
-### your lm object.
+### of your lm object.
 coef( toluca.fit )
 ```
 
@@ -200,7 +200,7 @@ Once we have access to our data or we fit and save the simple linear regression 
 
 The function `xyplot( )` is used the same way as before but with an additional argument of `type= c( "p", "r" )`:
 
-```r
+``` r
 ### Plot the data and model fit.
 ### Note: "p" tells R we want to plot the points.
 ###       "r" tells R we want to add the est. regression 
@@ -208,34 +208,35 @@ The function `xyplot( )` is used the same way as before but with an additional a
 xyplot( yvar ~ xvar , data= toluca.data , type= c( "p", "r" ) )
 ```
 
-<img src="03-reg_files/figure-html/unnamed-chunk-9-1.png" width="672" style="display: block; margin: auto;" />
+<img src="03-reg_files/figure-html/unnamed-chunk-9-1.png" alt="" width="672" style="display: block; margin: auto;" />
 
-The argument`type= c( "p", "r" )` tells **R** to plot the points and the estiamted regression line. Also recall that `xyplot( )` has additional arguments to change axis label, add a title, etc.
+The argument `type= c( "p", "r" )` tells **R** to plot the points and the estimated regression line. Also recall that `xyplot( )` has additional arguments to change axis label, add a title, etc.
 
 #### Using `plotModel( )`
 
-`plotModel( )` will plot the data and the estimated LS line.  It only has one argument, which will be an *lm object*:
+`plotModel( )` will plot the data and the estimated LS line.  For this example, its required argument is an *lm object*:
 
-```r
+``` r
 ### Plot the data and model fit.
 plotModel( toluca.fit )
 ```
 
-<img src="03-reg_files/figure-html/unnamed-chunk-10-1.png" width="672" style="display: block; margin: auto;" />
+<img src="03-reg_files/figure-html/unnamed-chunk-10-1.png" alt="" width="672" style="display: block; margin: auto;" />
 
-Which function should one use?  They both provide the same info, but if you prefer to change some of the aesthetics of the plot, you will have to use `xyplot( )` since, as of now, it is not possible to change the aesthetics of resulting plot provided by `plotModel( )`. For example: 
+Both functions can display the fitted line. Use `xyplot()` when you want to set lattice plot options explicitly, as in the following example:
 
-```r
+
+``` r
 xyplot( yvar ~ xvar , data = toluca.data , type= c( "p", "r" ), xlab = "Explanatory variable", ylab = "Response variable", main = "Estimated LS line", col = "green", pch = 3 )
 ```
 
-<img src="03-reg_files/figure-html/unnamed-chunk-11-1.png" width="672" style="display: block; margin: auto;" />
+<img src="03-reg_files/figure-html/unnamed-chunk-11-1.png" alt="" width="672" style="display: block; margin: auto;" />
 
 ### Fitted or predicted values
 
-To obtain the fitted vales, $\hat{y}_i=b_0+b_1 x_i$ for $i=1,2,...,n$, we may use **R** by directly using the least square estimates obtained by using the summation formulas or more conveniently use the `fitted.values( )` or  `predict( )` on an *lm object*:
+To obtain the fitted values, $\hat{y}_i=b_0+b_1 x_i$ for $i=1,2,...,n$, we may use **R** by directly using the least-squares estimates obtained by using the summation formulas or more conveniently use the `fitted.values( )` or  `predict( )` on an *lm object*:
 
-```r
+``` r
 ### Only one argument: An lm object
 fitted.values( toluca.fit )
 ```
@@ -251,7 +252,7 @@ fitted.values( toluca.fit )
 ## 312.2800
 ```
 
-```r
+``` r
 ### predict( ) 
 predict( toluca.fit )
 ```
@@ -267,9 +268,9 @@ predict( toluca.fit )
 ## 312.2800
 ```
 
-Both `fitted.values( )` or  `predict( )` can provided the fitted/predicted values for the observed values of $x$.  If instead you wanted to predict or fit values of $y$ for certain levels or values of $x$, we use `predict( )` with an additional argument that corresponds to  a dataframe that holds the x value(s) of interest. For example:
+Both `fitted.values( )` and `predict( )` can provide the fitted/predicted values for the observed values of $x$.  If instead you wanted to predict or fit values of $y$ for certain levels or values of $x$, we use `predict( )` with an additional argument that corresponds to  a dataframe that holds the x value(s) of interest. For example:
 
-```r
+``` r
 ### This is a template on how to predict values of y
 ### for certain values of x.  
 
@@ -277,11 +278,11 @@ Both `fitted.values( )` or  `predict( )` can provided the fitted/predicted value
 ### First set up the dataframe that holds these values.  Note that 
 ### we have to use the name 'xvar' since this is the name of 
 ### the predictor in toluca.data.
-newdat <- data.frame( xvar=c(31, 119) ) # 'x' is the name of
+newdat <- data.frame( xvar=c(31, 119) ) # 'xvar' is the name of
                                     # explanatory variable in the dataframe
 
-### You have to specifiy an 'lm object'.
-### newdata is a data frame holds the x values of interest.
+### You have to specify an 'lm object'.
+### newdata is a data frame that holds the x values of interest.
 predict( toluca.fit , newdata= newdat )
 ```
 
@@ -293,10 +294,10 @@ predict( toluca.fit , newdata= newdat )
 
 ### Residuals
 
-The residuals are the differences between the observed values and the fitted values, denoted by $e_i=y_i-\hat{y}_i$. The residuals can be obtained using the function `residuals( )` whose only argument is an *lm object*:
+The residuals are the differences between the observed values and the fitted values, denoted by $e_i=y_i-\hat{y}_i$. The residuals can be obtained using the function `residuals( )` with an *lm object* as its first argument:
 
-```r
-### You have to specifiy an 'lm object'.
+``` r
+### You have to specify an 'lm object'.
 residuals( toluca.fit )
 ```
 
@@ -313,14 +314,14 @@ residuals( toluca.fit )
 ##  10.7200000
 ```
 
-```r
-e <- residuals( toluca.fit ) # store them in a object called 'e'
+``` r
+e <- residuals( toluca.fit ) # store them in an object called 'e'
 ```
 
 You may also compute them via:
 
-```r
-### You have to specifiy an 'lm object'.
+``` r
+### You have to specify an 'lm object'.
 yhat <- fitted.values( toluca.fit )
  
 toluca.data$yvar - yhat # observed - fitted/predicted
@@ -339,7 +340,7 @@ toluca.data$yvar - yhat # observed - fitted/predicted
 ##  10.7200000
 ```
 
-```r
+``` r
 e <- toluca.data$yvar - yhat # store the result
 ```
 
@@ -348,14 +349,14 @@ e <- toluca.data$yvar - yhat # store the result
 So what is printed by `summary(` *lm object* `)`? The following output is given:
 
 ![Figure 3.1](ch3figures/summary.png){ width=90% }
-The `summary( )` output provides the LS estimates, the standard errors of the LS estimates, the test statistic for the regression line parameters, two-sided p-value to assess the significance of these parameters, the MSE, $R^2$, and other information that we will revisit later.
+The `summary( )` output provides the LS estimates, the standard errors of the LS estimates, the test statistic for the regression line parameters, two-sided p-values for these parameters, the residual standard error ($\sqrt{MSE}$), $R^2$, and other information that we will revisit later.
 
 
-### Estimating of $\sigma^2$
+### Estimating $\sigma^2$
 
 To estimate the error variance component, one can either use the formula or use the `summary( )` output.  Using the formula we get:
 
-```r
+``` r
 ### Recall we defined the residuals in a previous section
 n <- 25 # from glimpse
 
@@ -366,7 +367,7 @@ sum( e^2 ) / ( n -2 )
 ## [1] 2383.716
 ```
 
-The summary output provides $\sqrt{MSE}$, which is an estimate of $\sigma$.  Based on the output, $\hat{\sigma}^2=48.82^2 = 2383.392$
+The summary output provides $\sqrt{MSE}$, which is an estimate of $\sigma$.  Square the residual standard error to obtain MSE. Using the unrounded fit, $\hat{\sigma}^2=$ 2383.716.
 
 
 ## Inference in simple linear regression  
@@ -377,10 +378,10 @@ In this section, inference of the regression parameters using confidence interva
 ### Inferences for $\beta_0$ and $\beta_1$
 
 
-The Toluca Company example from ALRM is used to illustrate inference on the slope and intercept of the model. Generally, inference is made about the slope of the model. A test and confidence interval concerning the intercept can be set up in the same manner as that of $\beta_1$.  To obtain the test statistic, along with p-values for test regarding those parameters, we summarize the *lm object* (the model fit) by using `summary( )`:
+The Toluca Company example from ALRM is used to illustrate inference on the slope and intercept of the model. Generally, inference is made about the slope of the model. A test and confidence interval concerning the intercept can be set up in the same manner as that of $\beta_1$.  To obtain the test statistic, along with p-values for tests regarding those parameters, we summarize the *lm object* (the model fit) by using `summary( )`:
 
 
-```r
+``` r
 summary( toluca.fit)
 ## 
 ## Call:
@@ -409,7 +410,7 @@ Recall that the `summary( )` output provides the following:
 
 Alternatively, we can also obtain the test statistic using the following commands:
 
-```r
+``` r
 MSE <- sum( e^2 )/( n-2 )
 
 sd.b1 <-sqrt( MSE / ( sum( (myx -mean( ~ myx ) )^2 ) ) )
@@ -421,15 +422,15 @@ t.star
 # The test for the intercept is computed similarly
 ```
 
-Under $H_0$, the distribution of the test statistic is $t$ distribution with $n-2$ (Notation: $t_{n-2}$). Recall that the  p-value is the probability that the test statistic would take a value as extreme (or more extreme) as the observed test statistic in the the direction of the alternative if $H_0$ were true.
+Under $H_0: \beta_1 = 0$, and assuming independent normal errors with constant variance, the statistic has a $t$ distribution with $n-2$ degrees of freedom (notation: $t_{n-2}$). Recall that the  p-value is the probability that the test statistic would take a value as extreme (or more extreme) as the observed test statistic in the direction of the alternative if $H_0$ were true.
 
-If $H_a: \beta >0$, the p-value = $P( t_{n-2} > 10.290 )$.  To obtain this probability we use the function `xpt( q, df, lower.tail )`.  The value `q` will the value of interest (10.290 in this example), `df` corresponds to the degrees of freedom (n-2), and `lower.tail` will either be set equal to `TRUE` (computes the area to the left of `q`) or `FALSE` (computes the area to the right of `q`). To compute $P( t_{n-2} > 10.290 )$, set `lower.tail=FALSE`: 
+If $H_a: \beta_1 >0$, the p-value = $P( t_{n-2} > 10.290 )$.  To obtain this probability we use the function `xpt( q, df, lower.tail )`.  The value `q` will be the value of interest (10.290 in this example), `df` corresponds to the degrees of freedom (n-2), and `lower.tail` will either be set equal to `TRUE` (computes the area to the left of `q`) or `FALSE` (computes the area to the right of `q`). To compute $P( t_{n-2} > 10.290 )$, set `lower.tail=FALSE`:
 
-```r
+``` r
 xpt( q= 10.290, df= 25 - 2, lower.tail =FALSE)
 ```
 
-<img src="03-reg_files/figure-html/unnamed-chunk-19-1.png" width="528" />
+<img src="03-reg_files/figure-html/unnamed-chunk-19-1.png" alt="" width="528" />
 
 ```
 ## [1] 2.222735e-10
@@ -437,30 +438,30 @@ xpt( q= 10.290, df= 25 - 2, lower.tail =FALSE)
 
 The desired probability will be printed in the console: $P( t_{n-2} > 10.290 ) \approx .0000000002$.  This function will also produce a graph of the probability distribution with the area to the left of `q` shaded one color (area A) and the area to the right of `q` shaded another color (area B).  
 
-If instead $H_a: \beta <0$, then set `lower.tail=TRUE`:
+If instead $H_a: \beta_1 <0$, then set `lower.tail=TRUE`:
 
-```r
+``` r
 xpt( q= 10.290, df= 25 - 2, lower.tail =TRUE)
 ```
 
-<img src="03-reg_files/figure-html/unnamed-chunk-20-1.png" width="528" />
+<img src="03-reg_files/figure-html/unnamed-chunk-20-1.png" alt="" width="528" />
 
 ```
 ## [1] 1
 ```
-The output shows that $P( t_{n-2} < 10.290 ) \approx 1$.  Lastly, if $H_a: \beta \neq 0$, then  we care about both possible extremes: 
+The output shows that $P( t_{n-2} < 10.290 ) \approx 1$.  Lastly, if $H_a: \beta_1 \neq 0$, then  we care about both possible extremes:
 $$P( t_{n-2} < -10.290 ) + P( t_{n-2} > 10.290 ) = 2 \times  P( t_{n-2} > |10.290| )=.0000000004$$
 
 
-For a confidence interval (CI) for $\beta_1$, recall that  the $1-\alpha/2$ confidence limits for $\beta_1$ are 
+For a confidence interval (CI) for $\beta_1$, recall that  the limits of a $1-\alpha$ confidence interval for $\beta_1$ are
   $$b_1 \pm t_{1-\alpha/2, n-2} s\{b_1\}$$
 To derive the CI, we can either use the `summary( )` output along with the critical values provided by `xqt( )`, or you can use `confint( )`. Let's first derive the CI using `xqt( p, df, lower.tail )`.  This function provides the quantile for a specified probability.  For the Toluca Company example suppose a 95% confidence interval is to be computed.  Then, $t_{1-.05/2,25-2}=$ `xqt( 1-.05/2, df= 25-2)`= 2.069. 
 
-```r
+``` r
 xqt( 1-.05/2, df= 25-2)
 ```
 
-<img src="03-reg_files/figure-html/unnamed-chunk-21-1.png" width="528" />
+<img src="03-reg_files/figure-html/unnamed-chunk-21-1.png" alt="" width="528" />
 
 ```
 ## [1] 2.068658
@@ -468,7 +469,7 @@ xqt( 1-.05/2, df= 25-2)
 
 To obtain the CI, run the code below:
 
-```r
+``` r
 b1 <- 3.570 # from summary()
 sb1 <- 0.347 # from summary()
 
@@ -480,7 +481,7 @@ b1 + 2.069*.347
 
 Since the model has been fitted, `confint( )` will provide the CIs for both parameters. This function has two arguments: an *lm object* and the desired confidence level:
 
-```r
+``` r
 confint( toluca.fit, level = .95)
 ##                2.5 %     97.5 %
 ## (Intercept) 8.213711 116.518006
@@ -491,9 +492,9 @@ confint( toluca.fit, level = .95)
 ### CI for the mean response ($E(y_h)$) and a prediction interval for $y_h$
 
 
-Following the Toluca Company example from ALRM, we obtain a CI for the point estimate $y_h$ for $x_h=100$ units by using the function `predict( )`. However, the function has two additional arguments, `interval` and `level`. We set `interval=confidence` and level to the desired confidence level: 
+Following the Toluca Company example from ALRM, we obtain a CI for the mean response $E(Y_h)$ at $x_h=100$ units by using the function `predict( )`. However, the function has two additional arguments, `interval` and `level`. We set `interval = "confidence"` and level to the desired confidence level:
 
-```r
+``` r
 X.new<- data.frame(xvar = c( 100 ) )  # xvar refers to the name of the variable
 
 predict.lm( toluca.fit , newdata= X.new , interval = "confidence", level= .90 )
@@ -504,9 +505,9 @@ predict.lm( toluca.fit , newdata= X.new , interval = "confidence", level= .90 )
 ## 1 419.3861 394.9251 443.847
 ```
 
-The prediction of a new observation and its corresponding prediction interval (PI) can be obtained in the same manner as the confidence interval for the mean response but we set `interval= "prediciton"`:
+The prediction of a new observation and its corresponding prediction interval (PI) can be obtained in the same manner as the confidence interval for the mean response but we set `interval = "prediction"`:
 
-```r
+``` r
 ### Note: X.new was defined above
 predict.lm( toluca.fit , newdata= X.new , interval= "prediction", level= .90 )
 ```
@@ -521,7 +522,7 @@ predict.lm( toluca.fit , newdata= X.new , interval= "prediction", level= .90 )
 
 To obtain the ANOVA table in **R**, we use the function `anova(` *lm object* `)`:
 
-```r
+``` r
 anova(toluca.fit)
 ```
 
@@ -539,13 +540,13 @@ anova(toluca.fit)
 The following output is given by  `anova(` *lm object* `)`:
 ![ ](ch3figures/anova.png){ width=90% }
 
- The output from `anova( toluca.fit )` show that the p-value $\approx$ 0.  We could also use the function `xpf( q , df1, df2, lower.tail )` to compute the p-value.  The value `q` is the value of interest (105.88 in this example), `df1` corresponds to the numerator degree of freedom (1), `df2` corresponds to the denominator degree of freedom (25-2), and `lower.tail` would be set to `FALSE` since we want the p-value for this F-test:
+ The output from `anova( toluca.fit )` shows that the p-value $\approx$ 0.  We could also use the function `xpf( q , df1, df2, lower.tail )` to compute the p-value.  The value `q` is the value of interest (105.88 in this example), `df1` corresponds to the numerator degree of freedom (1), `df2` corresponds to the denominator degree of freedom (25-2), and `lower.tail` would be set to `FALSE` since we want the p-value for this F-test:
 
-```r
+``` r
 xpf(q= 105.88, df1= 1, df2= 25-2 , lower.tail= FALSE)
 ```
 
-<img src="03-reg_files/figure-html/unnamed-chunk-27-1.png" width="672" style="display: block; margin: auto;" />
+<img src="03-reg_files/figure-html/unnamed-chunk-27-1.png" alt="" width="672" style="display: block; margin: auto;" />
 
 ```
 ## [1] 4.44711e-10
@@ -554,9 +555,9 @@ Note that the shaded "A" area in the graph always corresponds to the area to the
 
 ### Measures of association
 
-The coefficient of determination ($R^2$) and coefficient of correlation (r) can be obtained from the SSR and SSTO (from the ANOVA table), by applying the summation formulas,  or obtained  from the `summary(` *lm object* `)` output.   The coefficient of or correlation is  sign($b_1$)$(\sqrt{R^2})$.  Using the summation formulas:
+The coefficient of determination ($R^2$) and coefficient of correlation (r) can be obtained from the SSR and SSTO (from the ANOVA table), by applying the summation formulas,  or obtained  from the `summary(` *lm object* `)` output.   The coefficient of correlation is  sign($b_1$)$(\sqrt{R^2})$.  Using the summation formulas:
 
-```r
+``` r
 ### extract the response and predictor
 yresp <- toluca.data$yvar
 xpred <- toluca.data$xvar
@@ -568,7 +569,7 @@ b.1 # recall the value of the slope est.
 ## [1] 3.570202
 ```
 
-```r
+``` r
 SSR = b.1^2 * sum( ( xpred - mean( xpred ) )^2 )
 SSTO = sum( ( yresp -mean( yresp ) )^2 )
 R.sq = SSR/SSTO
@@ -579,7 +580,7 @@ R.sq
 ## [1] 0.8215335
 ```
 
-```r
+``` r
 r=(1)*sqrt(R.sq) # slope est. is positive
 ```
 
@@ -589,26 +590,26 @@ Note that this matches the information provided in the output of summary discuss
 
 ## Residual analysis and remedial measures
  
-This section deals with assessing the appropriateness of the simple regression model.  Residual analysis are performed on Toluca Company example from ALRM.
+This section deals with assessing the appropriateness of the simple regression model.  Residual analyses are performed on the Toluca Company example from ALRM.
 
-If we assume that $\varepsilon_i \overset{iid}{\sim} N(0,\sigma^2)$ in the normal simple linear regression model, then the residuals $e_i$'s should reflect this property. We examine the assumption using the following residual plots:
+If we assume that $\varepsilon_i \overset{iid}{\sim} N(0,\sigma^2)$ in the normal simple linear regression model, then residual plots can help assess these error assumptions. The fitted residuals are correlated and have variances $\sigma^2(1-h_{ii})$; they are not themselves independent and identically distributed errors. We examine the assumption using the following residual plots:
 
 |                      |   |                                                      |
 |:---------------------|:--|:-----------------------------------------------------|
 |**Things to examine** |   |**Residual plots to examine**                         |
 |Normality             |   |Normal QQ-plot of the residual                        |
-|Independence          |   |residuals vs x or $\hat{y}$                           |
+|Independence          |   |residuals vs. time or observation order, when meaningful |
 |Constant variance     |   |residuals vs x or $\hat{y}$                           |
 |Linearity             |   |residuals vs x or $\hat{y}$                           |
 |Outliers              |   |residuals vs x or $\hat{y}$; QQ-plot of the residuals |
 
-If we do not assume normality, the QQ-plot should still be examined for signs that the residuals show may be heavy-tailed distributed.
+A normal Q-Q plot can reveal departures from normality, including heavy tails. Independence also requires consideration of how the data were collected; residuals versus a predictor alone cannot establish it.
 
 ### Creating residual plots
 
 To create the plots to assess each of these assumptions, we use `xyplot( )` and `xqqmath( )`.  The following code creates the required plots:
 
-```r
+``` r
 ### extract the fitted values from the lm object
 tolucafitted <- fitted( toluca.fit ) 
 
@@ -620,16 +621,16 @@ tolresids <-   residuals( toluca.fit )
 xyplot( tolresids ~ xvar, data=toluca.data, main= "Residuals vs x")
 ```
 
-<img src="03-reg_files/figure-html/unnamed-chunk-29-1.png" width="672" style="display: block; margin: auto;" />
+<img src="03-reg_files/figure-html/unnamed-chunk-29-1.png" alt="" width="672" style="display: block; margin: auto;" />
 
-```r
+``` r
 ### Residuals vs fitted values
 xyplot( tolresids ~ tolucafitted, data=toluca.data, main= "Residuals vs fitted")
 ```
 
-<img src="03-reg_files/figure-html/unnamed-chunk-29-2.png" width="672" style="display: block; margin: auto;" />
+<img src="03-reg_files/figure-html/unnamed-chunk-29-2.png" alt="" width="672" style="display: block; margin: auto;" />
 
-```r
+``` r
 ### QQ-plot of the residuals.
 ### xqqmath follows the general formula
 ### with an additional argument: goal( ~ x, data, distribution= "qnorm")
@@ -639,45 +640,54 @@ xyplot( tolresids ~ tolucafitted, data=toluca.data, main= "Residuals vs fitted")
 xqqmath( ~ tolresids, distribution = "qnorm" )
 ```
 
-<img src="03-reg_files/figure-html/unnamed-chunk-29-3.png" width="672" style="display: block; margin: auto;" />
+<img src="03-reg_files/figure-html/unnamed-chunk-29-3.png" alt="" width="672" style="display: block; margin: auto;" />
 
 
-Although the above graphical summaries above are generally sufficient for diagnostics, one may examine other residual plots:
+Although the above graphical summaries are generally sufficient for diagnostics, one may examine other residual plots:
 
-```r
+``` r
 ### boxplot of the residuals
 gf_boxplot( ~ tolresids, main="Boxplot of residuals" ) 
 ```
 
-<img src="03-reg_files/figure-html/unnamed-chunk-30-1.png" width="672" style="display: block; margin: auto;" />
+<img src="03-reg_files/figure-html/unnamed-chunk-30-1.png" alt="" width="672" style="display: block; margin: auto;" />
 
-```r
+``` r
 ### histogram of the residuals
 histogram( ~ tolresids )
 ```
 
-<img src="03-reg_files/figure-html/unnamed-chunk-30-2.png" width="672" style="display: block; margin: auto;" />
+<img src="03-reg_files/figure-html/unnamed-chunk-30-2.png" alt="" width="672" style="display: block; margin: auto;" />
 
 
-### Residual plots from the tactile package
+### Residual diagnostic plots from base R
 
-The R package `tactile` expands the functionality of `xyplot()` so that it creates a set of residual plot by specifying only an *lm object*. Specifically, for a SLR model fit, it will provide the following residual plots:
-
-- **Residuals vs. predicted values**: This residual plot shows the relationship between the residuals and the predicted values. The plot helps to assess assumptions 1, 2, and 4. A plot that shows no clear pattern or trend, no outlying observations, and a spread that is fairly constant suggest that these assumptions are reasonable. If there is a pattern or structure in the residual plot, this suggests that there may be dependence between the observations. Similarly, if spread of residuals change as a function of predicted values, it suggests non-constant variance. 
-
-- **Normal QQ-plot of the residuals**: The plot helps to assess assumption 3. If the residuals are normally distributed, the points on the plot will roughly follow a straight line. 
-
-- **Standardized residuals vs. predicted values**. This residual plot is generally referred to as a scale-location plot. This plots the square root of the standardized residual versus the predicted values. Note that standardization has these transformed residuals to have a mean of zero and a standard deviation of one. This allows for comparisons between models with different explanatory variables or dependent variables on different scales. It is analyzed and interpreted in the same manner as the residuals vs. predicted values plot.
-
-- **Residuals vs. leverage plot**. This plot shows the leverage (the degree to which an observation affects the estimated slope of the fitted regression line) against the standardized residuals. Although it helps identify potential influential outliers (such outliers have high leverage and correspond to a large residual), a plot that shows no clear pattern or trend and and a spread that is fairly constant suggest that will suggest assumptions 1 and 4 are reasonable. If the spread of standardized residuals changes as a function of leverage, it indicates non-constant variance. Similarly, a trend or pattern as a function of leverage would indicate a violation of assumption 1. 
+The `plot()` method for an *lm object* provides common diagnostic plots without an additional package:
 
 
+``` r
+oldpar <- par(mfrow = c(2, 2))
+plot(toluca.fit, which = c(1, 2, 3, 5), ask = FALSE)
+```
+
+<img src="03-reg_files/figure-html/regression-diagnostic-plots-1.png" alt="" width="672" />
+
+``` r
+par(oldpar)
+```
+
+- **Residuals vs. fitted values**: Look for curvature and changes in spread, which can suggest an inadequate mean model or nonconstant variance.
+- **Normal Q-Q plot**: Approximately straight points support the normal-error approximation; substantial departures warrant investigation.
+- **Scale-location plot**: This plots the square root of the absolute standardized residuals against fitted values. A roughly constant spread supports the constant-variance assumption.
+- **Residuals vs. leverage**: High leverage reflects unusual predictor values. Cases with high leverage and large residuals may be influential; Cook's-distance contours help identify them.
+
+These plots suggest potential problems; they do not prove that the assumptions hold. See [R's diagnostic-plot documentation](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/plot.lm.html).
 
 ### Testing departures from normality
 
-**R** code is provided to carry out the Shapiro-Wilk and Lilliefors (Kolmogorov-Smirnov) test for normality.  Both of these test may be used to detect if the residuals do not follow a normal distribution. The null hypothesis is that the residuals are normally distributed.  The alternative is that they are not normally distributed.  Thus, we are not testing if the residuals are normally distributed but rather if they depart from the normal distribution. 
+**R** code is provided to carry out the Shapiro-Wilk and Lilliefors (Kolmogorov-Smirnov) test for normality.  Both tests may be used to detect if the residuals do not follow a normal distribution. The null hypothesis is that the residuals are normally distributed.  The alternative is that they are not normally distributed.  Thus, we are not testing if the residuals are normally distributed but rather if they depart from the normal distribution.
 
-```r
+``` r
 ### Shapiro-Wilk Normality Test
 shapiro.test( tolresids )
 ```
@@ -690,7 +700,7 @@ shapiro.test( tolresids )
 ## W = 0.9789, p-value = 0.8626
 ```
 
-```r
+``` r
 ### Lilliefors test of normality.
 ### First install the 'nortest' R package
 require( "nortest" )
@@ -705,21 +715,21 @@ lillie.test( tolresids )
 ## D = 0.09572, p-value = 0.8027
 ```
 
-For both tests, the p-value is much larger than a reasonable $\alpha$ level. 
+For both tests, the p-value exceeds a conventional $\alpha$ level, so we do not reject normality. This does not prove normality. Because fitted residuals are correlated, these tests on residuals are exploratory checks rather than exact tests of independent normal errors; also inspect the Q-Q plot.
  
  
 ### Transformations
 
-A possible remedial measure when the simple linear regression model is not appropriate is to transform the response and/or predictor variable.  To transform a variable, we use the `mutate( )` which comes from the `dplyr` package. The `dplyr` package is automatically installed when you install the `mosaic` package, and the `dplyr` package is automatically loaded when you load the `mosaic` package.  The `mutate( )` function requires the name of the dataframe and the name of a new variable/object that will hold your transformed variable: 
+A possible remedial measure when the simple linear regression model is not appropriate is to transform the response and/or predictor variable.  To transform a variable, we use the `dplyr::mutate( )` which comes from the `dplyr` package. The `dplyr` package is installed as a dependency of `mosaic`. We call `dplyr::mutate()` explicitly below.  The `dplyr::mutate( )` function requires the name of the dataframe and the name of a new variable/object that will hold your transformed variable:
 
-`mutate( ` 'dataframe name',  'new variable'= 'transformed variable'` )`
+`dplyr::mutate( ` 'dataframe name',  'new variable'= 'transformed variable'` )`
 
 To illustrate transformation, we use the data from Toluca Company example.  Specifically, we want to apply a square root transformation to the response variable and a natural log transformation to the explanatory variable:
 
 
-```r
+``` r
 ### Recall toluca.data
-glimpse( toluca.data )
+pillar::glimpse( toluca.data )
 ```
 
 ```
@@ -729,11 +739,11 @@ glimpse( toluca.data )
 ## $ yvar <int> 399, 121, 221, 376, 361, 224, 546, 352, 353, 157, 160, 252, 389, …
 ```
 
-```r
+``` r
 ### Apply the square root trans. to the 
-### response. This function will add it to 
-### the dataframe
-mutate( toluca.data,  sqrty= sqrt( yvar ) ) # the squared root variable will be called sqrty
+### response. This function returns a new dataframe
+### with the added variable
+dplyr::mutate( toluca.data,  sqrty= sqrt( yvar ) ) # the square-root variable will be called sqrty
 ```
 
 ```
@@ -768,9 +778,9 @@ mutate( toluca.data,  sqrty= sqrt( yvar ) ) # the squared root variable will be 
 
 We want to be able to use the transformed variable, so we store the resulting new dataframe to a new object:
 
-```r
-toluca.dataVer1 <- mutate( toluca.data,  sqrty= sqrt( yvar ) )  
-glimpse( toluca.dataVer1 )
+``` r
+toluca.dataVer1 <- dplyr::mutate( toluca.data,  sqrty= sqrt( yvar ) )
+pillar::glimpse( toluca.dataVer1 )
 ```
 
 ```
@@ -783,12 +793,12 @@ glimpse( toluca.dataVer1 )
 
 Now apply the natural log transformation to the explanatory variable:
 
-```r
+``` r
 ### Apply natural log trans. to x.
 ### Note that we are using toluca.dataVer1
 ### dataframe since it already includes 'sqrty'.
-toluca.dataVer2 <- mutate( toluca.dataVer1,  lnx = log( xvar ) )  
-glimpse( toluca.dataVer2 )
+toluca.dataVer2 <- dplyr::mutate( toluca.dataVer1,  lnx = log( xvar ) )
+pillar::glimpse( toluca.dataVer2 )
 ```
 
 ```
@@ -800,12 +810,12 @@ glimpse( toluca.dataVer2 )
 ## $ lnx   <dbl> 4.382027, 3.401197, 3.912023, 4.499810, 4.248495, 4.094345, 4.78…
 ```
 
-```r
+``` r
 ### One could also apply as many trans. as one would
 ### like by using mutate only once:
-toluca.dataWithTrans <- mutate( toluca.data,  sqrty= sqrt( yvar ), lnx = log( xvar ),
+toluca.dataWithTrans <- dplyr::mutate( toluca.data,  sqrty= sqrt( yvar ), lnx = log( xvar ),
                                 lny = log( yvar ) , sqrd = yvar^2, cubertx = xvar^( 1/3 ) )  
-glimpse( toluca.dataWithTrans )
+pillar::glimpse( toluca.dataWithTrans )
 ```
 
 ```
@@ -822,20 +832,20 @@ glimpse( toluca.dataWithTrans )
 
 Once the transformed variables are stored in a dataframe, you can plot them or fit the simple linear regression model:
 
-```r
+``` r
 # Note the dataframe name
 xyplot(sqrty ~ xvar,  data= toluca.dataWithTrans, main="Square root of y vs x" )
 ```
 
-<img src="03-reg_files/figure-html/unnamed-chunk-35-1.png" width="672" style="display: block; margin: auto;" />
+<img src="03-reg_files/figure-html/unnamed-chunk-35-1.png" alt="" width="672" style="display: block; margin: auto;" />
 
-```r
+``` r
 xyplot(sqrty ~ lnx,  data= toluca.dataWithTrans, main="Square root of y vs ln(x)" )
 ```
 
-<img src="03-reg_files/figure-html/unnamed-chunk-35-2.png" width="672" style="display: block; margin: auto;" />
+<img src="03-reg_files/figure-html/unnamed-chunk-35-2.png" alt="" width="672" style="display: block; margin: auto;" />
 
-```r
+``` r
 toluca.fitA <- lm( sqrty ~ xvar , data= toluca.dataWithTrans )
 toluca.fitA
 ```
@@ -852,7 +862,7 @@ toluca.fitA
 
 ### F Test for Lack of Fit
 
-Th lack of fit test requires repeated observations at one or more $x$ levels. To proceed, one may compute the MSLF and MSPE using the summation formulas using **R**. An easier approach is determine the full and reduced model when testing for a lack of fit.  Recall that in this setting we have the following models:
+The lack-of-fit test requires repeated observations at one or more $x$ levels. To proceed, one may compute the MSLF and MSPE using the summation formulas using **R**. An easier approach is to determine the full and reduced model when testing for a lack of fit.  Recall that in this setting we have the following models:
 
 </br>
 
@@ -862,15 +872,15 @@ Reduced Model: $Y_{ij}= \beta_0 + \beta_1 X_j +\varepsilon_{ij}$
 
 </br>
 
-If the full and reduced model can be determined (and are nested), then one may use the general F-test  to test whether we can reject the null hypothesis (which postulates the reduced model). In **R**, the general F-test can be carried out using `anova(` *reduced model* , *full model* , `test= "F" )`  . Note that in this case, the reduced model is a single-factor  (potentially) unbalanced AOV model.  We follow the Bank Example from ALRM to illustrate this in **R**:
+If the full and reduced model can be determined (and are nested), then one may use the general F-test  to test whether we can reject the null hypothesis (which postulates the reduced model). In **R**, the general F-test can be carried out using `anova(` *reduced model* , *full model* , `test= "F" )`  . Note that in this case, the full model is a single-factor (potentially unbalanced) ANOVA model, while the reduced model is the straight-line regression.  We follow the Bank Example from ALRM to illustrate this in **R**:
 
-```r
+``` r
 ### Import data:
 url <- "http://www.csub.edu/~emontoya2/datasets/textbookdata/Kutner/Chapter%20%203%20Data%20Sets/CH03TA04.txt"
 
 bank.data <- read.csv( url , header = FALSE , col.names = c("x", "y") , sep = "" )
 
-glimpse( bank.data )
+pillar::glimpse( bank.data )
 ```
 
 ```
@@ -880,14 +890,13 @@ glimpse( bank.data )
 ## $ y <int> 160, 112, 124, 28, 152, 156, 42, 124, 150, 104, 136
 ```
 
-```r
+``` r
 ### Fit full model, but first convert
 ### the explanatory into a factor variable.
-### 'as.factor" converts a variable into a factor variable.
-bank.dataUD <- mutate( bank.data, xfac = as.factor( x ) )
+### 'as.factor()' converts a variable into a factor variable.
+bank.dataUD <- dplyr::mutate( bank.data, xfac = as.factor( x ) )
 
-# 'levels' counts how many levels are present in a
-# factor variable.
+# levels() returns the level labels of a factor.
 levels.x <- levels( bank.dataUD$xfac )  # determine the levels of X
 levels.x
 ```
@@ -896,25 +905,25 @@ levels.x
 ## [1] "75"  "100" "125" "150" "175" "200"
 ```
 
-```r
-n <- 11 # from glimpse( )   
-c <- 6  # how many levels
-c
+``` r
+n.bank <- nrow(bank.dataUD)
+n.levels <- length(levels.x)
+n.levels
 ```
 
 ```
 ## [1] 6
 ```
 
-```r
-n - c
+``` r
+n.bank - n.levels
 ```
 
 ```
 ## [1] 5
 ```
 
-```r
+``` r
 ### Full model:
 ### (Note: for those that have taken 4220: this is a one-way unbalanced aov problem)
 fit.bank.full <- lm(y~ xfac , data= bank.dataUD)
@@ -962,13 +971,9 @@ knitr::kable(tmpa, "pipe")
  
 ##  Least absolute deviation (LAD) regression
 
-The method of least squares minimizes the distances between the observed data
-points and the corresponding points on the fitted regression line.  Least squares estimates for linear regression assume all model assumptions are valid. When some of these assumptions are invalid, least squares regression can perform poorly for inference. Robust or resistant regression methods provide an alternative to least squares estimation by attempting to dampen the influence of outliers in order to provide a better fit of the model to the data. On such method is LAD regression
+Least squares minimizes the sum of squared residuals, $\sum_i e_i^2$. Least absolute deviation (LAD) regression minimizes the sum of absolute residuals, $\sum_i |e_i|$. Neither criterion requires normal errors just to compute estimates; distributional assumptions matter for inference.
 
-
-Residual diagnostics can help guide you to where the breakdown in assumptions occur, but can be time consuming and sometimes difficult to the untrained eye. Robust regression methods provide an alternative to least squares regression by requiring less restrictive assumptions. These methods attempt to dampen the influence of outlying cases in order to provide a better fit to the majority of the data.
-
-
+LAD is less sensitive than least squares to large response residuals, but it can still be affected by unusual predictor values (high-leverage cases). Residual diagnostics remain useful when considering either method.
 
 ## The matrix approach to simple linear regression 
 
@@ -977,13 +982,13 @@ Residual diagnostics can help guide you to where the breakdown in assumptions oc
 
 Recall that the function `c( )` creates a vector. For example,
 
-```r
+``` r
 xvec <- c( 4, 5, 6, 7 )
 ```
 
 We can select a given element from this vector by placing `[ ]` after the vector name with a specified index:
 
-```r
+``` r
 ### 1st element in the vector
 xvec[1] 
 ```
@@ -992,7 +997,7 @@ xvec[1]
 ## [1] 4
 ```
 
-```r
+``` r
 xvec[3]  # 3rd element in the vector
 ```
 
@@ -1003,9 +1008,9 @@ xvec[3]  # 3rd element in the vector
 
 A matrix is a rectangular way of storing data. You can think of it as simply a way to store data. Matrices will have two dimensions: rows and columns. That is, each matrix will consist of rows and columns of elements (or data).
 
-The function `matrix( )` allows a user to create a matrix from a vector of data. The function has four arguments: `data` (a vector of data), `nrow` (desired number of rows), `ncol` (desired number of columns), and `byrow` (set equal to `FALSE` if the matrix is to be filled by column, set to `TRUE` if to be filled by row).  The code below create a vector of data to be transformed into a matrix:
+The function `matrix( )` allows a user to create a matrix from a vector of data. Four useful arguments are: `data` (a vector of data), `nrow` (desired number of rows), `ncol` (desired number of columns), and `byrow` (set equal to `FALSE` if the matrix is to be filled by column, set to `TRUE` if to be filled by row).  The code below creates a vector of data to be transformed into a matrix:
 
-```r
+``` r
 a <- c(1,2,3,4,5,6)
 
 A <- matrix( data= a, nrow= 2, ncol= 3, byrow= FALSE )
@@ -1018,7 +1023,7 @@ A
 ## [2,]    2    4    6
 ```
 
-```r
+``` r
 B <- matrix( data= a, nrow= 2, ncol= 3, byrow= TRUE )
 B
 ```
@@ -1044,7 +1049,7 @@ It may be necessary to perform certain matrix operations. In this section you wi
 
 The commands are illustrated with the following code:
 
-```r
+``` r
 ### Create two matrices
 C= matrix( c( 1, 2, 1, -8, 26, 4, 5, 6, 10 ) , nrow= 3, ncol= 3 )
 D= matrix( c( 7, 8, 9, 10, 11, 12, 13, 14, 15 ), nrow= 3, ncol= 3 )
@@ -1059,7 +1064,7 @@ C
 ## [3,]    1    4   10
 ```
 
-```r
+``` r
 D
 ```
 
@@ -1070,9 +1075,9 @@ D
 ## [3,]    9   12   15
 ```
 
-```r
+``` r
 ### Matrix multiplication
-C%*%D    # multiply matrices A and B
+C%*%D    # multiply matrices C and D
 ```
 
 ```
@@ -1082,9 +1087,9 @@ C%*%D    # multiply matrices A and B
 ## [3,]  129  174  219
 ```
 
-```r
+``` r
 ### Matrix transpose
-t(C)     # transpose of matrix A
+t(C)     # transpose of matrix C
 ```
 
 ```
@@ -1094,7 +1099,7 @@ t(C)     # transpose of matrix A
 ## [3,]    5    6   10
 ```
 
-```r
+``` r
 ### element by element multiplication
 C*D # this is NOT matrix multiplication    
 ```
@@ -1106,8 +1111,8 @@ C*D # this is NOT matrix multiplication
 ## [3,]    9   48  150
 ```
 
-```r
-### obtain the inverse of A
+``` r
+### obtain the inverse of C
 solve(C) 
 ```
 
@@ -1118,7 +1123,7 @@ solve(C)
 ## [3,] -0.06976744 -0.04651163  0.16279070
 ```
 
-```r
+``` r
 ### Add two matrices
 C + D
 ```
@@ -1150,7 +1155,7 @@ y_{n} \\
 \boldsymbol{X}_{n\times 2}= \begin{bmatrix}
 1 & x_{1} \\
 1 & x_{2} \\
-\vdots \\
+\vdots & \vdots \\
 1 & x_{n} \\
 \end{bmatrix}, \qquad 
 \boldsymbol{\beta}_{2\times 1}= \begin{bmatrix}
@@ -1167,9 +1172,9 @@ $$
 
 The matrix approach is illustrated in **R** using the Toluca Company example:
 
-```r
+``` r
 ### Recall the data
-glimpse( toluca.data )
+pillar::glimpse( toluca.data )
 ```
 
 ```
@@ -1179,7 +1184,7 @@ glimpse( toluca.data )
 ## $ yvar <int> 399, 121, 221, 376, 361, 224, 546, 352, 353, 157, 160, 252, 389, …
 ```
 
-```r
+``` r
 ### Extract both variables to set up the matrices
 hrs <- toluca.data$yvar
 lotsize <- toluca.data$xvar
@@ -1218,9 +1223,9 @@ yvec
 ## [25,]  323
 ```
 
-```r
+``` r
 ### Define the design/model matrix.
-# First we need to define a vectors of 1's:
+# First we need to define a vector of 1's:
 ones <- rep( 1, times= 25) 
 ones
 ```
@@ -1229,7 +1234,7 @@ ones
 ##  [1] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
 ```
 
-```r
+``` r
 # If you have the columns of the matrix
 # already defined, then we can create the 
 # matrix by binding the columns using 'cbind()'.
@@ -1268,7 +1273,7 @@ Xmat
 
 The LS estimates may be obtained via $\boldsymbol{b}= ( \boldsymbol{X}^T\boldsymbol{X})^{-1}\boldsymbol{X}^{T} \boldsymbol{y}$. In **R** we have:
 
-```r
+``` r
 XmatTxmat <- t(Xmat) %*% Xmat
 
 solve( XmatTxmat ) %*% t(Xmat) %*% yvec
@@ -1284,7 +1289,7 @@ These are the same estimates provided by `summary( )`.
 
 The fitted values, $\boldsymbol{\hat{y}} = \boldsymbol{X} \boldsymbol{b}$, are obtained via:
 
-```r
+``` r
 ### Store the LS estimates
 best <- solve( XmatTxmat ) %*% t(Xmat) %*% yvec
 
@@ -1322,7 +1327,7 @@ Xmat %*% best # compare to fitted(toluca.fit)
 
 These values may also be obtained by using the hat matrix:
 
-```r
+``` r
 ### Hat matrix
 Hatmat <- Xmat %*% solve( XmatTxmat ) %*% t(Xmat)
 
@@ -1363,20 +1368,20 @@ Hatmat %*% yvec # same as above
 
 This section deals with the multiple regression model
  $$ Y_i=\beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \cdots +
-\beta_p x_{i,p-1} + \varepsilon_i$$
- where the $\beta$'s are the parameters, $x$'s are  known constants, and we assume that $\varepsilon_i \overset{iid}{\sim} N(0, \sigma^2)$.  To illustrate the model fitting with **R** we follow the Dwaine Studios Example from ALRM.  Note that the model can be expressed in matrix form and any subsequent analyses can be done in terms of matrices.  Matrices will be used to obtain the least square estimates as an illustration of using matrices **R**, but the rest of the analyses will be done using `lm( )` and `anova( )`.
+\beta_p x_{ip} + \varepsilon_i$$
+ where the $\beta$'s are the parameters, $x$'s are  known constants, and we assume that $\varepsilon_i \overset{iid}{\sim} N(0, \sigma^2)$.  To illustrate the model fitting with **R** we follow the Dwaine Studios Example from ALRM.  Note that the model can be expressed in matrix form and any subsequent analyses can be done in terms of matrices.  Matrices will be used to obtain the least-squares estimates as an illustration of using matrices in **R**, but the rest of the analyses will be done using `lm( )` and `anova( )`.
 
 
 ### Least-Squares Estimates
 
 Begin by importing the data:
 
-```r
+``` r
 ### Import data:
 url <- "http://www.csub.edu/~emontoya2/datasets/textbookdata/Kutner/Chapter%20%206%20Data%20Sets/CH06FI05.txt"
 
 dwaine.data <- read.csv( url , header = FALSE , col.names = c("x1", "x2",  "y") , sep = "" )
-glimpse( dwaine.data )
+pillar::glimpse( dwaine.data )
 ```
 
 ```
@@ -1389,7 +1394,7 @@ glimpse( dwaine.data )
 
 A matrix approach can be used as follows:
 
-```r
+``` r
 n <- 21
 
 yresp <- dwaine.data$y
@@ -1409,9 +1414,9 @@ b
 ## [3,]   9.36550
 ```
 
-We can also `lm( )` to fit a MLR model.  It is used in the same manner as before but we add additional explanatory variables by adding a `+` after each explanatory variable:
+We can also use `lm( )` to fit a MLR model.  It is used in the same manner as before but we add additional explanatory variables by adding a `+` after each explanatory variable:
 
-```r
+``` r
 ###  Note the argument of lm():
 ### Response variable ∼ Explanatory variable +  Explanatory variable + ...
 dwaine.fit <- lm( y ~ x1 + x2 , data= dwaine.data)
@@ -1430,9 +1435,9 @@ dwaine.fit
  
 ### Fitted values, ANOVA table, residuals
 
-All previously discussed functions that extract information from an *lm obejct* such as the LS estimates, fitted values, ANOVA table,  etc. can be use in the same manner when fitting a MLR model.  Recall that `coef( )` returns the LS estimates:
+All previously discussed functions that extract information from an *lm object* such as the LS estimates, fitted values, ANOVA table,  etc. can be used in the same manner when fitting a MLR model.  Recall that `coef( )` returns the LS estimates:
 
-```r
+``` r
 coef(dwaine.fit)
 ```
 
@@ -1443,7 +1448,7 @@ coef(dwaine.fit)
 
 The fitted values and residuals can be obtained via:
 
-```r
+``` r
 fitted(dwaine.fit)
 ```
 
@@ -1456,7 +1461,7 @@ fitted(dwaine.fit)
 ## 145.7470 159.0013 230.9870 230.3161 157.0644
 ```
 
-```r
+``` r
 residuals( dwaine.fit )
 ```
 
@@ -1474,7 +1479,7 @@ residuals( dwaine.fit )
 
 To obtain the ANOVA table, run the following:
 
-```r
+``` r
 anova( dwaine.fit )
 ```
 
@@ -1503,9 +1508,9 @@ The ANOVA table returned by **R** gives the decomposition of $SSR(X_1, X_2)$ (Ch
  
 ### Inference about the regression parameters
 
-To determine the significance of the regression parameter(s) we can summarized the fit:
+To determine the significance of the regression parameter(s) we can summarize the fit:
 
-```r
+``` r
 summary( dwaine.fit )
 ```
 
@@ -1544,7 +1549,7 @@ Note that we are provided with the test statistic $F^*$ to test whether sales ar
 
 As before, we can use `predict( )` to obtain a CI for the mean response and a PI for a predicted response. For example, a 95% confidence interval for $E(y_h)$ (expected sales in cities)  in a community with $x_{h1}=65.4$ (number of   persons aged 16 or younger) and $x_{h2}=17.6$ (per capita disposable personal income) is obtained in **R**  by:
 
-```r
+``` r
 new.x.data <- data.frame(x1=65.4, x2=17.6)
 
 predict(dwaine.fit, newdata=new.x.data, interval="confidence", level=.95)
@@ -1557,7 +1562,7 @@ predict(dwaine.fit, newdata=new.x.data, interval="confidence", level=.95)
 
 A 95% PI at these same levels of `x1` and `x2` is:
 
-```r
+``` r
 predict(dwaine.fit, newdata=new.x.data, interval="prediction", level=.95)
 ```
 
@@ -1566,9 +1571,9 @@ predict(dwaine.fit, newdata=new.x.data, interval="prediction", level=.95)
 ## 1 191.1039 167.2589 214.949
 ```
 
-To predict at two difference communities in which in one community the number of persons aged 16 or younger is 65.4 and the per capita disposable personal income is 17.6, and the other has the number of persons aged 16 or younger is 53.1 and the per capita disposable personal income is 17.7 we enter the following:
+To predict at two different communities in which in one community the number of persons aged 16 or younger is 65.4 and the per capita disposable personal income is 17.6, and the other has the number of persons aged 16 or younger is 53.1 and the per capita disposable personal income is 17.7 we enter the following:
 
-```r
+``` r
 new.x.data2 <- data.frame(x1=c(65.4, 53.1), x2=c(17.6, 17.7))
 
 predict.lm(dwaine.fit, newdata=new.x.data2, interval="prediction", level=.95)
@@ -1586,13 +1591,13 @@ predict.lm(dwaine.fit, newdata=new.x.data2, interval="prediction", level=.95)
 Diagnostics are conducted in the same manner (QQ-plot of the residuals, scatterplots of the residuals versus $\hat{y}$,  scatterplots of the residuals versus $\hat{y}$ versus a given $x$) as when the simple linear regression model was discussed, but now we also consider the scatter plot matrix and correlation matrix.  The argument for both of these functions will be a dataframe. 
 
 
-```r
+``` r
 splom( dwaine.data) # scatterplot matrix
 ```
 
-<img src="03-reg_files/figure-html/unnamed-chunk-55-1.png" width="672" style="display: block; margin: auto;" />
+<img src="03-reg_files/figure-html/unnamed-chunk-55-1.png" alt="" width="672" style="display: block; margin: auto;" />
 
-```r
+``` r
 cor( dwaine.data ) # correlation matrix
 ```
 
@@ -1610,10 +1615,10 @@ Here **R** is used to obtain an anova table with a decomposition of the SSR. We 
 decomposition depending on the order that you enter the predictor
 variables into `lm( )`.  For example, to get the decomposition
  $$SSR(x_1, x_2, x_3)=SSR(x_3)+SSR(x_2|x_3)+SSR(x_1|x_3, x_2)$$
- we enter the predictors into `lm()` as `y`$\thicksim$`x3 + x2 + x1`.
+ we enter the predictors into `lm()` as `y ~ x3 + x2 + x1`.
 
 
-```r
+``` r
 ### Import data:
 url <- "https://www.csub.edu/~emontoya2/datasets/textbookdata/Kutner/Chapter%20%207%20Data%20Sets/CH07TA01.txt"
 
@@ -1622,7 +1627,7 @@ url <- "https://www.csub.edu/~emontoya2/datasets/textbookdata/Kutner/Chapter%20%
 ### have to be made to read.csv().
 bf.data <- read.csv( url , header = FALSE , col.names = c( "x1", "x2", "x3",  "y" ) , sep = "" )
 
-glimpse( bf.data )
+pillar::glimpse( bf.data )
 ```
 
 ```
@@ -1634,7 +1639,7 @@ glimpse( bf.data )
 ## $ y  <dbl> 11.9, 22.8, 18.7, 20.1, 12.9, 21.7, 27.1, 25.4, 21.3, 19.3, 25.4, 2…
 ```
 
-```r
+``` r
 bf.fit=lm(y~ x3 + x2 + x1, data=bf.data)
 
 anova(bf.fit)
@@ -1668,10 +1673,10 @@ example from ALRM:
 $$ H_0: \beta_2=\beta_3=0$$
 
 The reduced model is $Y_i=\beta_0+\beta_1 X_{i1} + \varepsilon_i$
-and the full models is $y_i=\beta_0+\beta_1 x_{i1} + \beta_2 x_{i2} +\beta_3 x_{i3}+ \varepsilon_i$.  Clearly the models are
+and the full model is $y_i=\beta_0+\beta_1 x_{i1} + \beta_2 x_{i2} +\beta_3 x_{i3}+ \varepsilon_i$.  Clearly the models are
 nested therefore we use the function `anova( )`:
 
-```r
+``` r
 reduced.fit <- lm( y ~ x1 , data= bf.data )
 
 full.fit=lm( y ~ x1 + x2 + x3 , data=bf.data)
@@ -1699,16 +1704,10 @@ The following is printed by `anova( reduced.fit , full.fit,test='F' )`:
 
 ## Interactions
 
-Suppose we wish to include the interaction of $x_1 \times x_2$ in
-One way to include an interaction term
-is by specifying `x1*x2` in the model *formula*.
-Specifying `x1*x2` instead of `x1+x2` will include the
-main effects and the interaction effect.  An alternative way is to use `mutate()` to add a new
-the  predictor variable `x1*x2`. Both
-methods are illustrated:
+Suppose we wish to include an interaction between $x_1$ and $x_2$. In an R model formula, `x1*x2` expands to the two main effects and their interaction: `x1 + x2 + x1:x2`. Alternatively, use `dplyr::mutate()` to add a column containing the product `x1*x2`, and include that column alongside the main effects. Both methods are illustrated below:
 
 
-```r
+``` r
 BodyFat.Inter=lm(y~ x1*x2 + x3, data=bf.data)
 summary(BodyFat.Inter)
 ```
@@ -1735,8 +1734,8 @@ summary(BodyFat.Inter)
 ## F-statistic: 15.42 on 4 and 15 DF,  p-value: 3.41e-05
 ```
 
-```r
-bf.data2 <- mutate( bf.data, x1x2= x1*x2)
+``` r
+bf.data2 <- dplyr::mutate( bf.data, x1x2= x1*x2)
 BodyFat.Inter2=lm(y~ x1 + x2 + x3 + x1x2, data=bf.data2  )
 summary(BodyFat.Inter2)
 ```
@@ -1769,13 +1768,13 @@ summary(BodyFat.Inter2)
 
 To compare the size of the estimated regression parameter estimates on a common scale, we have to standardize each variable (response and explanatory) in the model.   Standardized multiple regression in **R** is illustrated using the Dwaine studios data: 
 
-```r
+``` r
 require( mosaic )
 ### Import data:
 url <- "http://www.csub.edu/~emontoya2/datasets/textbookdata/Kutner/Chapter%20%206%20Data%20Sets/CH06FI05.txt"
 
 dwaine.data <- read.csv( url , header = FALSE , col.names = c("x1", "x2",  "y") , sep = "" )
-glimpse( dwaine.data )
+pillar::glimpse( dwaine.data )
 ```
 
 ```
@@ -1788,17 +1787,17 @@ glimpse( dwaine.data )
 
 To standardize a given variable, we use a function called `scale( )` within mutate:
 
-```r
+``` r
 require( mosaic )
-### Standarize each explanatory variable using mutate()
+### Standardize each explanatory variable using dplyr::mutate()
 ### with scale().  
-dwaine.dataStdz <- mutate( dwaine.data , y.stdz  = scale( y ) , 
-                           x1.stdz = scale( x1) , 
-                           x2.stdz = scale( x2 ) )
+dwaine.dataStdz <- dplyr::mutate( dwaine.data , y.stdz  = as.numeric(scale( y )) ,
+                           x1.stdz = as.numeric(scale( x1 )) ,
+                           x2.stdz = as.numeric(scale( x2 )) )
 
 # The head( ) function allows one to view the 
 # first few observations of a given dataset.
-# Note that we now have each standardize 
+# Note that we now have each standardized
 #  variable. 
 head( dwaine.dataStdz )
 ```
@@ -1815,49 +1814,50 @@ head( dwaine.dataStdz )
 
 
 
-```r
-dwaine.fitStdz <- lm( y.stdz ~ x1.stdz + x2.stdz -1, data= dwaine.dataStdz)
+``` r
+dwaine.fitStdz <- lm( y.stdz ~ x1.stdz + x2.stdz, data= dwaine.dataStdz)
 summary(dwaine.fitStdz)
 ```
 
 ```
 ## 
 ## Call:
-## lm(formula = y.stdz ~ x1.stdz + x2.stdz - 1, data = dwaine.dataStdz)
+## lm(formula = y.stdz ~ x1.stdz + x2.stdz, data = dwaine.dataStdz)
 ## 
 ## Residuals:
 ##      Min       1Q   Median       3Q      Max 
 ## -0.50907 -0.17176  0.02058  0.26071  0.55856 
 ## 
 ## Coefficients:
-##         Estimate Std. Error t value Pr(>|t|)    
-## x1.stdz   0.7484     0.1061   7.056 1.03e-06 ***
-## x2.stdz   0.2511     0.1061   2.368   0.0287 *  
+##               Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) -5.120e-17  6.637e-02   0.000   1.0000    
+## x1.stdz      7.484e-01  1.090e-01   6.868    2e-06 ***
+## x2.stdz      2.511e-01  1.090e-01   2.305   0.0333 *  
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
-## Residual standard error: 0.296 on 19 degrees of freedom
-## Multiple R-squared:  0.9167,	Adjusted R-squared:  0.908 
-## F-statistic: 104.6 on 2 and 19 DF,  p-value: 5.544e-11
+## Residual standard error: 0.3041 on 18 degrees of freedom
+## Multiple R-squared:  0.9167,	Adjusted R-squared:  0.9075 
+## F-statistic:  99.1 on 2 and 18 DF,  p-value: 1.921e-10
 ```
 
-The output of `summary(dwaine.fitStdz)` is nearly identical to `summary(dwaine.fit)` but we now have the estimated standardized regression coefficient estimates, $b_i^*$. 
+Standardization changes the coefficient scales and residual standard error, but preserves fitted relationships, $R^2$, and the slope tests. Retaining the intercept preserves the usual centered $R^2$ definition; the fitted intercept is approximately zero.
 
-## Polynomial regression and regression with categorical variables
+## Polynomial regression
 
 In this section, we start by using R to fit the second-order polynomial regression model with one predictor variable:
 $$
-y_i=\beta_0 + \beta_1 x_{i}^* + \beta_1 x_i^{*2} + \varepsilon_i  
+y_i=\beta_0 + \beta_1 x_{i}^* + \beta_2 x_i^{*2} + \varepsilon_i
 $$
 where $x_{i}^* = x_i - \bar{x}$.  
 
 We fit this polynomial model using New York air quality measurements provided in the  `airquality` dataset.  In this illustration, the response is ozone and the explanatory variable is temperature.  To start, center the explanatory variable and square the centered explanatory variable:
 
-```r
+``` r
 require( mosaic )
 
 data( airquality )
-glimpse( airquality )
+pillar::glimpse( airquality )
 ```
 
 ```
@@ -1871,15 +1871,15 @@ glimpse( airquality )
 ## $ Day     <int> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,…
 ```
 
-```r
+``` r
 # center the explanatory variable and square the 
 # centered explanatory variable
-airqualityCen <- mutate( airquality, cenx1 =scale( Temp , scale=FALSE ), cenx1sq = cenx1^2 )
+airqualityCen <- dplyr::mutate( airquality, cenx1 = as.numeric(scale( Temp, scale = FALSE )), cenx1sq = cenx1^2 )
 ```
 
 A polynomial regression is a linear regression model, so we fit the model in the same manner as past models:
 
-```r
+``` r
 require( mosaic )
 polyfit <- lm( Ozone~ cenx1 + cenx1sq , data= airqualityCen )
 
@@ -1910,7 +1910,7 @@ summary( polyfit )
 ## F-statistic: 67.46 on 2 and 113 DF,  p-value: < 2.2e-16
 ```
 
-```r
+``` r
 xyplot( Ozone  ~ cenx1  , data = airqualityCen,   panel = function(x, y, ...){ 
       panel.xyplot(x, y, ...) 
       fm <- lm(y ~ poly(x, 2)) 
@@ -1918,7 +1918,7 @@ xyplot( Ozone  ~ cenx1  , data = airqualityCen,   panel = function(x, y, ...){
       } )
 ```
 
-<img src="03-reg_files/figure-html/unnamed-chunk-63-1.png" width="672" style="display: block; margin: auto;" />
+<img src="03-reg_files/figure-html/unnamed-chunk-63-1.png" alt="" width="672" style="display: block; margin: auto;" />
 
 
  
@@ -1928,11 +1928,11 @@ xyplot( Ozone  ~ cenx1  , data = airqualityCen,   panel = function(x, y, ...){
 This section deals with different criteria for model selection for MLR.  To illustrate different model selection criteria with R, we follow the Surgical Unit Example from ALRM. To start, import the data:
 
 
-```r
+``` r
 url <- "http://www.csub.edu/~emontoya2/datasets/textbookdata/Kutner/Chapter%20%209%20Data%20Sets/CH09TA01.txt"
 
 surgunit.data <- read.csv( url , header = FALSE , col.names = c("x1", "x2", "x3", "x4", "x5", "x6", "x7", "x8",   "y", "lny") , sep = "" )
-glimpse( surgunit.data )
+pillar::glimpse( surgunit.data )
 ```
 
 ```
@@ -1951,11 +1951,11 @@ glimpse( surgunit.data )
 ```
 
 
-Tell R that certain varialbes are categorical:
+Tell R that certain variables are categorical:
 
-```r
-surgunit.data <- mutate( surgunit.data,  x6fac =as.factor(x6), x7fac = as.factor( x7 ), x8fac= as.factor( x8 ) )
-glimpse( surgunit.data )
+``` r
+surgunit.data <- dplyr::mutate( surgunit.data,  x6fac =as.factor(x6), x7fac = as.factor( x7 ), x8fac= as.factor( x8 ) )
+pillar::glimpse( surgunit.data )
 ```
 
 ```
@@ -1978,27 +1978,27 @@ glimpse( surgunit.data )
 
 ### $R_{a,p}^2$  and $C_p$
 
-$R^2$ does not decrease as the number of covariates in the model increases. The adjusted coefficient of determination, $R_{a,p}^2$ may decrease as the number of covariates in the model increases, and so takes into account the number of explanatory variables that are in the model. To compute $R_{a,p}^2$ for several candidate models, we use the function `leaps` function from the `leaps` R package. First install the R package `leaps`:
+For nested least-squares models fitted to the same observations with an intercept, $R^2$ cannot decrease when predictors are added. The adjusted coefficient of determination, $R_{a,p}^2$ may decrease as the number of covariates in the model increases, and so takes into account the number of explanatory variables that are in the model. To compute $R_{a,p}^2$ for several candidate models, we use the `leaps()` function from the `leaps` R package. Install `leaps` once with `install.packages("leaps")`, then load it in each session:
 
-```r
+``` r
 require( leaps )
 ```
 
-First, we have to define a matrix whose columns consist of the variables under consideration (this is not the design/model matrix). Note that `leaps()` can only handle factor variables with two levels and they must be numeric (don't use the factored versions of $x6$, $x7$, and $x8$:
+First, we have to define a matrix whose columns consist of the variables under consideration (this is not the design/model matrix). `leaps()` expects numeric predictor columns, not factor objects. Keep the numeric codes for the binary variables $x6$, $x7$, and $x8$ rather than using their factored versions. A categorical predictor with more than two levels would need multiple indicator columns.
 
-```r
-Xleaps <- select( surgunit.data, -c( 9, 10, 11, 12, 13 ) )  
+``` r
+Xleaps <- as.matrix(dplyr::select(surgunit.data, x1, x2, x3, x4, x5, x6, x7, x8))
 ```
 
 The `leaps()` function requires this matrix, the response variable and the model selection criterion (`"Cp"` or `"adjr2"`):
 
-```r
+``` r
 R2adj.temp <- leaps(x=Xleaps, y=surgunit.data$"lny", method="adjr2")
 ```
 
 To better organize the information provided by `leaps()`, run the following:
 
-```r
+``` r
 #obtain relevant info
 R2adj.info=cbind(R2adj.temp$which,R2adj.temp$size,R2adj.temp$adjr2)
 
@@ -2079,11 +2079,11 @@ R2adj.info
 ## 8  1  1  1  1  1  1  1  1 9  0.818773720
 ```
 
-Note that the models with among the higher $R_{a,p}^2$ are the models that include $x1$, $x2$, $x3$, and $x8$  and include $x1$, $x2$, $x3$, $x6$, and $x8$. 
+Note that models with higher $R_{a,p}^2$ are the models that include $x1$, $x2$, $x3$, and $x8$  and include $x1$, $x2$, $x3$, $x6$, and $x8$.
 
-Mallows' $C_p$ criterion may also be obtained in the sammer manner using `leaps` but we replace `"adjr2"` with `"Cp"`:
+Mallows' $C_p$ criterion may also be obtained in the same manner using `leaps` but we replace `"adjr2"` with `"Cp"`:
 
-```r
+``` r
 Cp.temp <- leaps(x=Xleaps, y=surgunit.data$"lny", method="Cp")
  
 #obtain relevant info
@@ -2170,10 +2170,10 @@ Note that a model with $x1$, $x2$, $x3$, $x5$, and $x8$ has a $C_p$ that is near
 
 ### $AIC_p$
 
-The AIC criterion may be computed using the funciton `AIC()`.  The only argument for this funciton is an `lm` object. For example:
+The AIC criterion may be computed using `AIC()` with one or more fitted models. Compare models fitted to the same response and observations; smaller AIC is preferred. For example:
 
 
-```r
+``` r
 fit1 <- lm( lny ~ x1 + x2 + x3 + x5 + x8, data= surgunit.data )
 
 fit2 <- lm( lny ~ x1 + x2 + x3 + x8, data= surgunit.data )
@@ -2193,9 +2193,9 @@ AIC( fit1, fit2, fit3 )
 
 ### $BIC_p$ or $SBC_p$ 
 
-The BIC criterion may be computed using the function `AIC()` as well but we have to add an additional argument:
+Use `BIC()` to compute the BIC criterion. Equivalently, use `AIC()` with `k = log(nobs(fit1))` when all models use the same observations:
 
-```r
+``` r
 dim(surgunit.data)
 ```
 
@@ -2203,30 +2203,30 @@ dim(surgunit.data)
 ## [1] 54 13
 ```
 
-```r
-AIC( fit1, fit2, fit3 , k= log( 54 ))
+``` r
+BIC(fit1, fit2, fit3)
 ```
 
 ```
-##      df       AIC
+##      df       BIC
 ## fit1  7  5.902830
 ## fit2  6  3.827912
 ## fit3  7 52.372440
 ```
 
-Note that by default, $k=2$.
+In `AIC()`, the default penalty is $k=2$; BIC uses $k=\log(n)$.
 
 ### $AICc_p$
 
-Akaike's corrected Information Criterion may also be computed with `AIC()` by adding the "correction":
+For these Gaussian linear models, compute Akaike's corrected information criterion (AICc) by adding $2K(K+1)/(n-K-1)$ to AIC. Here $K$ counts estimated parameters, including the error variance; `AIC()` reports this count in its `df` column. The correction requires $n>K+1$:
 
 
-```r
+``` r
 # get AIC of a model and store result
 storeAIC <- AIC( fit1, fit2, fit3 )
 
 
-AICc <- storeAIC$AIC + ( 2*(storeAIC$df)^2 + 2*storeAIC$df ) / ( 54- storeAIC$df -1)
+AICc <- storeAIC$AIC + ( 2*(storeAIC$df)^2 + 2*storeAIC$df ) / ( nobs(fit1)- storeAIC$df -1)
 
 AICc
 ```
@@ -2235,30 +2235,31 @@ AICc
 ## [1] -5.585275 -6.318758 40.884335
 ```
 
-```r
-storeBIC <- AIC( fit1, fit2, fit3, k=log(54) )
+``` r
+storeBIC <- BIC(fit1, fit2, fit3)
 
-cbind(AICc, storeAIC,  storeBIC) #ignore the column headers
+data.frame(model = rownames(storeAIC), AIC = storeAIC$AIC,
+           AICc = AICc, BIC = storeBIC$BIC)
 ```
 
 ```
-##           AICc df       AIC df       AIC
-## fit1 -5.585275  7 -8.020058  7  5.902830
-## fit2 -6.318758  6 -8.105992  6  3.827912
-## fit3 40.884335  7 38.449552  7 52.372440
+##   model       AIC      AICc       BIC
+## 1  fit1 -8.020058 -5.585275  5.902830
+## 2  fit2 -8.105992 -6.318758  3.827912
+## 3  fit3 38.449552 40.884335 52.372440
 ```
 
 
 ### Stepwise regression
 
-The function `step()` in R performs forward and backward stepwise regression. The `step()` function uses AIC (by default) for its model selection criterion.  The arguments of the step function are the initial model (an lm object) to start the procedure, the scope (the covariates under consideration), and the direction of the search (`backward` or `forward`)
+The function `step()` in R performs forward and backward stepwise regression. The `step()` function uses AIC (by default) for its model selection criterion.  The arguments of the step function are the initial model (an lm object) to start the procedure, the scope (the covariates under consideration), and the direction of the search (`"backward"`, `"forward"`, or `"both"`)
 
 Forward selection starts with a model with no explanatory variables and decides which covariates to add at each step by getting the explanatory variables that gives the lowest AIC, if in the next step a lower AIC is not obtained, then it stops searching. Therefore, the model to specify in `step()` must be a model with just the intercept and the scope must include all the predictor variables to include in the search.   We demonstrate with the Surgical
-Unit data but we limit ourselves for using the first 4 predictor variables as before for the purpose of illustration:
+Unit data but we limit ourselves to using the first four predictor variables for the purpose of illustration:
 
 
-```r
-fit0 <- lm(lny ~ 1, data= surgunit.data) #model with just the intercept
+``` r
+fit0 <- lm(lny ~ 1, data= surgunit.data) # model with just the intercept
 
 # using AIC criterion
 fit.fstepAIC <- step(fit0, scope=~ x1+x2+x3+x4, direction="forward" )
@@ -2300,7 +2301,7 @@ fit.fstepAIC <- step(fit0, scope=~ x1+x2+x3+x4, direction="forward" )
 ## + x4    1  0.024578 3.0840 -144.59
 ```
 
-```r
+``` r
 # model suggested by forward selection w/AIC
 summary(fit.fstepAIC)
 ```
@@ -2330,9 +2331,9 @@ summary(fit.fstepAIC)
 
 Now obtain results using the forward stepwise regression results using the BIC criterion:
 
-```r
+``` r
 # using BIC criterion --> note the argument k= log(n)
-fit.fstepBIC <- step(fit0, scope=~ x1+x2+x3+x4, direction="forward"  , k= log(54) )
+fit.fstepBIC <- step(fit0, scope=~ x1+x2+x3+x4, direction="forward"  , k = log(nobs(fit0)) )
 ```
 
 ```
@@ -2371,8 +2372,8 @@ fit.fstepBIC <- step(fit0, scope=~ x1+x2+x3+x4, direction="forward"  , k= log(54
 ## + x4    1  0.024578 3.0840 -134.65
 ```
 
-```r
-# model suggested by forward selection w/AIC
+``` r
+# model suggested by forward selection with BIC
 summary(fit.fstepBIC)
 ```
 
@@ -2405,8 +2406,8 @@ the search:
 
 
 
-```r
-fitfull <- lm(lny ~ x1 + x2 + x3 + x4, data= surgunit.data) #model with just the intercept
+``` r
+fitfull <- lm(lny ~ x1 + x2 + x3 + x4, data= surgunit.data) # full model with four predictors
 
 # using AIC criterion
 fit.BstepAIC <- step(fitfull, scope=~ x1+x2+x3+x4, direction="backward" )
@@ -2433,8 +2434,8 @@ fit.BstepAIC <- step(fitfull, scope=~ x1+x2+x3+x4, direction="backward" )
 ## - x3    1    6.3341 9.4427  -88.162
 ```
 
-```r
-# model suggested by forward selection w/AIC
+``` r
+# model suggested by backward selection with AIC
 summary(fit.BstepAIC)
 ```
 
@@ -2465,9 +2466,9 @@ summary(fit.BstepAIC)
 
 Now obtain results using the backward stepwise regression results using the BIC criterion:
 
-```r
+``` r
 # using BIC criterion --> note the argument k= log(n)
-fit.BstepBIC <- step(fitfull, scope=~ x1+x2+x3+x4, direction="backward"  , k= log(54) )
+fit.BstepBIC <- step(fitfull, scope=~ x1+x2+x3+x4, direction="backward"  , k = log(nobs(fitfull)) )
 ```
 
 ```
@@ -2491,8 +2492,8 @@ fit.BstepBIC <- step(fitfull, scope=~ x1+x2+x3+x4, direction="backward"  , k= lo
 ## - x3    1    6.3341 9.4427  -82.195
 ```
 
-```r
-# model suggested by forward selection w/AIC
+``` r
+# model suggested by backward selection with BIC
 summary(fit.BstepBIC)
 ```
 
@@ -2522,10 +2523,10 @@ summary(fit.BstepBIC)
 
 ### CV/PRESS and GCV
 
-The cross validation (CV) or PRESS criterion provides a sense of how well the model can predict new values of y.  We use the computational friendly from the CV criterion to compute a CV scores.  To illustrate, the CV scores of `fit1`, `fit2`, and `fit3` are computed.
+Leave-one-out cross-validation assesses prediction error. PRESS is the sum of squared leave-one-out prediction errors, while the CV score used here is PRESS divided by the number of observations. We use the computational shortcut $e_i/(1-h_{ii})$ for each leave-one-out residual.  To illustrate, the CV scores of `fit1`, `fit2`, and `fit3` are computed.
 
-```r
-n <- 54
+``` r
+n <- nobs(fit1)
 
 ### CV score fit1
 cvtop <- residuals( fit1 )
@@ -2570,7 +2571,7 @@ CVfit1
 ## [1] 0.05072096
 ```
 
-```r
+``` r
 CVfit2
 ```
 
@@ -2578,7 +2579,7 @@ CVfit2
 ## [1] 0.05069947
 ```
 
-```r
+``` r
 CVfit3
 ```
 
@@ -2588,8 +2589,8 @@ CVfit3
 
 Next, compute the GCV scores:
 
-```r
-n <- 54
+``` r
+n <- nobs(fit1)
 
 ### GCV score fit1
 ### sum of squared residuals
@@ -2616,7 +2617,7 @@ gcvfit2 <- 1/n*( SSE/gcvbottom )
 ### 
 
 
-### GCV score fit2
+### GCV score fit3
 ### sum of squared residuals
 SSE <- sum( residuals( fit3 )^2 )
 
@@ -2634,7 +2635,7 @@ gcvfit1
 ## [1] 0.04928725
 ```
 
-```r
+``` r
 gcvfit2
 ```
 
@@ -2642,7 +2643,7 @@ gcvfit2
 ## [1] 0.04900256
 ```
 
-```r
+``` r
 gcvfit3
 ```
 
@@ -2672,7 +2673,7 @@ knitr::kable(tmpa, "pipe")
 The body fat example is used to illustrate studentized residuals,  deleted residuals, and studentized deleted residuals.  To start, import the data:
 
 
-```r
+``` r
 ### Import data:
 url <- "https://www.csub.edu/~emontoya2/datasets/textbookdata/Kutner/Chapter%20%207%20Data%20Sets/CH07TA01.txt"
 
@@ -2681,7 +2682,7 @@ url <- "https://www.csub.edu/~emontoya2/datasets/textbookdata/Kutner/Chapter%20%
 ### have to be made to read.csv().
 bf.data <- read.csv( url , header = FALSE , col.names = c( "x1", "x2", "x3",  "y" ) , sep = "" )
 
-glimpse( bf.data )
+pillar::glimpse( bf.data )
 ```
 
 ```
@@ -2693,7 +2694,7 @@ glimpse( bf.data )
 ## $ y  <dbl> 11.9, 22.8, 18.7, 20.1, 12.9, 21.7, 27.1, 25.4, 21.3, 19.3, 25.4, 2…
 ```
 
-```r
+``` r
 #> Rows: 20
 #> Columns: 4
 #> $ x1 <dbl> 19.5, 24.7, 30.7, 29.8, 19.1, 25.6, 31.4, 27.9, 22.1, 25.5, 31.1, 3~
@@ -2704,19 +2705,19 @@ glimpse( bf.data )
 
 Examine the scatterplot matrix for potential outlying values:
 
-```r
+``` r
 splom(bf.data)
 ```
 
-<img src="03-reg_files/figure-html/unnamed-chunk-81-1.png" width="672" style="display: block; margin: auto;" />
+<img src="03-reg_files/figure-html/unnamed-chunk-81-1.png" alt="" width="672" style="display: block; margin: auto;" />
 
 
-To obtain the studentized residuals we use the function `rstandard()` whose only argument is an *lm object*:
+To obtain standardized (internally studentized) residuals, use `rstandard()` with an *lm object* as its first argument:
 
-```r
+``` r
 fit1 <- lm( y ~ x1 + x2 + x3, data= bf.data)
 
-# studentized residual
+# standardized (internally studentized) residuals
 rstandard( fit1 ) 
 ```
 
@@ -2732,9 +2733,9 @@ rstandard( fit1 )
 ```
 
 
-The function `rstudent()` obtains the studentized deleted residuals:
+The function `rstudent()` obtains externally studentized (studentized deleted) residuals, using the error-variance estimate from a fit with that case omitted:
 
-```r
+``` r
 # studentized deleted residuals
 rstudent( fit1 ) 
 ```
@@ -2750,10 +2751,10 @@ rstudent( fit1 )
 ## -1.70680191  0.24777625
 ```
 
- The function `hatvalues()`  obtains the influence or leverage values ($h_ii's$) :
+ The function `hatvalues()` returns leverage values ($h_{ii}$), the diagonal entries of the hat matrix. Leverage measures how unusual the predictor values are; it is not itself a measure of influence. Here, a leverage above $3p/n$ is a screening rule, with $p$ counting fitted coefficients including the intercept:
 
-```r
-# studentized deleted residuals
+``` r
+# leverage values
 hatvalues( fit1 ) 
 ```
 
@@ -2766,34 +2767,35 @@ hatvalues( fit1 )
 ## 0.34830629 0.11439069 0.12532943 0.22828343 0.13235798 0.06597771
 ```
 
-```r
-# note n is 20
-# p is 4
-3*4/20
+``` r
+n.cases <- nobs(fit1)
+p.coef <- fit1$rank # includes the intercept
+leverage.cutoff <- 3 * p.coef / n.cases
+leverage.cutoff
 ```
 
 ```
 ## [1] 0.6
 ```
 
-```r
-xyplot( hatvalues( fit1 ) ~ 1:20 , 
+``` r
+xyplot( hatvalues( fit1 ) ~ seq_len(n.cases) ,
         panel = function(x, y) {
          panel.xyplot(x, y)
-         panel.abline(a=3*4/20, b=0, col="red")
+         panel.abline(a=leverage.cutoff, b=0, col="red")
        },   xlab = "Cases", 
        ylab = "Leverage values", ylim=c(0, .7))
 ```
 
-<img src="03-reg_files/figure-html/unnamed-chunk-84-1.png" width="672" style="display: block; margin: auto;" />
+<img src="03-reg_files/figure-html/unnamed-chunk-84-1.png" alt="" width="672" style="display: block; margin: auto;" />
 
 
 ### Identifying influential cases
 
 
- The difference in fits for observation i (or DFFITS) can be obtained by using `dffits()` whose only argument is an *lm object*:
+ DFFITS measures the standardized change in a case's fitted value when that case is omitted. Obtain it with `dffits()`. Inspect its absolute value, since influential cases may have positive or negative DFFITS. One screening rule is $2\sqrt{p/(n-p)}$, where $p$ includes the intercept ([Penn State's regression notes](https://online.stat.psu.edu/stat501/Lesson11)); thresholds guide investigation rather than establish influence:
 
-```r
+``` r
 dffits( fit1 ) 
 ```
 
@@ -2808,32 +2810,36 @@ dffits( fit1 )
 ## -0.66663467  0.06585362
 ```
 
-```r
-2*sqrt( (4+1)/(20-4-1))
+``` r
+dffits.values <- dffits(fit1)
+dffits.cutoff <- 2 * sqrt(p.coef / (n.cases - p.coef))
+dffits.cutoff
 ```
 
 ```
-## [1] 1.154701
+## [1] 1
 ```
 
-```r
+``` r
 # plot DFFITS vs cases
- xyplot( dffits( fit1 )  ~ 1:20 ,
+ xyplot( dffits.values ~ seq_len(n.cases),
        panel = function(x, y) {
          panel.xyplot(x, y)
-         panel.abline(a=1.154701, b=0, col="red")
+         panel.abline(h=c(-dffits.cutoff, dffits.cutoff), col="red")
        }, 
        xlab = "cases", 
-       ylab = "DFFITS", ylim=c(0, 1.2) )
+       ylab = "DFFITS",
+       ylim=extendrange(c(dffits.values, -dffits.cutoff, dffits.cutoff)) )
 ```
 
-<img src="03-reg_files/figure-html/unnamed-chunk-85-1.png" width="672" style="display: block; margin: auto;" />
+<img src="03-reg_files/figure-html/unnamed-chunk-85-1.png" alt="" width="672" style="display: block; margin: auto;" />
        
  
  Cook's distance measure is computed using `cooks.distance()` and it requires an *lm object*:
 
-```r
-cooks.distance( fit1 ) 
+``` r
+cook.values <- cooks.distance(fit1)
+cook.values
 ```
 
 ```
@@ -2847,21 +2853,21 @@ cooks.distance( fit1 )
 ## 0.0992346339 0.0011517393
 ```
 
-```r
-# If D_i >> .5, it may be an influential point. 
-# If D_i >> 1, it quite likely to be an influential point. 
+``` r
+# The reference lines at 0.5 and 1 are screening guides.
+# Investigate large values in context; do not automatically delete cases.
 
-xyplot( dffits( fit1 )  ~ 1:20 ,
+xyplot( cook.values ~ seq_len(n.cases),
        panel = function(x, y) {
          panel.xyplot(x, y)
          panel.abline(a=c(.5), b=c(0), col="red")
          panel.abline(a=c(1), b=c(0),  col="blue")
        }, 
        xlab = "cases", 
-       ylab = "Cooks distance", ylim=c(0, 1.2) )
+       ylab = "Cook's distance", ylim=c(0, max(1.2, cook.values)) )
 ```
 
-<img src="03-reg_files/figure-html/unnamed-chunk-86-1.png" width="672" style="display: block; margin: auto;" />
+<img src="03-reg_files/figure-html/unnamed-chunk-86-1.png" alt="" width="672" style="display: block; margin: auto;" />
 
 
 <!-- zhttps://online.stat.psu.edu/stat501/lesson/11/11.7 -->

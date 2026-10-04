@@ -1,7 +1,7 @@
 --- 
 title: "An R companion"
 author: "Eduardo Montoya"
-date: "2023-04-25"
+date: "2026-10-04"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib]
