@@ -68,7 +68,7 @@ Builds execute examples that download data from `www.csub.edu`. Internet access 
 
 If a package is missing, rerun dependency installation. If Pandoc is missing, build from RStudio or install Pandoc and make it available on PATH. When calling the script from a standalone terminal, RStudio's bundled Pandoc may not be on PATH.
 
-GitHub Actions runs HTML, PDF, and EPUB builds on pull requests and pushes to `main`. The workflow installs R, Pandoc, dependencies from `DESCRIPTION`, and TinyTeX for PDF. Check the Actions results before merging. These checks validate rendering; they do not publish or commit generated website files.
+GitHub Actions runs HTML, PDF, and EPUB builds on pull requests and pushes to `main`. The workflow installs R, Pandoc, dependencies from `DESCRIPTION`, and TinyTeX for PDF. Check the Actions results before merging. Each format is saved as a downloadable Actions artifact for 14 days. After all three formats pass on a source push to `main`, the workflow combines those outputs and commits only `docs/` to a new `publication/book-<run-id>-<attempt>` branch. Review the generated HTML and open a pull request from that branch to `main`; merging it publishes through the existing GitHub Pages setup. The workflow does not merge or publish automatically. Pushes changing only `docs/` skip this workflow to avoid repeated publication branches. Pull-request builds have read-only repository access; only the publication job on `main` has write access.
 
 After editing, render HTML and inspect the introduction, basic examples, regression tables, plots, navigation, and links. Run `git diff --check` to catch whitespace errors. PDF and EPUB should be rendered separately when changes affect those formats.
 
