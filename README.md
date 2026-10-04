@@ -47,7 +47,7 @@ install.packages("tinytex", repos = "https://cloud.r-project.org")
 tinytex::install_tinytex()
 ```
 
-Restart the terminal after installing TeX if XeLaTeX is not detected. A PDF render has not been verified as part of this maintenance pass.
+Restart the terminal after installing TeX if XeLaTeX is not detected.
 
 ## Source and publishing
 
@@ -67,6 +67,8 @@ Edit the R Markdown sources, rebuild, and review both source changes and generat
 Builds execute examples that download data from `www.csub.edu`. Internet access and the availability of those datasets are required. A download error can indicate an unavailable source rather than an R syntax error; inspect the URL reported by the failing chunk.
 
 If a package is missing, rerun dependency installation. If Pandoc is missing, build from RStudio or install Pandoc and make it available on PATH. When calling the script from a standalone terminal, RStudio's bundled Pandoc may not be on PATH.
+
+GitHub Actions runs HTML, PDF, and EPUB builds on pull requests and pushes to `main`. The workflow installs R, Pandoc, dependencies from `DESCRIPTION`, and TinyTeX for PDF. Check the Actions results before merging. These checks validate rendering; they do not publish or commit generated website files.
 
 After editing, render HTML and inspect the introduction, basic examples, regression tables, plots, navigation, and links. Run `git diff --check` to catch whitespace errors. PDF and EPUB should be rendered separately when changes affect those formats.
 
