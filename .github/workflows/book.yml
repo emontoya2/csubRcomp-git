@@ -4,7 +4,8 @@ on:
   push:
     branches:
       - main
-      - maintenance/build-reliability-docs
+    paths-ignore:
+      - 'docs/**'
 permissions:
   contents: read
 concurrency:
@@ -32,5 +33,66 @@ jobs:
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           dependencies: '"hard"'
+      - name: Clear generated output
+        run: rm -rf -- docs
       - name: Render book
         run: Rscript scripts/build.R ${{ matrix.format }}
+      - name: Save HTML
+        if: matrix.format == 'html'
+        uses: actions/upload-artifact@v7
+        with:
+          name: book-html
+          path: docs/
+          if-no-files-found: error
+          retention-days: 14
+      - name: Save downloadable book
+        if: matrix.format != 'html'
+        uses: actions/upload-artifact@v7
+        with:
+          name: book-${{ matrix.format }}
+          path: docs/Rcomp.${{ matrix.format }}
+          if-no-files-found: error
+          retention-days: 14
+  prepare-publication:
+    name: Prepare publication branch
+    needs: render
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.sha }}
+      - name: Clear old website
+        run: rm -rf -- docs
+      - uses: actions/download-artifact@v8
+        with:
+          pattern: book-*
+          path: docs/
+          merge-multiple: true
+      - name: Check publication files
+        run: |
+          test -s docs/index.html
+          test -s docs/intro.html
+          test -s docs/basics.html
+          test -s docs/reg.html
+          test -s docs/Rcomp.pdf
+          test -s docs/Rcomp.epub
+          touch docs/.nojekyll
+      - name: Commit rebuilt book to a review branch
+        env:
+          PUBLICATION_BRANCH: publication/book-${{ github.run_id }}-${{ github.run_attempt }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$PUBLICATION_BRANCH"
+          git add -A -- docs
+          if git diff --cached --quiet; then
+            echo "Generated book is already current." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          git commit -m "Rebuild published book from $GITHUB_SHA"
+          git push origin "HEAD:refs/heads/$PUBLICATION_BRANCH"
+          echo "Review branch: $PUBLICATION_BRANCH. Merge its docs/ changes to main to publish with the existing GitHub Pages configuration." >> "$GITHUB_STEP_SUMMARY"
