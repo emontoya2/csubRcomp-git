@@ -867,7 +867,7 @@ Here **R** is used to obtain an anova table with a decomposition of the SSR. We 
 decomposition depending on the order that you enter the predictor
 variables into `lm( )`.  For example, to get the decomposition
  $$SSR(x_1, x_2, x_3)=SSR(x_3)+SSR(x_2|x_3)+SSR(x_1|x_3, x_2)$$
- we enter the predictors into `lm()` as `y`$\thicksim$`x3 + x2 + x1`.
+ we enter the predictors into `lm()` as `y ~ x3 + x2 + x1`.
 
 ```{r fig.width=7, fig.height=3,fig.align='center',cache=FALSE,  echo=T, eval=T, message = FALSE,fig.asp=0.3500}
 ### Import data:
