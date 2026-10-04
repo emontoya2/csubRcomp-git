@@ -17,6 +17,7 @@ csv-files
 importing-a-.csv-file
 importing-data-via-a-url
 importing-data-from-your-computer
+using-rstudios-data-import-feature
 summarizing-data
 export-an-r-plot-or-r-output
 exporting-graphs
@@ -38,7 +39,7 @@ using-plotmodel
 fitted-or-predicted-values
 residuals
 summary-lm-object-output
-estimating-of-sigma2
+estimating-sigma2
 inference-in-simple-linear-regression
 inferences-for-beta_0-and-beta_1
 ci-for-the-mean-response-ey_h-and-a-prediction-interval-for-y_h
@@ -46,6 +47,7 @@ analysis-of-variance-approach-to-regression-analysis
 measures-of-association
 residual-analysis-and-remedial-measures
 creating-residual-plots
+residual-diagnostic-plots-from-base-r
 testing-departures-from-normality
 transformations
 f-test-for-lack-of-fit
@@ -64,7 +66,7 @@ anova-table-containing-decomposition-of-ssr
 testing-whether-beta_k-neq-0-for-some-k
 interactions
 standardized-multiple-regression
-polynomial-regression-and-regression-with-categorical-variables
+polynomial-regression
 model-selection
 r_ap2-and-c_p
 aic_p
@@ -75,5 +77,3 @@ cvpress-and-gcv
 more-diagnostics
 identifying-outlying-y-and-x-values
 identifying-influential-cases
-using-rstudios-data-import-feature
-residual-plots-from-the-tactile-package
