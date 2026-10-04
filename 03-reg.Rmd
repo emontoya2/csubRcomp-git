@@ -127,7 +127,7 @@ From the `summary( )` output, we see that $b_0=62.366$ and $b_1=3.570$. More on 
 Alternatively, we can  extract the LS estimates by applying the function `coef()` to the *lm object*:
 ```{r fig.width=7, fig.height=3,fig.align='center',cache=FALSE,  echo=T, message = FALSE,fig.asp=0.3500}
 ### The only info required is the name 
-### your lm object.
+### of your lm object.
 coef( toluca.fit )
 ```
 
@@ -173,7 +173,7 @@ fitted.values( toluca.fit )
 predict( toluca.fit )
 ```
 
-Both `fitted.values( )` or  `predict( )` can provide the fitted/predicted values for the observed values of $x$.  If instead you wanted to predict or fit values of $y$ for certain levels or values of $x$, we use `predict( )` with an additional argument that corresponds to  a dataframe that holds the x value(s) of interest. For example:
+Both `fitted.values( )` and `predict( )` can provide the fitted/predicted values for the observed values of $x$.  If instead you wanted to predict or fit values of $y$ for certain levels or values of $x$, we use `predict( )` with an additional argument that corresponds to  a dataframe that holds the x value(s) of interest. For example:
 ```{r fig.width=7, fig.height=3,fig.align='center',cache=FALSE,  echo=T, message = FALSE,fig.asp=0.3500}
 ### This is a template on how to predict values of y
 ### for certain values of x.  
@@ -194,12 +194,12 @@ predict( toluca.fit , newdata= newdat )
 
 ### Residuals
 
-The residuals are the differences between the observed values and the fitted values, denoted by $e_i=y_i-\hat{y}_i$. The residuals can be obtained using the function `residuals( )` whose only argument is an *lm object*:
+The residuals are the differences between the observed values and the fitted values, denoted by $e_i=y_i-\hat{y}_i$. The residuals can be obtained using the function `residuals( )` with an *lm object* as its first argument:
 ```{r fig.width=7, fig.height=3,fig.align='center',cache=FALSE,  echo=T, message = FALSE,fig.asp=0.3500}
 ### You have to specify an 'lm object'.
 residuals( toluca.fit )
  
-e <- residuals( toluca.fit ) # store them in a object called 'e'
+e <- residuals( toluca.fit ) # store them in an object called 'e'
 
 ```
 
@@ -1025,12 +1025,12 @@ pillar::glimpse( surgunit.data )
 
 ### $R_{a,p}^2$  and $C_p$
 
-$R^2$ does not decrease as the number of covariates in the model increases. The adjusted coefficient of determination, $R_{a,p}^2$ may decrease as the number of covariates in the model increases, and so takes into account the number of explanatory variables that are in the model. To compute $R_{a,p}^2$ for several candidate models, we use the function `leaps` function from the `leaps` R package. Install `leaps` once with `install.packages("leaps")`, then load it in each session:
+For nested least-squares models fitted to the same observations with an intercept, $R^2$ cannot decrease when predictors are added. The adjusted coefficient of determination, $R_{a,p}^2$ may decrease as the number of covariates in the model increases, and so takes into account the number of explanatory variables that are in the model. To compute $R_{a,p}^2$ for several candidate models, we use the `leaps()` function from the `leaps` R package. Install `leaps` once with `install.packages("leaps")`, then load it in each session:
 ```{r, eval=FALSE, fig.width=7, fig.height=3,fig.align='center',cache=FALSE,  echo=T, message = FALSE,fig.asp=0.3500}
 require( leaps )
 ```
 
-First, we have to define a matrix whose columns consist of the variables under consideration (this is not the design/model matrix). Note that `leaps()` can only handle factor variables with two levels and they must be numeric (do not use the factored versions of $x6$, $x7$, and $x8$).
+First, we have to define a matrix whose columns consist of the variables under consideration (this is not the design/model matrix). `leaps()` expects numeric predictor columns, not factor objects. Keep the numeric codes for the binary variables $x6$, $x7$, and $x8$ rather than using their factored versions. A categorical predictor with more than two levels would need multiple indicator columns.
 ```{r fig.width=7, fig.height=3,fig.align='center',cache=FALSE,  echo=T, message = FALSE,fig.asp=0.3500}
 Xleaps <- as.matrix(dplyr::select(surgunit.data, x1, x2, x3, x4, x5, x6, x7, x8))  
 ```
@@ -1118,7 +1118,7 @@ data.frame(model = rownames(storeAIC), AIC = storeAIC$AIC,
 
 ### Stepwise regression
 
-The function `step()` in R performs forward and backward stepwise regression. The `step()` function uses AIC (by default) for its model selection criterion.  The arguments of the step function are the initial model (an lm object) to start the procedure, the scope (the covariates under consideration), and the direction of the search (`backward` or `forward`)
+The function `step()` in R performs forward and backward stepwise regression. The `step()` function uses AIC (by default) for its model selection criterion.  The arguments of the step function are the initial model (an lm object) to start the procedure, the scope (the covariates under consideration), and the direction of the search (`"backward"`, `"forward"`, or `"both"`)
 
 Forward selection starts with a model with no explanatory variables and decides which covariates to add at each step by getting the explanatory variables that gives the lowest AIC, if in the next step a lower AIC is not obtained, then it stops searching. Therefore, the model to specify in `step()` must be a model with just the intercept and the scope must include all the predictor variables to include in the search.   We demonstrate with the Surgical
 Unit data but we limit ourselves to using the first four predictor variables for the purpose of illustration:
@@ -1162,7 +1162,7 @@ summary(fit.BstepAIC)
 Now obtain results using the backward stepwise regression results using the BIC criterion:
 ```{r fig.width=7, fig.height=3,fig.align='center',cache=FALSE,  echo=T, message = FALSE,fig.asp=0.3500}
 # using BIC criterion --> note the argument k= log(n)
-fit.BstepBIC <- step(fitfull, scope=~ x1+x2+x3+x4, direction="backward"  , k = log(nobs(fit0)) )
+fit.BstepBIC <- step(fitfull, scope=~ x1+x2+x3+x4, direction="backward"  , k = log(nobs(fitfull)) )
 
 # model suggested by backward selection with BIC
 summary(fit.BstepBIC)
@@ -1173,7 +1173,7 @@ summary(fit.BstepBIC)
 
 Leave-one-out cross-validation assesses prediction error. PRESS is the sum of squared leave-one-out prediction errors, while the CV score used here is PRESS divided by the number of observations. We use the computational shortcut $e_i/(1-h_{ii})$ for each leave-one-out residual.  To illustrate, the CV scores of `fit1`, `fit2`, and `fit3` are computed.
 ```{r fig.width=7, fig.height=3,fig.align='center',cache=FALSE,  echo=T, message = FALSE,fig.asp=0.3500}
-n <- 54
+n <- nobs(fit1)
 
 ### CV score fit1
 cvtop <- residuals( fit1 )
@@ -1218,7 +1218,7 @@ CVfit3
 
 Next, compute the GCV scores:
 ```{r fig.width=7, fig.height=3,fig.align='center',cache=FALSE,  echo=T, message = FALSE,fig.asp=0.3500}
-n <- 54
+n <- nobs(fit1)
 
 ### GCV score fit1
 ### sum of squared residuals
@@ -1306,7 +1306,7 @@ splom(bf.data)
 ```
 
 
-To obtain standardized (internally studentized) residuals, use `rstandard()` whose only argument is an *lm object*:
+To obtain standardized (internally studentized) residuals, use `rstandard()` with an *lm object* as its first argument:
 ```{r fig.width=7, fig.height=5,fig.align='center',cache=FALSE,  echo=T, message = FALSE,fig.asp=0.5500}
 fit1 <- lm( y ~ x1 + x2 + x3, data= bf.data)
 

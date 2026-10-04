@@ -8,9 +8,9 @@ By now, the **RStudio** environment should look familiar. This chapter covers ba
 
 Take a look at the Environment tab in the top right pane. Datasets that you import or load into the global environment appear in this tab. Some built-in datasets can also be used directly without first appearing there.  In this course, we will either import a dataset that is stored in a .csv file or use a dataset that already comes with **R** (by way of an **R** package).  Here, we illustrate using a dataset that already comes with R. The dataset is the resulting measurements from an experiment on the effect of diet on early growth of chicks.
 
-**R** refers to this dataset as `ChickWeight`. We can look at this data by first telling **R** that we want to use it by using following command:
+**R** refers to this dataset as `ChickWeight`. We can look at this data by first telling **R** that we want to use it by using the following command:
 ```{r, eval = FALSE}
-data( ChickWeight )  # this tells R that we want to use the 'ChickWeight` data
+data( ChickWeight )  # this tells R that we want to use the 'ChickWeight' data
 # It should now appear in R's memory (see Environment tab)
 # data() loads the dataset; View() opens the data viewer.
 ```
@@ -131,7 +131,7 @@ Alternatively, one can take a “point and click” approach to importing data. 
 
 ##  Summarizing data
 
-There are many ways to summarize data in **R**.  We will be using functions from the `mosaic` package.  From hereafter, always load the `mosaic` package.  That is, always have the following in your R script before writing any commands to conduct any analysis:
+There are many ways to summarize data in **R**.  We will be using functions from the `mosaic` package.  From now on, always load the `mosaic` package.  That is, always have the following in your R script before writing any commands to conduct any analysis:
 ```{r data35c, echo=T,   eval=F ,message=FALSE,    collapse = T,   fig.width=5.5, warning=F,  fig.height=2.5}
 require( mosaic )
 library(lattice)
@@ -157,7 +157,7 @@ mean( ~ salary  , data=  mlbDataImport )
 ```	
 
 
-Suppose you wanted to compute the average salary for each position. To do so, we can tell RStudio to compute the mean by levels/groups of a grouping variable. A grouping variable groups data into categories or groups. Grouping variables are categorical variables.  When summaries are desired based on the levels or groups of the grouping variables, they are called side-by-side or comparative summaries. 
+Suppose you wanted to compute the average salary for each position. To do so, we can tell RStudio to compute the mean by levels/groups of a grouping variable. A grouping variable identifies categories or groups. Grouping variables are categorical variables.  When summaries are desired based on the levels or groups of the grouping variables, they are called side-by-side or comparative summaries. 
 
 For any  side-by-side or comparative data summary, the general formula changes a bit. The formula is `goal( ~ x | gfactor , data = dataframe)`, where `gfactor` represents the grouping variable. In our example, the grouping variable is `position`:
 ```{r gr4dd, echo=T,   eval=T ,message=FALSE,    collapse = T,   fig.width=5.5, warning=F,  fig.height=2.5}

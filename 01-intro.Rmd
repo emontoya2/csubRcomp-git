@@ -112,11 +112,11 @@ Notice the following from the commands that were executed above:
 - When a session ends, objects are not retained unless you save them. RStudio may restore a previously saved workspace at startup, depending on its settings. Saving and rerunning your R script lets you recreate the objects.
 - The assignment operator is `=` or `<-`.  Either one is acceptable, although I have a preference for `<-` so most of my handout/notes will reflect this.
 - Ordinary R object names start with a letter or a period that is not followed by a digit. The remaining characters can include letters, digits, periods, and underscores. Reserved words such as `if` cannot be used as ordinary object names.
-- The `#` character is used to indicate a comment. Anything to the right of a `#` is ignored by **R**.
+- Outside a quoted string, `#` begins a comment. R ignores the rest of that line.
 
 </br>
  
-Back to the *R objects* `H` and `h`.  The objects were created and are now stored in **R**'s memory  So if you type `H` and hit enter again, then 20 will come up.  **RStudio** can be closed by  selecting *File > Quit Session* or you can just enter the command `q()` in the console.  When exiting **RStudio** you will be asked "Save workspace image to ...". If you select "Don't Save", then you will lose everything that is in your memory.   For example, if you were to close without saving and then open **RStudio** again and type `H` you will get an error such as `Error: object 'H' not found`, unless a saved workspace restores it. Saving the workspace is not required for these examples.
+Back to the *R objects* `H` and `h`.  The objects were created and are now stored in **R**'s memory. So if you type `H` and hit enter again, then 20 will come up.  **RStudio** can be closed by  selecting *File > Quit Session* or you can just enter the command `q()` in the console.  When exiting **RStudio** you will be asked "Save workspace image to ...". If you select "Don't Save", then you will lose everything that is in your memory.   For example, if you were to close without saving and then open **RStudio** again and type `H` you will get an error such as `Error: object 'H' not found`, unless a saved workspace restores it. Saving the workspace is not required for these examples.
 
 
 ## Entering and running R code in RStudio
@@ -240,7 +240,7 @@ j <- 10.355
 j
 ```
 
- In **R**, numeric is the default type for numbers. An ordinary numeric literal is stored as a double; integer values can be created explicitly, for example with `10L`. Character data are character strings (a string of one or more characters). Character data are created by putting the string in quotations.  For example,
+ In **R**, numeric is the default type for numbers. An ordinary numeric literal is stored as a double; integer values can be created explicitly, for example with `10L`. Character data are strings, which can contain zero or more characters. Character data are created by putting the string in quotations.  For example,
 ```{r fig.width=7, fig.height=3,fig.align='center',cache=FALSE,  echo=T, message = FALSE,fig.asp=0.3500}
 k <- c( "hi", "hello" )
 k
@@ -249,7 +249,7 @@ L <- "3.4403" # a string since we put it in quotations!
 L # this is not numeric
 ```
 
-Logical data can have one of two values: `TRUE` or `FALSE`. Logical values are generally created when there is a comparison between variables. 
+Logical values are `TRUE` or `FALSE`; missing logical values are represented by `NA`. Logical values are generally created when there is a comparison between variables. 
 ```{r fig.width=7, fig.height=3,fig.align='center',cache=FALSE,  echo=T, message = FALSE,fig.asp=0.3500}
 p <- c( TRUE, TRUE, FALSE ) # no quotation marks!
 p # this is not character data but rather  logical values
@@ -272,7 +272,7 @@ An atomic vector has one underlying type. If you combine values of different typ
 
 ## Comments in R
 
-Everything that you type after a `#` sign is assumed to be a comment and is ignored by **R**. Adding comments to your R script is useful because it will help you recall what your commands or lines of code will do. In the editor,  type the following and select "Run":
+Outside a quoted string, everything after `#` on a line is a comment and is ignored by **R**. Adding comments to your R script is useful because it will help you recall what your commands or lines of code will do. In the editor,  type the following and select "Run":
 ```{r comme4, echo=T,   eval=T , message=FALSE,    collapse = T,  warning=F , comment = '#>'}
 ### Comments are ignored by R!
 y = 1 + 3    # this command tells R to compute 1 plus 3 and assign it to an R object called  y
@@ -329,7 +329,7 @@ length(X)
 
 ## Loading a package and installing new packages
 
-All functions in **R** come from libraries/packages.  There are many *packages*   that can be installed to expand the ability of R.  By default, R comes with several packages installed (some loaded automatically when R starts and some not). For example, a function called `mean()`  is available from the `base` package, and this package is loaded automatically when R starts, so we can use this function without loading an additional package. 
+R's built-in functions are supplied by packages; you can also define your own functions.  There are many *packages*   that can be installed to expand the ability of R.  By default, R comes with several packages installed (some loaded automatically when R starts and some not). For example, a function called `mean()`  is available from the `base` package, and this package is loaded automatically when R starts, so we can use this function without loading an additional package. 
 
 As for those packages that aren't loaded automatically, we first have to load a package to use its "tools".  For example,the `MASS` package comes with **R** but is not automatically loaded. This package provides a function called `boxcox()` (for Box-Cox transformations).  To use `boxcox()`, we first have to load this package by running the command `require(MASS)` or `library(MASS)`.  
 
