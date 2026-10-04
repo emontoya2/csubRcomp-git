@@ -1357,7 +1357,7 @@ dffits.cutoff
  xyplot( dffits.values ~ seq_len(n.cases),
        panel = function(x, y) {
          panel.xyplot(x, y)
-         panel.abline(a=c(-dffits.cutoff, dffits.cutoff), b=0, col="red")
+         panel.abline(h=c(-dffits.cutoff, dffits.cutoff), col="red")
        }, 
        xlab = "cases", 
        ylab = "DFFITS",
